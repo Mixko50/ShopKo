@@ -5,7 +5,7 @@ export default css`
 
             .login-box {
                 width: 80%;
-                height: 80%;
+                height: 630px;
                 box-shadow: 0px 7px 30px #deded9;
                 border-radius: 50px;
                 display: flex;
