@@ -20,14 +20,14 @@ const LayoutWithSideNav = (props) => {
                             </div>
                             <div className="menu-setting">
                                 <div className="menu-icon">
-                                    <Link href="/account/profile"><FontAwesomeIcon icon={faAddressCard} size="2x" color="blue" /></Link>
-                                    <Link href="/account/address"><FontAwesomeIcon icon={faMapMarkerAlt} size="2x" color="orange" /></Link>
-                                    <Link href="/account/payment"><FontAwesomeIcon icon={faMoneyCheckAlt} size="2x" color="green" /></Link>
-                                    <Link href="#"><FontAwesomeIcon icon={faLock} size="2x" color="brown" /></Link>
-                                    <Link href="/account/myorder"><FontAwesomeIcon icon={faShoppingCart} size="2x" color="#ff75a0" /></Link>
+                                    <Link href="/account/profile" passHref><a><FontAwesomeIcon icon={faAddressCard} size="2x" color="blue" /></a></Link>
+                                    <Link href="/account/address"><a><FontAwesomeIcon icon={faMapMarkerAlt} size="2x" color="orange" /></a></Link>
+                                    <Link href="/account/payment"><a><FontAwesomeIcon icon={faMoneyCheckAlt} size="2x" color="green" /></a></Link>
+                                    <Link href="#"><a><FontAwesomeIcon icon={faLock} size="2x" color="brown" /></a></Link>
+                                    <Link href="/account/myorder"><a><FontAwesomeIcon icon={faShoppingCart} size="2x" color="#ff75a0" /></a></Link>
                                 </div>
                                 <div className="menu-bar">
-                                    <Link href="/account/profile"><p>Profile</p></Link>
+                                    <Link href="/account/profile" ><p>Profile</p></Link>
                                     <Link href="/account/address"><p>Address</p></Link>
                                     <Link href="/account/payment"><p>Payment</p></Link>
                                     <Link href="#"><p>Change Password</p></Link>
@@ -121,7 +121,7 @@ const LayoutWithSideNav = (props) => {
                 cursor: pointer;
             }
 
-            .menu-icon > svg {
+            .menu-icon > a {
                 cursor: pointer;
             }
             
