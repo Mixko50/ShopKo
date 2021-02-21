@@ -49,7 +49,10 @@ const LoginLayout = (props) => {
             .right-side {
                 width: 50vw;
                 height: 100%;
-                padding: 30px 50px;
+                padding: 50px 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             `}</style>

@@ -54,6 +54,13 @@ const address = () => {
                 justify-content: space-around;
 
             }
+            .add-button-box {
+                display: flex;
+                width: 100%;
+                height: 80px;
+                justify-content: flex-end;
+                border-bottom : 1px black solid;
+            }
 
             .address-setting {
                 padding: 20px 0px;
@@ -65,15 +72,6 @@ const address = () => {
 
             .setting-box{
                 display: flex;
-                border-bottom : 1px black solid;
-            }
-
-            .add-button-box {
-                display: flex;
-                width: 100%;
-                height: 80px;
-
-                justify-content: flex-end;
                 border-bottom : 1px black solid;
             }
 
@@ -128,7 +126,6 @@ const address = () => {
                 align-items: center;
                 display: none;
             }
-
             
             `}</style>
         </Fragment>
