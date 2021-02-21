@@ -2,6 +2,7 @@ import { faAddressCard, faLock, faMapMarkerAlt, faMoneyCheckAlt, faShoppingCart,
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { Fragment } from 'react'
 import LayoutWithNav from './LayoutWithNav'
+import Link from 'next/link'
 
 const LayoutWithSideNav = (props) => {
 
@@ -19,18 +20,18 @@ const LayoutWithSideNav = (props) => {
                             </div>
                             <div className="menu-setting">
                                 <div className="menu-icon">
-                                    <FontAwesomeIcon icon={faAddressCard} size="2x" color="blue" />
-                                    <FontAwesomeIcon icon={faMapMarkerAlt} size="2x" color="orange" />
-                                    <FontAwesomeIcon icon={faMoneyCheckAlt} size="2x" color="green" />
-                                    <FontAwesomeIcon icon={faLock} size="2x" color="brown" />
-                                    <FontAwesomeIcon icon={faShoppingCart} size="2x" color="#ff75a0" />
+                                    <Link href="/account/profile"><FontAwesomeIcon icon={faAddressCard} size="2x" color="blue" /></Link>
+                                    <Link href="/account/address"><FontAwesomeIcon icon={faMapMarkerAlt} size="2x" color="orange" /></Link>
+                                    <Link href="/account/payment"><FontAwesomeIcon icon={faMoneyCheckAlt} size="2x" color="green" /></Link>
+                                    <Link href="#"><FontAwesomeIcon icon={faLock} size="2x" color="brown" /></Link>
+                                    <Link href="/account/myorder"><FontAwesomeIcon icon={faShoppingCart} size="2x" color="#ff75a0" /></Link>
                                 </div>
                                 <div className="menu-bar">
-                                    <p>Profile</p>
-                                    <p>Address</p>
-                                    <p>Payment</p>
-                                    <p>Change Password</p>
-                                    <p>My Order</p>
+                                    <Link href="/account/profile"><p>Profile</p></Link>
+                                    <Link href="/account/address"><p>Address</p></Link>
+                                    <Link href="/account/payment"><p>Payment</p></Link>
+                                    <Link href="#"><p>Change Password</p></Link>
+                                    <Link href="/account/myorder"><p>My Order</p></Link>
                                 </div>
                             </div>
                         </div>
@@ -114,6 +115,14 @@ const LayoutWithSideNav = (props) => {
                 width: 130px;
                 height: 200px;
                 justify-content: space-around;
+            }
+
+            .menu-bar > p {
+                cursor: pointer;
+            }
+
+            .menu-icon > svg {
+                cursor: pointer;
             }
             
             `}</style>
