@@ -3,9 +3,9 @@ import LayoutWithSideNav from '../../components/Layout/LayoutWithSideNav'
 import GenderSelect from '../../components/forum/GenderSelect'
 import BirthdaySelect from '../../components/forum/BirthdaySelect'
 import { ProfileContext } from '../../context/profileContext';
+
 const profile = () => {
     const profileState = useContext(ProfileContext);
-
     const profile = profileState.profile;
 
     return (

@@ -75,11 +75,7 @@ const myorder = () => {
                 align-items: center;
             }
             
-            .total-order {
-                color: green;
-                font-size: 50px;
-            }
-            
+           
             `}</style>
         </Fragment>
     )

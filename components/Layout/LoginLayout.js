@@ -19,7 +19,8 @@ const LoginLayout = (props) => {
             .page {
                 width: 100%;
                 height: 100vh;
-                background-color: #fafaf2;
+                /*background-color: #fafaf2;*/
+
                 display: flex;
             }
             
