@@ -25,7 +25,7 @@ const LoginLayout = (props) => {
             }
             
             .left-side {
-                width: 50vw;
+                flex: 1;
                 height: 100%;
                 background-image: url(../img/login/loginb.svg);
                 background-size: 700px;
@@ -48,7 +48,7 @@ const LoginLayout = (props) => {
             }
 
             .right-side {
-                width: 50vw;
+                flex: 1;
                 height: 100%;
                 padding: 50px 20px;
                 display: flex;
