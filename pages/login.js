@@ -16,11 +16,11 @@ const login = () => {
                     <div className="login-form">
                         <div className="login">
                             <p>Username :</p>
-                            <input placeholder="username" id=""></input>
+                            <input placeholder="username" id="" type="email"></input>
                         </div>
                         <div className="login">
                             <p>Password :</p>
-                            <input placeholder="password" id=""></input>
+                            <input placeholder="password" id="" type="password"></input>
                         </div>
                         <div className="forgot">
                             <a href="#">Forgot password?</a>

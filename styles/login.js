@@ -4,13 +4,14 @@ export default css`
 
 
             .login-box {
-                width: 80%;
+                width: 700px;
                 height: 630px;
                 box-shadow: 0px 7px 30px #deded9;
                 border-radius: 50px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                overflow: auto;
             }
 
             .title {
@@ -34,7 +35,7 @@ export default css`
                 height: 40px;
                 border-radius: 50px;
                 outline: none;
-                padding-left: 15px;
+                padding: 0px 15px;
                 border: none;
                box-shadow: 0px 7px 30px #deded9;
                transition: .3s;
@@ -97,7 +98,7 @@ export default css`
             }
 
             .login > input:focus {
-                transform: translateY(4px);
+                transform: translateY(-4px);
             }
 
             .login-button:hover {
@@ -112,5 +113,10 @@ export default css`
                 color: rgb(149, 71, 223);
             }
 
+            #phone-login::-webkit-outer-spin-button , 
+             #phone-login::-webkit-inner-spin-button{
+                -webkit-appearance: none;
+                 margin: 0;
+            }
 
 `;
