@@ -69,6 +69,7 @@ const LayoutWithSideNav = (props) => {
                 flex-direction: column;
             }
 
+
             .content {
                 width: 100%;
                 height: 100vh;
