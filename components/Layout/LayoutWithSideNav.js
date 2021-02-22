@@ -107,7 +107,6 @@ const LayoutWithSideNav = (props) => {
                 justify-content: space-around;
                 align-items:center;
             }
-
             .menu-bar {
                 display: flex;
                 flex-direction: column;
