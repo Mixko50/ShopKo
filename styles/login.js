@@ -1,10 +1,8 @@
 import css from 'styled-jsx/css'
 
 export default css`
-
-
             .login-box {
-                width: 700px;
+                width: 650px;
                 height: 630px;
                 box-shadow: 0px 7px 30px #deded9;
                 border-radius: 50px;
@@ -69,10 +67,9 @@ export default css`
                 display: flex;
                 justify-content: center;
                 color: red;
-                display: none;
             }
 
-            #login-check-name, #login-check-password {
+            #login-check-name {
                 border: 1px red solid;
             }
 

@@ -1,11 +1,51 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import LoginLayout from '../components/Layout/LoginLayout'
 import Link from 'next/link'
 import Styles from '../styles/login'
+import { useRouter } from 'next/router'
+
+const Login = () => {
+    const router = useRouter();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [valid, setValid] = useState(true)
+
+    const onKeyPressed = (e) => {
+        console.log(e.key);
+        if (e.key == "Enter") {
+            login()
+        }
+    }
+    const validate = () => {
+        if (username == "Mixko" && password == "000" || username == "Sakura" && password == "mixko") {
+            return true;
+        } else {
+            getUsername()
+            getPassword()
+            return false;
+        }
+    }
+    const login = () => {
+        console.log(username + "  " + password);
+        if (validate()) {
+            router.push('/home')
+        } else {
+            setUsername('')
+            setPassword('')
+            setValid(false)
+        }
+
+    }
 
 
+    const getUsername = () => {
+        if (!valid) return 'login-check-name'
+    }
 
-const login = () => {
+    const getPassword = () => {
+        if (!valid) return 'login-check-password'
+    }
+
     return (
         <Fragment>
             <LoginLayout>
@@ -16,22 +56,23 @@ const login = () => {
                     <div className="login-form">
                         <div className="login">
                             <p>Username :</p>
-                            <input placeholder="username" id="" type="email"></input>
+                            <input placeholder="username" id={getUsername()} value={username} onChange={(e) => setUsername(e.target.value)}></input>
                         </div>
                         <div className="login">
                             <p>Password :</p>
-                            <input placeholder="password" id="" type="password"></input>
+                            <input placeholder="password" id={getPassword()} type="password" value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={onKeyPressed}></input>
                         </div>
                         <div className="forgot">
                             <a href="#">Forgot password?</a>
                         </div>
-                        <div className="check">
-                            Something Invalid!
-                        </div>
+                        {!valid ? <div className="check">
+                            Username or Password Invalid!
+                        </div> : null}
+
                         <div className="login-button-box">
-                            <Link href="/home"><a><div className="login-button">
+                            <div className="login-button" onClick={login}>
                                 Login
-                            </div></a></Link>
+                            </div>
                         </div>
                         <div className="signup-button-box">
                             <Link href="/signup"><a><div className="signup-button">
@@ -46,4 +87,4 @@ const login = () => {
     )
 }
 
-export default login
+export default Login
