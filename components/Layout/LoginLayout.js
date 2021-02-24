@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react'
+import NavLogin from './NavLogin'
 
 const LoginLayout = (props) => {
     return (
         <Fragment>
+            <NavLogin />
             <div className="page">
                 <div className="left-side">
-                    <div className="logo">
-                        <img src="/logo.svg"></img>
-                        <h1>ShopKo</h1>
-                    </div>
+
                 </div>
                 <div className="right-side">
                     {props.children}
@@ -20,7 +19,6 @@ const LoginLayout = (props) => {
                 width: 100%;
                 height: 100vh;
                 /*background-color: #fafaf2;*/
-
                 display: flex;
             }
             
@@ -33,20 +31,6 @@ const LoginLayout = (props) => {
                  background-position: center;
             }
 
-            .logo {
-                display: flex;
-                align-items: center;
-                padding: 20px 50px;
-            }
-
-            .logo > img {
-                width: 70px;
-            }
-
-            .logo > h1{
-                margin-left: 30px;
-            }
-
             .right-side {
                 flex: 1;
                 height: 100%;
@@ -55,6 +39,25 @@ const LoginLayout = (props) => {
                 align-items: center;
                 justify-content: center;
             }
+
+            @media only screen and (max-width: 768px) {
+                .page {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .left-side {
+                    display: none;
+                }
+            }
+
+             @media only screen and (max-width: 1024px) {
+                .left-side {
+                    display: none;
+                }
+
+             }
+
 
             `}</style>
         </Fragment>

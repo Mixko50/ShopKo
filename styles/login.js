@@ -18,7 +18,9 @@ export default css`
             }
 
             .login-form {
-                width: 50%;
+                width: 100%;
+                max-width: 400px;
+                padding: 0 40px;
             }
 
             .login {
