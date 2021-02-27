@@ -31,44 +31,44 @@ const Home = () => {
                         </div>
                         <div className="categories-box">
                             <div className="categories">
-                                <Link href="/categories/fahsion"><img src="/img/categories/fahsion.svg" width={50} ></img></Link>
+                                <Link href="/categories/fahsion"><a><img src="/img/categories/fahsion.svg" width={50} ></img></a></Link>
                                 <p><Link href="/categories/fahsion">Fahsion</Link></p>
                             </div>
                             <div className="categories">
-                                <a href="#"><img src="/img/categories/computer.svg" width={50}></img></a>
-                                <p>Computers</p>
+                                <Link href="/categories/computers"><a><img src="/img/categories/computer.svg" width={50}></img></a></Link>
+                                <p><Link href="/categories/computers">Computers</Link></p>
                             </div>
                             <div className="categories">
-                                <a href="#"><img src="/img/categories/furniture.svg" width={50}></img></a>
-                                <p><a href="#">Furnitures</a></p>
+                                <Link href="/categories/furnitures"><a><img src="/img/categories/furniture.svg" width={50}></img></a></Link>
+                                <p><Link href="/categories/furnitures">Furnitures</Link></p>
                             </div>
                             <div className="categories">
-                                <a href="#"><img src="/img/categories/sports.svg" width={50}></img></a>
-                                <p><a href="#">Sports</a></p>
+                                <Link href="/categories/sports"><a><img src="/img/categories/sports.svg" width={50}></img></a></Link>
+                                <p><Link href="/categories/sports">Sports</Link></p>
                             </div>
                             <div className="categories">
-                                <a href="#"><img src="/img/categories/bag.svg" width={50}></img></a>
-                                <p><a href="#">Bags</a></p>
+                                <Link href="/categories/bags"><a><img src="/img/categories/bag.svg" width={50}></img></a></Link>
+                                <p><Link href="/categories/bags">Bags</Link></p>
                             </div>
                             <div className="categories">
-                                <a href="#"><img src="/img/categories/stationery.svg" width={50}></img></a>
-                                <p><a href="#">Stationeries</a></p>
+                                <Link href="/categories/stationaries"><a><img src="/img/categories/stationery.svg" width={50}></img></a></Link>
+                                <p><Link href="/categories/stationaries">Stationeries</Link></p>
                             </div>
                             <div className="categories">
-                                <a href="#"><img src="/img/categories/baby.svg" width={50}></img></a>
-                                <p><a href="#">Baby</a></p>
+                                <Link href="/categories/baby"><a><img src="/img/categories/baby.svg" width={50}></img></a></Link>
+                                <p><Link href="/categories/baby">Baby</Link></p>
                             </div>
                             <div className="categories">
-                                <a href="#"><img src="/img/categories/pet.svg" width={50}></img></a>
-                                <p><a href="#">Pets</a></p>
+                                <Link href="/categories/pets"><a><img src="/img/categories/pet.svg" width={50}></img></a></Link>
+                                <p><Link href="/categories/pets">Pets</Link></p>
                             </div>
                             <div className="categories">
-                                <a href="#"><img src="/img/categories/food.svg" width={50}></img></a>
-                                <p><a href="#">Foods</a></p>
+                                <Link href="/categories/foods"><a><img src="/img/categories/food.svg" width={50}></img></a></Link>
+                                <p><Link href="/categories/foods">Foods</Link></p>
                             </div>
                             <div className="categories">
-                                <a href="#"><img src="/img/categories/cosmetics.svg" width={50}></img></a>
-                                <p><a href="#">Cosmetics</a></p>
+                                <Link href="/categories/cosmetics"><a><img src="/img/categories/cosmetics.svg" width={50}></img></a></Link>
+                                <p><Link href="/categories/cosmetics">Cosmetics</Link></p>
                             </div>
                         </div>
                     </div>

@@ -58,7 +58,6 @@ const LoginLayout = (props) => {
 
              }
 
-
             `}</style>
         </Fragment>
     )

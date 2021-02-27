@@ -71,6 +71,7 @@ export default css`
 }
 
 .categories-box {
+
   width: 100%;
   height: 70%;
   /* background-color: pink; */
@@ -101,8 +102,8 @@ export default css`
 .products-box {
   max-width: 1200px;
   margin-top: 20px;
-  /* justify-content: space-between;
-                    display: flex; */
+  justify-content: space-between;
+                    display: flex;
   /* // height: 300px;
     // background-color: pink; */
 }
