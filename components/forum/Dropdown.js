@@ -1,10 +1,8 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { FontDownload } from '@material-ui/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAddressBook, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { IconButton } from '@material-ui/core';
 import Link from 'next/link'
 

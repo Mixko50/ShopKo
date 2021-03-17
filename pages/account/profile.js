@@ -131,13 +131,23 @@ const profile = () => {
 
             .confirm-button , .cancel-button{
                 margin: 0px 10px;
-                width: 100px;
+                width: 120px;
                 height: 50px;
                 background-color: #16c79a;
                 border-radius: 40px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                transition: .4s;
+                box-shadow: 0px 5px 5px rgb(202, 195, 195);
+            }
+
+            .confirm-button:hover , .cancel-button:hover{
+                transform: translateY(-3px);
+            }
+
+            .confirm-button:active , .cancel-button:active{
+                transform: translateY(-3px);
             }
 
             .cancel-button {

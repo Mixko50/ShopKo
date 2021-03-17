@@ -32,7 +32,7 @@ export default css`
             }
 
             .login > input {
-                height: 40px;
+                height: 45px;
                 border-radius: 50px;
                 outline: none;
                 padding: 0px 15px;

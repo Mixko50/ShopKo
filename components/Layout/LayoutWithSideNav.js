@@ -20,10 +20,10 @@ const LayoutWithSideNav = (props) => {
                             </div>
                             <div className="menu-setting">
                                 <div className="menu-icon">
-                                    <Link href="/account/profile" passHref><a><FontAwesomeIcon icon={faAddressCard} size="2x" color="blue" /></a></Link>
-                                    <Link href="/account/address"><a><FontAwesomeIcon icon={faMapMarkerAlt} size="2x" color="orange" /></a></Link>
-                                    <Link href="/account/payment"><a><FontAwesomeIcon icon={faMoneyCheckAlt} size="2x" color="green" /></a></Link>
-                                    <Link href="/account/changepass"><a><FontAwesomeIcon icon={faLock} size="2x" color="brown" /></a></Link>
+                                    <Link href="/account/profile" passHref><a><FontAwesomeIcon icon={faAddressCard} size="2x" color="#ff75a0" /></a></Link>
+                                    <Link href="/account/address"><a><FontAwesomeIcon icon={faMapMarkerAlt} size="2x" color="#ff75a0" /></a></Link>
+                                    <Link href="/account/payment"><a><FontAwesomeIcon icon={faMoneyCheckAlt} size="2x" color="#ff75a0" /></a></Link>
+                                    <Link href="/account/changepass"><a><FontAwesomeIcon icon={faLock} size="2x" color="#ff75a0" /></a></Link>
                                     <Link href="/account/myorder"><a><FontAwesomeIcon icon={faShoppingCart} size="2x" color="#ff75a0" /></a></Link>
                                 </div>
                                 <div className="menu-bar">
