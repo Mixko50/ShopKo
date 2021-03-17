@@ -12,10 +12,10 @@ const Home = () => {
                 <div className="home-bigbox">
                     <div className="ads-box">
                         <div className="free-shipping-promotion-box">
-                            <div className="free-shipping">
+                            <div className="free-shipping-1">
 
                             </div>
-                            <div className="free-shipping">
+                            <div className="free-shipping-2">
 
                             </div>
                         </div>

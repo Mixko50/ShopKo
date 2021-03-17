@@ -23,14 +23,14 @@ const LayoutWithSideNav = (props) => {
                                     <Link href="/account/profile" passHref><a><FontAwesomeIcon icon={faAddressCard} size="2x" color="blue" /></a></Link>
                                     <Link href="/account/address"><a><FontAwesomeIcon icon={faMapMarkerAlt} size="2x" color="orange" /></a></Link>
                                     <Link href="/account/payment"><a><FontAwesomeIcon icon={faMoneyCheckAlt} size="2x" color="green" /></a></Link>
-                                    <Link href="#"><a><FontAwesomeIcon icon={faLock} size="2x" color="brown" /></a></Link>
+                                    <Link href="/account/changepass"><a><FontAwesomeIcon icon={faLock} size="2x" color="brown" /></a></Link>
                                     <Link href="/account/myorder"><a><FontAwesomeIcon icon={faShoppingCart} size="2x" color="#ff75a0" /></a></Link>
                                 </div>
                                 <div className="menu-bar">
                                     <Link href="/account/profile" ><p>Profile</p></Link>
                                     <Link href="/account/address"><p>Address</p></Link>
                                     <Link href="/account/payment"><p>Payment</p></Link>
-                                    <Link href="#"><p>Change Password</p></Link>
+                                    <Link href="/account/changepass"><p>Change Password</p></Link>
                                     <Link href="/account/myorder"><p>My Order</p></Link>
                                 </div>
                             </div>

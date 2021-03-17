@@ -1,13 +1,14 @@
-import { Fragment } from "react"
+import { Fragment, useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown, faSearch, faUserCircle } from "@fortawesome/free-solid-svg-icons"
-// import { Dropdown } from "semantic-ui-react"
-// import 'semantic-ui-css/semantic.min.css'
+import Dropdown from '../forum/Dropdown'
 import Link from 'next/link'
 
 
 
 const Nav = () => {
+
+
     return (
         <Fragment>
             <nav>
@@ -23,14 +24,7 @@ const Nav = () => {
                     <div className="status">
                         <p><Link href="/">Login</Link> / <Link href="#">SignUp</Link></p>
                         <Link href="/"><FontAwesomeIcon icon={faUserCircle} color="black" size="2x" /></Link>
-                        {/* <Dropdown >
-                            <Dropdown.Menu>
-                                <Dropdown.Item icon='folder' text='Account Setting' />
-                                <Dropdown.Item icon='trash' text='My Order' />
-                                <Dropdown.Divider />
-                                <Dropdown.Item text='Sign Out' />
-                            </Dropdown.Menu>
-                        </Dropdown> */}
+                        <Dropdown />
                     </div>
                 </div>
             </nav>
