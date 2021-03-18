@@ -15,15 +15,6 @@ const changepass = () => {
             return 'password-check'
         }
     }
-
-    const getNewPassword = () => {
-
-    }
-
-    const getConfirmNewPassword = () => {
-
-    }
-
     const check = () => {
         if (oldPass == "000" || oldPass == "mixko") {
             if (newPass && newPass == confirmNewPass) {
@@ -48,11 +39,11 @@ const changepass = () => {
                     </div>
                     <div>New password :</div>
                     <div>
-                        <input placeholder="new password" type="password" id={getNewPassword} onChange={(e) => setNewPass(e.target.value)}></input>
+                        <input placeholder="new password" type="password" onChange={(e) => setNewPass(e.target.value)}></input>
                     </div>
                     <div>Confirm new password :</div>
                     <div>
-                        <input placeholder="confirm new password" type="password" id={getConfirmNewPassword} onChange={(e) => setConfirmNewPass(e.target.value)}></input>
+                        <input placeholder="confirm new password" type="password" onChange={(e) => setConfirmNewPass(e.target.value)}></input>
                     </div>
                 </div>
                 <div className="button-box">

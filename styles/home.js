@@ -112,11 +112,16 @@ export default css`
   border-left: none;
 }
 
+.categories > p {
+  text-decoration: none;
+  color: black;
+}
+
 .categories:nth-child(1) {
   border-left: 1px black solid;
 }
 
-.categories>p {
+.categories > p {
   margin-top: -30%;
 }
 
@@ -129,10 +134,7 @@ export default css`
   justify-items: center;
   justify-content: center;
 
-  /* justify-content: space-between;
-                    display: flex; */
-  /* // height: 300px;
-    // background-color: pink; */
+
 }
 
 .products {
@@ -160,7 +162,7 @@ export default css`
   margin-bottom: 10px;
 }
 
-.product>p {
+.product > p {
   width: 100%;
 }
 

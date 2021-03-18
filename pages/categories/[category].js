@@ -1,13 +1,18 @@
+import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
 import Nav from '../../components/Layout/Nav'
 
-const computers = () => {
+
+
+const Index = () => {
+    const router = useRouter();
+    const { category } = router.query;
+
     return (
         <Fragment>
             <Nav />
-
         </Fragment>
     )
 }
 
-export default computers
+export default Index

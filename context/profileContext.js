@@ -3,15 +3,18 @@ import { createContext, useContext } from 'react';
 
 export const ProfileContext = createContext();
 
+const user = {
+    firstname: "Apisit",
+    lastname: "Maneerat",
+    username: "Mixko",
+    email: "apisithotmail@hotmail.co.th",
+    phone: "0632458648",
+    gender: 1,
+}
+
 export const ProfileWrapper = ({ children }) => {
-    const [profile, setProfile] = useState({
-        firstname: "Apisit",
-        lastname: "Maneerat",
-        username: "Mixko",
-        email: "apisithotmail@hotmail.co.th",
-        phone: "0632458648",
-        gender: 1,
-    });
+    const [profile, setProfile] = useState(user);
+
 
     const profileState = {
         profile,
