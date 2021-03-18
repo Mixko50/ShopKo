@@ -1,7 +1,6 @@
 import { Fragment } from "react"
 import Nav from '../components/Layout/Nav'
 import Styles from '../styles/home'
-import Link from 'next/link'
 import { CategoryItem } from "../components/category/CategoryItem";
 import { AdvertiseBox } from "../components/advertise/AdvertiseBox";
 import { ProductItems } from '../components/ProductItems/ProductItems';

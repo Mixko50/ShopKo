@@ -14,8 +14,8 @@ const Nav = () => {
             <nav>
                 <div className="nav-box">
                     <div className="logo">
-                        <img src="/logo.svg"></img>
-                        <h1>ShopKo</h1>
+                        <Link href="/home"><img src="/logo.svg"></img></Link>
+                        <Link href="/home"><h1>ShopKo</h1></Link>
                     </div>
                     <div className="search">
                         <input placeholder="Search"></input>
@@ -56,13 +56,15 @@ const Nav = () => {
                 }
 
                 .logo > img {
-                    width: 45px
+                    width: 45px;
+                    cursor: pointer;
                 }
 
                 .logo > h1 {
                     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                     margin-left: 20px;
                     margin-top: 0;
+                    cursor: pointer;
 
                 }
 

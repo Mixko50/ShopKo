@@ -34,8 +34,8 @@ export default function Dropdown() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <Link href="../home"><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
-                <Link href="../account/profile"><MenuItem onClick={handleClose}>My account</MenuItem></Link>
+                <Link href="../account/profile"><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
+                <Link href="../account/myorder"><MenuItem onClick={handleClose}>My order</MenuItem></Link>
                 <Link href="/login"><MenuItem onClick={handleClose}>Logout</MenuItem></Link>
             </Menu>
         </div>
