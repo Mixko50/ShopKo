@@ -1,7 +1,7 @@
 import React, { Fragment, useRef } from 'react'
 import LayoutWithSideNav from '../../components/Layout/LayoutWithSideNav'
 import AddressEdit from '../../components/forum/AddressEdit'
-import Styles from '../../styles/address'
+import Styles from '../../styles/account/address'
 
 
 const address = () => {
