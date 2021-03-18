@@ -141,7 +141,7 @@ export default css`
   width: 185px;
   height: 300px;
   background-color: white;
-  border-radius: 30px;
+  border-radius: 15px;
   box-shadow: 0px 2px 10px #dddddd;
   padding: 15px;
   display: inline-block;
@@ -158,7 +158,7 @@ export default css`
   width: 100%;
   height: 60%;
   background-color: black;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-bottom: 10px;
 }
 
