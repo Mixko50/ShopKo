@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle } from 'react';
+import React, { forwardRef, useImperativeHandle, useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -6,10 +6,30 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import ProvinceSelect from './ProvinceSelect'
+import data from '../../utils/provinces';
+import AddressSelect from './AddressSelect';
 
 export default forwardRef((props, ref) => {
     const [open, setOpen] = React.useState(false);
+    const [province, setProvince] = useState('Bangkok');
+    const [district, setDistrict] = useState('');
+    const [subDistrict, setSubDistrict] = useState('');
+
+    const [districts, setDistricts] = useState('');
+    const [subDistricts, setSubDistricts] = useState('');
+    const provinces = [...new Set(data.map((el) => el.province))]
+
+    useEffect(() => {
+        let tempDistricts = [... new Set((data.filter((el) => el.province == province)).map((el) => el.district))]
+        setDistricts(tempDistricts);
+        setDistrict('')
+    }, [province])
+
+    useEffect(() => {
+        let tempSubDistricts = [... new Set((data.filter((el) => el.district == district)).map((el) => el.subDistrict))]
+        setSubDistricts(tempSubDistricts);
+        setSubDistrict('')
+    }, [province, district])
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -50,9 +70,9 @@ export default forwardRef((props, ref) => {
                         type="text"
                         fullWidth
                     />
-                    <ProvinceSelect />
-                    <ProvinceSelect />
-                    <ProvinceSelect />
+                    <AddressSelect title='Province' data={provinces} current={province} setCurrent={(el) => setProvince(el)} margin="normal" />
+                    <AddressSelect title='District' data={districts} current={district} setCurrent={(el) => setDistrict(el)} />
+                    <AddressSelect title='Subdistrict' data={subDistricts} current={subDistrict} setCurrent={(el) => setSubDistrict(el)} margin="normal" />
                     <TextField
                         autoFocus
                         margin="dense"

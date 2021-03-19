@@ -14,27 +14,23 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ProvinceSelect() {
+export default function AddressSelect({ data, title, current, setCurrent }) {
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
-
     const handleChange = (event) => {
-        setAge(event.target.value);
+        setCurrent(event.target.value);
     };
 
     return (
         <div>
-            <FormControl className={classes.formControl}>
-                <InputLabel id="demo-simple-select-label">Province</InputLabel>
+            <FormControl className={classes.formControl} margin="normal">
+                <InputLabel id="demo-simple-select-label">{title}</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={age}
+                    value={current}
                     onChange={handleChange}
                 >
-                    <MenuItem >Ten</MenuItem>
-                    <MenuItem >Twenty</MenuItem>
-                    <MenuItem >Thirty</MenuItem>
+                    {data.map((el) => <MenuItem value={el}>{el}</MenuItem>)}
                 </Select>
             </FormControl>
         </div>
