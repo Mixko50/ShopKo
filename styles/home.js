@@ -133,8 +133,11 @@ export default css`
   grid-row-gap: 16px;
   justify-items: center;
   justify-content: center;
+}
 
-
+#details , #sold {
+  text-decoration: none;
+  color: black;
 }
 
 .products {
