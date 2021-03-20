@@ -190,6 +190,10 @@ export default css`
   top: 22px;
 }
 
+.details-box {
+  height: 35px;
+}
+
 @media only screen and (max-width: 768px) {
   .ads-box {
     flex-direction: column;

@@ -7,7 +7,7 @@ export const ProductItems = ({ title, price, sold }) => {
     return (
         <Link href={`/products/${title.toLowerCase()}`}><div className="products">
             <div className="product-pictures"></div>
-            <p id="details">{`${title}`}</p>
+            <div className="details-box"><p id="details">{`${title}`}</p></div>
             <h3 id="price">{`$${price}`}</h3>
             <div className="sold-box">
                 <h5 id="sold">{`Sold : ${sold}`}</h5>
