@@ -1,13 +1,22 @@
 import { Fragment, useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretDown, faSearch, faUserCircle } from "@fortawesome/free-solid-svg-icons"
+import { faSearch, faShoppingCart, faUserCircle } from "@fortawesome/free-solid-svg-icons"
 import Dropdown from '../forum/Dropdown'
 import Link from 'next/link'
-
-
+import { makeStyles } from '@material-ui/core/styles';
+import Badge from '@material-ui/core/Badge';
 
 const Nav = () => {
 
+    const useStyles = makeStyles((theme) => ({
+        root: {
+            '& > *': {
+                margin: theme.spacing(3),
+            },
+        },
+    }));
+
+    const classes = useStyles();
 
     return (
         <Fragment>
@@ -22,6 +31,11 @@ const Nav = () => {
                         <a href="#"><FontAwesomeIcon icon={faSearch} color="rgb(218,90,71)" /></a>
                     </div>
                     <div className="status">
+                        <div className={classes.root}>
+                            <Badge badgeContent={3} color="secondary">
+                                <FontAwesomeIcon icon={faShoppingCart} style={{ cursor: "pointer", width: "25px", height: "25px" }} />
+                            </Badge>
+                        </div>
                         <p><Link href="/">Login</Link> / <Link href="#">SignUp</Link></p>
                         <Link href="/"><FontAwesomeIcon icon={faUserCircle} color="black" size="2x" /></Link>
                         <Dropdown />

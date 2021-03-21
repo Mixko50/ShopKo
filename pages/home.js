@@ -1,10 +1,22 @@
-import { Fragment } from "react"
+import { Fragment, useState, useEffect } from "react"
 import Nav from '../components/Layout/Nav'
 import Styles from '../styles/home'
 import { CategoryItem } from "../components/category/CategoryItem";
 import { AdvertiseBox } from "../components/advertise/AdvertiseBox";
 import { ProductItems } from '../components/ProductItems/ProductItems';
+import axios from 'axios';
+import { CircularProgress, createStyles, makeStyles } from "@material-ui/core";
 
+
+
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+        minWidth: 120,
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(2),
+    },
+}));
 
 const categoryItems = [{
     id: 'fashion1',
@@ -19,12 +31,34 @@ const categoryItems = [{
 { id: 'foods8', title: 'Foods' },
 { id: 'cosmetics9', title: 'Cosmetics' }];
 
-const productItems = [{ id: 1, title: "Something that you must but. I don't know why but you must buy it", price: 599, sold: 100 },
-{ id: 2, title: "Something that you must but. I don't know why but you must buy it", price: 234, sold: 34 },
-{ id: 3, title: "Something that you must but. I don't know why but you must buy it", price: 324, sold: 65 },
-{ id: 4, title: "Something that you must but. I don't know why but you must buy it", price: 222, sold: 100000 },
-{ id: 5, title: "Something that you must but. I don't know why but you must buy it", price: 12, sold: 14 },
-{ id: 6, title: "Something that you must but. I don't know why but you must buy it", price: 32, sold: 423 },]
+
+const ProductBox = () => {
+    const [data, setData] = useState(false);
+
+    useEffect(() => {
+        onFetchData()
+    }, [])
+
+    const onFetchData = async () => {
+        try {
+            const fetchedData = await axios.get("https://apmix.mixko.ml/api1.json")
+            setData(fetchedData.data);
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
+    return !data ? <div style={{ display: "flex", justifyContent: "center" }}><CircularProgress /></div> :
+        <Fragment>
+            <div className="products-box">
+                {data.map((item) => <ProductItems key={item.title} title={item.title} price={item.price} sold={item.sold} image={item.img_url} />)}
+            </div>
+            <style jsx>{Styles}</style>
+        </Fragment>
+
+};
+
 
 const Home = () => {
     //fahsion fashion
@@ -38,18 +72,17 @@ const Home = () => {
                         <div className="title">
                             <h1>Categories</h1>
                         </div>
-                        <div className="categories-box">
+                        <div className="categories-box" >
                             {categoryItems.map((item) => <CategoryItem key={item.id} title={item.title} />)}
                         </div>
                     </div>
-                    <div className="products-box">
-                        {productItems.map((item) => <ProductItems key={item.title} title={item.title} price={item.price} sold={item.sold} />)}
-                    </div>
+                    <ProductBox />
                 </div>
             </section>
             <style jsx>{Styles}</style>
         </Fragment>
     )
 }
+
 
 export default Home

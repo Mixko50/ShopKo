@@ -126,13 +126,15 @@ export default css`
 }
 
 .products-box {
+  margin-top: 30px;
   max-width: 1200px;
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 200px);
   grid-row-gap: 16px;
   justify-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
 }
 
 #details , #sold {
@@ -160,9 +162,11 @@ export default css`
 .product-pictures {
   width: 100%;
   height: 60%;
-  background-color: black;
+  background-color: black;  
   border-radius: 10px;
   margin-bottom: 10px;
+  background-size: cover;
+  background-position: center;
 }
 
 .product > p {
