@@ -8,16 +8,6 @@ import Badge from '@material-ui/core/Badge';
 
 const Nav = () => {
 
-    const useStyles = makeStyles((theme) => ({
-        root: {
-            '& > *': {
-                margin: theme.spacing(3),
-            },
-        },
-    }));
-
-    const classes = useStyles();
-
     return (
         <Fragment>
             <nav>
@@ -31,8 +21,8 @@ const Nav = () => {
                         <a href="#"><FontAwesomeIcon icon={faSearch} color="rgb(218,90,71)" /></a>
                     </div>
                     <div className="status">
-                        <div className={classes.root}>
-                            <Badge badgeContent={3} color="secondary">
+                        <div >
+                            <Badge style={{ margin: '0px 25px ' }} badgeContent={35} color="secondary">
                                 <FontAwesomeIcon icon={faShoppingCart} style={{ cursor: "pointer", width: "25px", height: "25px" }} />
                             </Badge>
                         </div>

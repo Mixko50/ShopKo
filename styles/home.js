@@ -133,7 +133,7 @@ export default css`
   grid-template-columns: repeat(auto-fill, 200px);
   grid-row-gap: 16px;
   justify-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 
 }
 
