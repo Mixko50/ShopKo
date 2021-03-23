@@ -41,7 +41,7 @@ const ProductBox = () => {
 
     const onFetchData = async () => {
         try {
-            const fetchedData = await axios.get("https://apmix.mixko.ml/api1.json")
+            const fetchedData = await axios.get("https://apmix.mixko.ml/cosmetics.json")
             setData(fetchedData.data);
         } catch (err) {
             console.log(err)
@@ -52,7 +52,7 @@ const ProductBox = () => {
     return !data ? <div style={{ display: "flex", justifyContent: "center" }}><CircularProgress /></div> :
         <Fragment>
             <div className="products-box">
-                {data.map((item) => <ProductItems key={item.title} title={item.title} price={item.price} sold={item.sold} image={item.img_url} />)}
+                {data.map((item) => <ProductItems key={item.id} title={item.data.title} price={item.data.price} sold={item.data.sold} image={item.img[0]} />)}
             </div>
             <style jsx>{Styles}</style>
         </Fragment>
