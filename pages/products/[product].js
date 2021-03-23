@@ -1,36 +1,57 @@
 import { useRouter } from 'next/router'
-import React, { Fragment } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import Nav from '../../components/Layout/Nav'
 import { ProductQuantity } from '../../components/forum/ProductQuantity'
 import { ProductBuyButton } from '../../components/forum/ProductBuyButton'
 import ProductDetails from '../../components/ProductDetails/ProductDetails'
+import axios from 'axios'
+import { CircularProgress } from "@material-ui/core";
+
+
 
 
 const Products = () => {
     const router = useRouter();
     const { product } = router.query;
 
+    const [data, setData] = useState(false);
+
+    useEffect(() => {
+        onFetchData()
+    }, [product])
+
+    const onFetchData = async () => {
+        try {
+            const fetchedData = await axios.get("https://apmix.mixko.ml/cosmetics.json")
+            setData(fetchedData.data.filter((el) => el.id == product)[0]);
+            console.log(fetchedData.data);
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
     return (
         <Fragment>
             <Nav />
-            <section>
+            { !data ? <CircularProgress /> : <section>
                 <div className="page-box">
                     <div className="product-box">
                         <div className="product-pic">
-                            <img src="https://static.vecteezy.com/system/resources/previews/000/246/312/original/mountain-lake-sunset-landscape-first-person-view-vector.jpg"></img>
+                            <img src={data.img[0]}></img>
                             <div className="product-sub-pic">
-                                <img src="https://static.vecteezy.com/system/resources/previews/000/246/312/original/mountain-lake-sunset-landscape-first-person-view-vector.jpg"></img>
-                                <img src="https://static.vecteezy.com/system/resources/previews/000/246/312/original/mountain-lake-sunset-landscape-first-person-view-vector.jpg"></img>
-                                <img src="https://static.vecteezy.com/system/resources/previews/000/246/312/original/mountain-lake-sunset-landscape-first-person-view-vector.jpg"></img>
-                                <img src="https://static.vecteezy.com/system/resources/previews/000/246/312/original/mountain-lake-sunset-landscape-first-person-view-vector.jpg"></img>
+                                <img src={data.img[0]}></img>
+                                <img src={data.img[0]}></img>
+                                <img src={data.img[2]}></img>
+                                <img src={data.img[3]}></img>
                             </div>
                         </div>
                         <div className="product-buy">
                             <div className="product-title">
-                                <h1>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h1>
+                                <h1>{data.data.title}</h1>
                             </div>
                             <div className="product-price">
-                                <h2>$65</h2>
+                                <h2>${data.data.price}</h2>
                             </div>
                             <div className="quantity-box">
                                 <p>Quantity</p>
@@ -50,7 +71,7 @@ const Products = () => {
                         <ProductDetails />
                     </div>
                 </div>
-            </section>
+            </section>}
             <style jsx>{`
                
                 section{

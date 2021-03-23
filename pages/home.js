@@ -52,7 +52,7 @@ const ProductBox = () => {
     return !data ? <div style={{ display: "flex", justifyContent: "center" }}><CircularProgress /></div> :
         <Fragment>
             <div className="products-box">
-                {data.map((item) => <ProductItems key={item.id} title={item.data.title} price={item.data.price} sold={item.data.sold} image={item.img[0]} />)}
+                {data.map((item) => <ProductItems key={item.id} title={item.data.title} price={item.data.price} sold={item.data.sold} image={item.img[0]} id={item.id} />)}
             </div>
             <style jsx>{Styles}</style>
         </Fragment>
