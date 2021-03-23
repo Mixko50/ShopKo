@@ -19,11 +19,14 @@ const address = () => {
                 <div className="setting-box">
                     <div className="address-setting" >
                         <div>Name :</div>
-                        <div>s</div>
+                        <div>Apisit Maneerat</div>
                         <div>Address :</div>
-                        <div><p className="address-detail">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></div>
+                        <div>
+                            <p className="address-detail">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </p>
+                        </div>
                         <div>Phone number :</div>
-                        <div>s</div>
+                        <div>083-XXX-XXXX</div>
                     </div>
                     <div className="address-edit">
                         <a href="#" onClick={() => { addressEditRef.current.open() }}><h3>Edit</h3></a>
@@ -33,7 +36,7 @@ const address = () => {
                 <div className="setting-box">
                     <div className="address-setting" >
                         <div>Name :</div>
-                        <div>s</div>
+                        <div>Itsuki Nakano</div>
                         <div>Address :</div>
                         <div><p className="address-detail">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></div>
                         <div>Phone number :</div>

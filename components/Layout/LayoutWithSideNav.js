@@ -67,6 +67,7 @@ const LayoutWithSideNav = (props) => {
                 height: 100vh;
                 display: flex;
                 flex-direction: column;
+                background-color: aliceblue;
             }
 
             .content {

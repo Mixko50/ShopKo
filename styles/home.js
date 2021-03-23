@@ -21,7 +21,7 @@ export default css`
 .ads-box {
   display: flex;
   width: 100%;
-  background-color: #f7f6e7;
+  background-color: #f9f3f3;
   padding: 20px
 }
 
