@@ -99,7 +99,7 @@ export default css`
             }
 
             .order-price > h1 {
-                color: rgb(175, 117, 10);
+                color: #f7bb08;
             }
 
             .total {

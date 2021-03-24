@@ -18,7 +18,7 @@ const Nav = () => {
                     </div>
                     <div className="search">
                         <input placeholder="Search"></input>
-                        <a href="#"><FontAwesomeIcon icon={faSearch} color="rgb(218,90,71)" /></a>
+                        <a href="#"><FontAwesomeIcon icon={faSearch} color="#ea5e76" /></a>
                     </div>
                     <div className="status">
                         <div >
@@ -96,7 +96,7 @@ const Nav = () => {
                     border-radius: 30px;
                     outline: none;
                     margin-right: 20px;
-                    border : 3px rgb(236,179,77) solid;
+                    border : 3px #ea5e76 solid;
                 }
 
             `} </style>

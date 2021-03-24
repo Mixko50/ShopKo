@@ -21,7 +21,7 @@ export default css`
 .ads-box {
   display: flex;
   width: 100%;
-  background-color: #f9f3f3;
+  background-color: #fef0ef;
   padding: 20px
 }
 
@@ -43,7 +43,7 @@ export default css`
 }
 
 .free-shipping-1 {
-  background-image: url(img/promotion/airpodspro.png);
+  background-image: url(mg/promotion/airpodspro.png);
   background-size: 300px;
   background-position: center;
   background-repeat: no-repeat;
@@ -51,7 +51,7 @@ export default css`
 }
 
 .free-shipping-2{
-  background-image: url(img/promotion/watch.jpeg);
+  background-image: url(mg/promotion/watch.jpeg);
   background-size: 300px;
   background-position: center;
   background-repeat: no-repeat;
@@ -63,7 +63,7 @@ export default css`
   height: 95%;
   background-color: orange;
   border-radius: 30px;
-  background-image: url(/img/promotion/appleone.png);
+  background-image: url(/mg/promotion/appleone.png);
   background-size: 700px;
   background-position: center;
   background-repeat: no-repeat;
@@ -182,7 +182,7 @@ export default css`
 }
 
 #price {
-  color: orange;
+  color: #f7bb08;
   margin-top: 10px;
 }
 
@@ -197,6 +197,41 @@ export default css`
 .details-box {
   height: 35px;
 }
+
+
+section{
+  width: 100 %;
+  height: 100 %;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-box {
+  padding-top: 70px;
+  width: 100 %;
+  height: 100 %;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.category-title {
+  width: 100 %;
+  height: 200px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgb(212, 206, 206);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+}
+
+.category-title > h1 {
+  font-size: 70px;
+}
+
 
 @media only screen and (max-width: 768px) {
   .ads-box {

@@ -5,6 +5,7 @@ export default css`
                 width: 650px;
                 height: 630px;
                 box-shadow: 0px 7px 30px #deded9;
+                background-color: rgb(250, 250, 250);
                 border-radius: 50px;
                 display: flex;
                 flex-direction: column;

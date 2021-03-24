@@ -6,15 +6,13 @@ import { ProductBuyButton } from '../../components/forum/ProductBuyButton'
 import ProductDetails from '../../components/ProductDetails/ProductDetails'
 import axios from 'axios'
 import { CircularProgress } from "@material-ui/core";
-
-
-
+import NameMapping from '../../utils/categories.json'
 
 const Products = () => {
     const router = useRouter();
     const { product } = router.query;
 
-    const [data, setData] = useState(false);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         onFetchData()
@@ -22,7 +20,11 @@ const Products = () => {
 
     const onFetchData = async () => {
         try {
-            const fetchedData = await axios.get("https://apmix.mixko.ml/cosmetics.json")
+            console.log(product);
+            // const productToString = product.toString()
+            // console.log(productToString)
+            console.log(NameMapping[product.charAt(0)].toLowerCase());
+            const fetchedData = await axios.get(`https://apmix.mixko.ml/${NameMapping[product.charAt(0)].toLowerCase()}.json`)
             setData(fetchedData.data.filter((el) => el.id == product)[0]);
             console.log(fetchedData.data);
         } catch (err) {
@@ -38,12 +40,12 @@ const Products = () => {
                 <div className="page-box">
                     <div className="product-box">
                         <div className="product-pic">
-                            <img src={data.img[0]}></img>
+                            <div className="big-pic" style={{ backgroundImage: `url(${data.img[0]})` }}></div>
                             <div className="product-sub-pic">
-                                <img src={data.img[0]}></img>
-                                <img src={data.img[0]}></img>
-                                <img src={data.img[2]}></img>
-                                <img src={data.img[3]}></img>
+                                <div className="small-pic" style={{ backgroundImage: `url(${data.img[0]})` }}></div>
+                                <div className="small-pic" style={{ backgroundImage: `url(${data.img[1]})` }}></div>
+                                <div className="small-pic" style={{ backgroundImage: `url(${data.img[2]})` }}></div>
+                                <div className="small-pic" style={{ backgroundImage: `url(${data.img[3]})` }}></div>
                             </div>
                         </div>
                         <div className="product-buy">
@@ -98,6 +100,7 @@ const Products = () => {
                     padding: 10px;
                     border-radius: 15px;
                     box-shadow: 0px 0px 10px rgb(212, 206, 206);
+                    background-color: rgb(250, 250, 250);
                     display: flex;
                 }
 
@@ -123,6 +126,28 @@ const Products = () => {
                     cursor: pointer;
                 }
 
+                .big-pic {
+                    width: 100%;
+                    height: 85%;
+                    background-color: aqua;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                }
+
+                .small-pic {
+                    width: 24%;
+                    height: 100px;
+                    background-color: aqua;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                }
+
                 .product-buy {
                     flex: 60%;
                     height: 100%;
@@ -133,7 +158,7 @@ const Products = () => {
                 }
 
                 .product-sub-pic {
-                    margin-top: 20px;
+                    margin-top: 10px;
                     display: flex;
                     justify-content: space-between;
                 }
@@ -159,12 +184,17 @@ const Products = () => {
                 }
 
                 .product-title {
+                    width: 100%;
+                    padding-left: 10px;
+                    margin-top: 20px;
                     height: 100px;
+                    display: flex;
+                    justify-content: flex-start;
                 }
 
                 .product-price {
                     width: 100%;
-                    height: 50px;
+                    height: 40px;
                     display: flex;
                     align-items: center;
                     padding-left: 10px;
@@ -206,7 +236,7 @@ const Products = () => {
                 }
                 
                 `}</style>
-        </Fragment>
+        </Fragment >
     )
 }
 

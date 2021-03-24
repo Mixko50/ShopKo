@@ -1,11 +1,35 @@
+import Styles from '../../styles/home'
 import { useRouter } from 'next/router'
-import React, { Fragment } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import Nav from '../../components/Layout/Nav'
 import NameMapping from '../../utils/categories.json'
+import axios from 'axios'
+import { ProductItems } from '../../components/ProductItems/ProductItems'
+
+//axios
 
 const Index = () => {
     const router = useRouter();
     const { category } = router.query;
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        onFetchData()
+    }, [NameMapping[category]])
+
+    const onFetchData = async () => {
+        try {
+            console.log(NameMapping[category].toLowerCase());
+            console.log(`https://apmix.mixko.ml/${NameMapping[category].toLowerCase()}.json`);
+            const fetchedData = await axios.get(`https://apmix.mixko.ml/${NameMapping[category].toLowerCase()}.json`)
+            setData(fetchedData.data);
+            // console.log(fetchedData.data[0].id);
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
 
     return (
         <Fragment>
@@ -15,46 +39,12 @@ const Index = () => {
                     <div className="category-title">
                         <h1>{NameMapping[category]}</h1>
                     </div>
+                    <div className="products-box">
+                        {data.map((item) => <ProductItems key={item.id} title={item.data.title} price={item.data.price} sold={item.data.sold} image={item.img[0]} id={item.id} />)}
+                    </div>
                 </div>
             </section>
-            <style jsx>{`
-                
-                section{
-                    width: 100%;
-                    height: 100%;
-                    padding-top: 70px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                .page-box {
-                    width: 100%;
-                    height: 100%;
-                    max-width: 1200px;
-                    display: flex;
-                    flex-direction: column;
-                    margin-top: 10px;
-                }
-
-                .category-title {
-                    width: 100%;
-                    height: 200px;
-                    border-radius: 15px;
-                    box-shadow: 0px 0px 10px rgb(212, 206, 206);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    background-color: aliceblue;
-                }
-
-                .category-title > h1 {
-                    font-size: 70px;
-                }
-
-
-                
-                `}</style>
+            <style jsx>{Styles}</style>
         </Fragment>
     )
 }

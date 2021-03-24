@@ -90,7 +90,7 @@ export default css`
             }
 
             .cancel-button {
-                background-color: #bbbbbb;
+                background-color: #f9d877;
             }
 
             input {
@@ -98,7 +98,7 @@ export default css`
                 height: 35px;
                 padding-left: 10px;
                 outline: none;
-                border: 2px #ffabe1 solid;
+                border: 2px #cc85b1 solid;
                 border-radius: 10px;
             }
             `;

@@ -37,7 +37,7 @@ export default css`
                 height: 40px;
                 padding: 0 10px;
                 outline: none;
-                border: 2px #ffabe1 solid;
+                border: 2px #cc85b1 solid;
                 border-radius: 10px;
             }
 

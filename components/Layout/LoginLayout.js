@@ -20,6 +20,7 @@ const LoginLayout = (props) => {
                 height: 100vh;
                 /*background-color: #fafaf2;*/
                 display: flex;
+                background-color: rgb(250, 250, 250);
             }
             
             .left-side {

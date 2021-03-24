@@ -33,7 +33,7 @@ const categoryItems = [{
 
 
 const ProductBox = () => {
-    const [data, setData] = useState(false);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         onFetchData()

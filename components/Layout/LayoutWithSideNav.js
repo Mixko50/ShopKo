@@ -67,7 +67,7 @@ const LayoutWithSideNav = (props) => {
                 height: 100vh;
                 display: flex;
                 flex-direction: column;
-                background-color: aliceblue;
+                background-color:#fad3cf;
             }
 
             .content {
@@ -75,7 +75,7 @@ const LayoutWithSideNav = (props) => {
                 height: 100vh;
                 display: flex;
                 flex-direction: column;
-                background-color: #f8f1f1;
+                background-color: #fef0ef;
                 padding: 50px 90px;
             }
 

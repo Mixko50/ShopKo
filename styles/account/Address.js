@@ -33,7 +33,7 @@ export default css`
             .add-button{
                 width: 100px;
                 height: 50px;
-                background-color: aqua;
+                background-color: #ceadfe;
                 display: flex;
                 justify-content: center;
                 align-items: center;

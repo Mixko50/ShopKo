@@ -1,12 +1,12 @@
 
 [
-    "Fashion", 
-    "Computers", 
-    "Furnitures", 
-    "Sports", 
     "Bags", 
-    "Stationaries", 
-    "Pets", 
+    "Computers", 
+    "Cosmetics",
+    "Fashion", 
     "Foods", 
-    "Cosmetics"
+    "Furnitures", 
+    "Pets", 
+    "Sports", 
+    "Stationaries"
 ]

@@ -1,3 +1,4 @@
+import { Link } from '@material-ui/core'
 import React, { Fragment } from 'react'
 
 const NavLogin = () => {
@@ -5,8 +6,8 @@ const NavLogin = () => {
         <Fragment>
             <div className="nav-login">
                 <div className="logo">
-                    <img src="/logo.svg"></img>
-                    <h1>ShopKo</h1>
+                    <a href="/home"><img src="/logo.svg"></img></a>
+                    <a href="/home"><h1>ShopKo</h1></a>
                 </div>
             </div>
             <style jsx>{`
@@ -22,11 +23,11 @@ const NavLogin = () => {
                 padding: 20px 50px;
                 }
 
-                .logo > img {
+                .logo > a > img {
                     width: 70px;
                 }
 
-                .logo > h1{
+                .logo > a{
                     margin-left: 30px;
                 }
                 
