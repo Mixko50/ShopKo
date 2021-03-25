@@ -30,6 +30,8 @@ const user = {
             province: "Bangkok",
             district: "Phra Khanong",
             subdistrict: "Bang chak",
+            phone: "083-XXX-XXXX",
+            details: "23/1313113 Sukhumvit Road",
         },
     ],
     profilepic:
