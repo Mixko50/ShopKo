@@ -23,7 +23,7 @@ const Nav = () => {
                     <div className="status">
                         <div >
                             <Badge style={{ margin: '0px 25px ' }} badgeContent={35} color="secondary">
-                                <FontAwesomeIcon icon={faShoppingCart} style={{ cursor: "pointer", width: "25px", height: "25px" }} />
+                                <Link href="/cart"><FontAwesomeIcon icon={faShoppingCart} style={{ cursor: "pointer", width: "25px", height: "25px" }} /></Link>
                             </Badge>
                         </div>
                         <p><Link href="/">Login</Link> / <Link href="#">SignUp</Link></p>
@@ -81,7 +81,7 @@ const Nav = () => {
                     display: none;
                 }
 
-                . status > a {
+                .status > a {
                     text-decoration: none;
                 }
 

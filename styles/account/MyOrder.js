@@ -107,5 +107,76 @@ export default css`
                 padding: 0 40px;
             }
             
+            section {
+                    width: 100%;
+                    height: 100%;
+                    padding-top: 70px;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .cart-page-max {
+                    width: 100%;
+                    height: 100%;
+                    max-width: 1200px;
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 10px;
+                }
+
+                .title-cart{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 150px;
+                    width: 100%;
+                }
+
+                .title-cart > h1 {
+                    font-size: 50px;
+                }
+
+                .buy-box-controller {
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    margin: 20px 0;
+                    height: auto;
+                }
+
+                .buy-box {
+                    width: 800px;
+                    height: 100px;
+                    background-color: whitesmoke;
+                    border-radius: 10px;
+                    box-shadow: 0px 2px 5px rgb(187, 182, 182);
+                    padding: 20px 50px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .button-box {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                }
+
+                .buy-button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100px;
+                    height: 50px;
+                    background-color: #f9d877;
+                    border-radius: 15px;
+                    cursor: pointer;
+                    box-shadow: 0px 2px 5px rgb(187, 182, 182);
+                }
+
+                .buy-price {
+                    padding: 0 20px;
+                }
+
            
             `;
