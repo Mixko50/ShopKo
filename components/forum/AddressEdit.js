@@ -76,6 +76,7 @@ export default forwardRef((props, ref) => {
             handleClickOpen();
         },
     }));
+
     return (
         <div>
             <Dialog
