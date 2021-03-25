@@ -14,9 +14,12 @@ export default forwardRef((props, ref) => {
     const [province, setProvince] = useState('Bangkok');
     const [district, setDistrict] = useState('');
     const [subDistrict, setSubDistrict] = useState('');
+    const [postalCode, setPostalCode] = useState('')
 
     const [districts, setDistricts] = useState('');
     const [subDistricts, setSubDistricts] = useState('');
+    const [postalCodes, setPostalCodes] = useState('')
+
     const provinces = [...new Set(data.map((el) => el.province))]
 
     useEffect(() => {
@@ -30,6 +33,12 @@ export default forwardRef((props, ref) => {
         setSubDistricts(tempSubDistricts);
         setSubDistrict('')
     }, [province, district])
+
+    useEffect(() => {
+        let tempPostalCodes = [... new Set((data.filter((el) => el.subDistrict == subDistrict)).map((el) => el.Zipcode))]
+        setPostalCodes(tempPostalCodes)
+        setPostalCode('')
+    }, [province, district, subDistrict])
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -73,6 +82,7 @@ export default forwardRef((props, ref) => {
                     <AddressSelect title='Province' data={provinces} current={province} setCurrent={(el) => setProvince(el)} margin="normal" />
                     <AddressSelect title='District' data={districts} current={district} setCurrent={(el) => setDistrict(el)} />
                     <AddressSelect title='Subdistrict' data={subDistricts} current={subDistrict} setCurrent={(el) => setSubDistrict(el)} margin="normal" />
+                    <AddressSelect title='Post' data={postalCodes} current={postalCode} setCurrent={(el) => setPostalCode(el)} margin="normal" />
                     <TextField
                         autoFocus
                         margin="dense"
@@ -87,7 +97,7 @@ export default forwardRef((props, ref) => {
                         Cancel
           </Button>
                     <Button onClick={handleClose} color="primary">
-                        Subscribe
+                        Save
           </Button>
                 </DialogActions>
             </Dialog>

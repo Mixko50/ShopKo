@@ -1,12 +1,16 @@
-import { Fragment, useState } from "react"
+import { Fragment, useContext, useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faShoppingCart, faUserCircle } from "@fortawesome/free-solid-svg-icons"
 import Dropdown from '../forum/Dropdown'
 import Link from 'next/link'
 import { makeStyles } from '@material-ui/core/styles';
 import Badge from '@material-ui/core/Badge';
+import { ProfileContext } from '../../context/profileContext'
 
 const Nav = () => {
+
+    const profileContext = useContext(ProfileContext)
+    const profile = profileContext.profile;
 
     return (
         <Fragment>
@@ -27,7 +31,8 @@ const Nav = () => {
                             </Badge>
                         </div>
                         <p><Link href="/">Login</Link> / <Link href="#">SignUp</Link></p>
-                        <Link href="/"><FontAwesomeIcon icon={faUserCircle} color="black" size="2x" /></Link>
+                        <Link href="/account/profile"><div className="profile-pic" style={{ backgroundImage: `url(${profile.profilepic})` }} ></div></Link>
+                        {/* <Link href="/"><FontAwesomeIcon icon={faUserCircle} color="black" size="2x" /></Link> */}
                         <Dropdown />
                     </div>
                 </div>
@@ -97,6 +102,15 @@ const Nav = () => {
                     outline: none;
                     margin-right: 20px;
                     border : 3px #ea5e76 solid;
+                }
+                .profile-pic {
+                    width: 31px;
+                    height: 31px;
+                    border-radius: 30px;
+                    background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                cursor: pointer;
                 }
 
             `} </style>

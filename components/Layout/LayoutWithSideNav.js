@@ -1,12 +1,16 @@
 import { faAddressCard, faLock, faMapMarkerAlt, faMoneyCheckAlt, faShoppingCart, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import LayoutWithNav from './LayoutWithNav'
 import Link from 'next/link'
+import { ProfileContext } from '../../context/profileContext'
 
 const LayoutWithSideNav = (props) => {
 
-    const name = { firstname: "Apisit", lastname: "Maneerat" }
+    const profileState = useContext(ProfileContext);
+    const profile = profileState.profile
+
+    console.log(profile.profilepic);
 
     return (
         <Fragment>
@@ -15,8 +19,11 @@ const LayoutWithSideNav = (props) => {
                     <div className="max-width-box">
                         <div className="sidebar">
                             <div className="pic-name">
-                                <FontAwesomeIcon icon={faUserCircle} size="8x" />
-                                <h1>{name.firstname} {name.lastname}</h1>
+                                <div className="profile-pic-box">
+                                    <div className="profile-pic" style={{ backgroundImage: `url(${profile.profilepic})` }} ></div>
+                                    {/* <FontAwesomeIcon icon={faUserCircle} size="8x" /> */}
+                                </div>
+                                <h1>{profile.firstname} {profile.lastname}</h1>
                             </div>
                             <div className="menu-setting">
                                 <div className="menu-icon">
@@ -123,6 +130,15 @@ const LayoutWithSideNav = (props) => {
 
             .menu-icon > a {
                 cursor: pointer;
+            }
+
+            .profile-pic{
+                width: 124px;
+                height: 124px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                border-radius: 100px;
             }
             
             `}</style>
