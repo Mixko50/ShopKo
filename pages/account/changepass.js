@@ -1,6 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
 import Styled from "../../styles/account/changepass";
+import { ProfileContext } from "../../context/profileContext";
 
 const changepass = () => {
     const [oldPass, setOldPass] = useState("");
@@ -8,15 +9,20 @@ const changepass = () => {
     const [confirmNewPass, setConfirmNewPass] = useState("");
     const [valid, setValid] = useState(0);
 
+    const profileState = useContext(ProfileContext);
+    const profileC = profileState.profile;
+
+    const { profile, setProfile } = useContext(ProfileContext);
+
     const getOldPassword = () => {
-        if (oldPass == "000" || oldPass == "mixko") {
+        if (oldPass == profileC.password) {
             return "null";
         } else {
             return "password-check";
         }
     };
     const check = () => {
-        if (oldPass == "000" || oldPass == "mixko") {
+        if (oldPass == profileC.password) {
             if (newPass && newPass == confirmNewPass) {
                 setValid(1);
             } else {
@@ -59,7 +65,12 @@ const changepass = () => {
                     </div>
                 </div>
                 <div className="button-box">
-                    <a onClick={check} href="#!">
+                    <a
+                        onClick={() => {
+                            check();
+                        }}
+                        href="#!"
+                    >
                         <div className="confirm">Confirm</div>
                     </a>
                 </div>
