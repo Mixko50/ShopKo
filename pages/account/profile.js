@@ -93,7 +93,8 @@ const profile = () => {
                                 console.log(pass);
                                 console.log(fname);
                                 if (pass == profile.password) {
-                                    if (fname == "") {
+                                    if (fname == "" && lname == "") {
+                                    } else if (fname == "") {
                                         setProfile({
                                             ...profile,
                                             lastname: lname,
@@ -103,7 +104,6 @@ const profile = () => {
                                             ...profile,
                                             firstname: fname,
                                         });
-                                    } else if (fname == "" && lname == "") {
                                     } else {
                                         setProfile({
                                             ...profile,

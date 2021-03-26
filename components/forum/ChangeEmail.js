@@ -47,6 +47,8 @@ const ChangeEmail = (props, ref) => {
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
+                maxWidth="sm"
+                fullWidth="true"
             >
                 <DialogTitle id="form-dialog-title">
                     Change your email

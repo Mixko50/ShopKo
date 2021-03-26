@@ -25,6 +25,11 @@ const changepass = () => {
         if (oldPass == profileC.password) {
             if (newPass && newPass == confirmNewPass) {
                 setValid(1);
+                setProfile({
+                    ...profile,
+                    password: newPass,
+                });
+                console.log(setProfile.password);
             } else {
                 setValid(2);
             }

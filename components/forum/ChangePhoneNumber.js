@@ -47,6 +47,8 @@ const ChangePhoneNumber = (props, ref) => {
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
+                fullWidth="true"
+                maxWidth="xs"
             >
                 <DialogTitle id="form-dialog-title">
                     Change your Phone Number

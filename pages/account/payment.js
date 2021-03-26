@@ -1,10 +1,12 @@
 import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { Fragment } from "react";
+import React, { Fragment, useRef } from "react";
 import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
 import Styled from "../../styles/account/Payment";
+import AlertDialog from "../../components/forum/AlertDialog";
 
 const payment = () => {
+    // const ref = useRef(null);
     return (
         <Fragment>
             <LayoutWithSideNav>
@@ -13,7 +15,9 @@ const payment = () => {
                 </div>
                 <div className="add-button-box">
                     <a href="#">
-                        <div className="add-button">+ Add</div>
+                        <div className="add-button" onClick={() => {}}>
+                            + Add
+                        </div>
                     </a>
                 </div>
                 <div className="payment-setting-box">
@@ -39,7 +43,6 @@ const payment = () => {
                     </div>
                 </div>
             </LayoutWithSideNav>
-
             <style jsx>{Styled}</style>
         </Fragment>
     );
