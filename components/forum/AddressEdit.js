@@ -138,6 +138,14 @@ export default forwardRef((props, ref) => {
                         autoFocus
                         margin="dense"
                         id="name"
+                        label="House number"
+                        type="text"
+                        fullWidth
+                    />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
                         label="Details"
                         type="text"
                         fullWidth

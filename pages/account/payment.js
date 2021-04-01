@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Fragment, useRef } from "react";
 import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
 import Styled from "../../styles/account/Payment";
-import AlertDialog from "../../components/forum/AlertDialog";
+import { AddCardDialog } from "../../components/forum/AddCardDialog";
 
 const payment = () => {
     // const ref = useRef(null);
@@ -42,6 +42,7 @@ const payment = () => {
                         </div>
                     </div>
                 </div>
+                <AddCardDialog />
             </LayoutWithSideNav>
             <style jsx>{Styled}</style>
         </Fragment>
