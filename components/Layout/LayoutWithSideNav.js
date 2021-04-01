@@ -12,6 +12,7 @@ import LayoutWithNav from "./LayoutWithNav";
 import Link from "next/link";
 import { ProfileContext } from "../../context/profileContext";
 import Styled from "../../styles/Layout/LayoutWithSideNav";
+import { SpeedDials } from "../forum/SpeedDial";
 
 const LayoutWithSideNav = (props) => {
     const profileState = useContext(ProfileContext);
@@ -109,6 +110,7 @@ const LayoutWithSideNav = (props) => {
                         <div className="content">{props.children}</div>
                     </div>
                 </section>
+                <SpeedDials />
             </LayoutWithNav>
 
             <style jsx>{Styled}</style>

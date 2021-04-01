@@ -6,6 +6,7 @@ import { AdvertiseBox } from "../components/advertise/AdvertiseBox";
 import { ProductItems } from "../components/ProductItems/ProductItems";
 import axios from "axios";
 import { CircularProgress, createStyles, makeStyles } from "@material-ui/core";
+import { SpeedDials } from "../components/forum/SpeedDial";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -95,6 +96,7 @@ const Home = () => {
                         </div>
                     </div>
                     <ProductBox />
+                    <SpeedDials />
                 </div>
             </section>
             <style jsx>{Styles}</style>

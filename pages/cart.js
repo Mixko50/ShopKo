@@ -2,6 +2,7 @@ import React from "react";
 import { Fragment } from "react";
 import Nav from "../components/Layout/Nav";
 import Styled from "../styles/account/MyOrder";
+import { SpeedDials } from "../components/forum/SpeedDial";
 
 const cart = () => {
     return (
@@ -70,6 +71,7 @@ const cart = () => {
                         </div>
                     </div>
                 </div>
+                <SpeedDials />
             </section>
 
             <style jsx>{Styled}</style>
