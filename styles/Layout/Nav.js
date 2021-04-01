@@ -54,12 +54,12 @@ export default css`
     }
 
     .svg-inline--fa {
-        color: black;
+        color: #ea5e76;
         font-size: 30px;
     }
 
     .search > input {
-        width: 30vw;
+        width: 550px;
         padding: 7px 15px;
         border-radius: 30px;
         outline: none;
@@ -74,5 +74,42 @@ export default css`
         background-repeat: no-repeat;
         background-position: center;
         cursor: pointer;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .search > input {
+            width: 300px;
+            margin-left: 30px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .search > input {
+            width: 300px;
+            margin-left: 30px;
+        }
+
+        .logo > h1 {
+            display: none;
+        }
+
+        .logo > img {
+            margin-left: 20px;
+        }
+
+        .status {
+            margin-right: 30px;
+        }
+    }
+    @media screen and (max-width: 628px) {
+        .logo,
+        .status,
+        .search > a {
+            display: none;
+        }
+
+        .nav-box {
+            justify-content: center;
+        }
     }
 `;
