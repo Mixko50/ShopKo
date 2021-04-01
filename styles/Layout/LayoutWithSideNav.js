@@ -15,23 +15,26 @@ export default css`
         height: 100vh;
         max-width: 1200px;
         display: flex;
+        justify-content: space-between;
     }
 
     .sidebar {
         padding: 20px;
-        width: 300px;
+        width: 270px;
         height: 100vh;
         display: flex;
         flex-direction: column;
         background-color: #f8e5e4;
+        box-shadow: 0px 0px 8px #b1b1b1;
     }
 
     .content {
-        width: 100%;
+        width: 77%;
         height: 100vh;
         display: flex;
         flex-direction: column;
         background-color: #fef0ef;
+        /* background-color: aqua; */
         padding: 50px 90px;
     }
 
@@ -54,6 +57,7 @@ export default css`
         margin-top: 40px;
         display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     .menu-icon {
@@ -88,5 +92,15 @@ export default css`
         background-repeat: no-repeat;
         background-position: center;
         border-radius: 100px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .sidebar {
+            display: none;
+        }
+
+        .content {
+            width: 100%;
+        }
     }
 `;

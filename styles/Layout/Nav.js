@@ -103,9 +103,12 @@ export default css`
     }
     @media screen and (max-width: 628px) {
         .logo,
-        .status,
-        .search > a {
+        .status {
             display: none;
+        }
+
+        .search > input {
+            width: 200px;
         }
 
         .nav-box {
