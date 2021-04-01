@@ -6,9 +6,9 @@ export default css`
         position: fixed;
         width: 100%;
         height: 60px;
-        border-radius: 0px 0px 15px 15px;
+        border-radius: 0px 0px 10px 10px;
         background-color: #f6f5f5;
-        box-shadow: 0px 5px 10px #d3e0ea;
+        box-shadow: 0px 5px 10px #e0e1e2;
         display: flex;
         justify-content: center;
         align-items: center;
