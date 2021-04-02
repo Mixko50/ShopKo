@@ -1,10 +1,15 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useContext, useRef } from "react";
 import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
 import AddressEdit from "../../components/forum/AddressEdit";
 import Styles from "../../styles/account/address";
+import { ProfileContext } from "../../context/profileContext";
 
 const address = () => {
     const addressEditRef = useRef(null);
+    const ProfileState = useContext(ProfileContext);
+    const Profile = ProfileState.profile;
+
+    console.log(Profile.address[0].house_number);
 
     return (
         <Fragment>
@@ -27,31 +32,28 @@ const address = () => {
                         <div>
                             <h4>Name :</h4>
                         </div>
-                        <div>Apisit Maneerat</div>
+                        <div>
+                            {Profile.firstname} {Profile.lastname}
+                        </div>
+                        <div>
+                            <h4>Phone number :</h4>
+                        </div>
+                        <div>{Profile.phone}</div>
                         <div>
                             <h4>Address :</h4>
                         </div>
                         <div>
                             <p className="address-detail">
-                                Lorem Ipsum is simply dummy text of the printing
-                                and typesetting industry. Lorem Ipsum has been
-                                the industry's standard dummy text ever since
-                                the 1500s, when an unknown printer took a galley
-                                of type and scrambled it to make a type specimen
-                                book. It has survived not only five centuries,
-                                but also the leap into electronic typesetting,
-                                remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum passages,
-                                and more recently with desktop publishing
-                                software like Aldus PageMaker including versions
-                                of Lorem Ipsum.
+                                {Profile.address[0].house_number}{" "}
+                                {Profile.address[0].details}
+                                <br />
+                                {Profile.address[0].district}
+                                <br />
+                                {Profile.address[0].province}
+                                <br />
+                                {Profile.address[0].post}
                             </p>
                         </div>
-                        <div>
-                            <h4>Phone number :</h4>
-                        </div>
-                        <div>083-XXX-XXXX</div>
                     </div>
                     <div className="address-edit">
                         <a

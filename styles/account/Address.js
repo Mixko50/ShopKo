@@ -26,6 +26,7 @@ export default css`
     .setting-box {
         display: flex;
         border-bottom: 1px black solid;
+        height: auto;
     }
 
     .add-button {
@@ -55,16 +56,17 @@ export default css`
         align-items: center;
     }
 
-    .address-setting > div:nth-child(4) {
+    .address-setting > div:nth-child(6) {
         align-items: unset;
     }
 
     .address-detail {
+        height: auto;
         overflow: hidden;
-        text-overflow: ellipsis;
+        /* text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
+        -webkit-box-orient: vertical; */ */
     }
 
     .address-edit {
