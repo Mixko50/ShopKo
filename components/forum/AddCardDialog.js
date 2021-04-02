@@ -38,19 +38,44 @@ export const AddCardDialog = forwardRef((props, ref) => {
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
             >
-                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                <DialogTitle id="form-dialog-title">Add payment</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        To subscribe to this website, please enter your email
-                        address here. We will send updates occasionally.
+                        To add your payment , please enter number of card, cvc
+                        and expired date here. We will send updates
+                        occasionally.
                     </DialogContentText>
                     <TextField
                         autoFocus
-                        margin="dense"
+                        margin="normal"
                         id="name"
-                        label="Email Address"
-                        type="email"
+                        label="Name"
+                        type="text"
                         fullWidth
+                    />
+                    <TextField
+                        autoFocus
+                        margin="normal"
+                        id="name"
+                        label="Card number"
+                        type="text"
+                        fullWidth
+                    />
+                    <TextField
+                        autoFocus
+                        margin="normal"
+                        id="name"
+                        label="Expired date"
+                        type="text"
+                        placeholder="00/00"
+                    />
+                    <br></br>
+                    <TextField
+                        autoFocus
+                        margin="normal"
+                        id="name"
+                        label="CVC"
+                        type="text"
                     />
                 </DialogContent>
                 <DialogActions>
