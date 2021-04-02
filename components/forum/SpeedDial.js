@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
         transform: "translateZ(0px)",
         flexGrow: 1,
         position: "fixed",
-        left: "96%",
-        top: "55%",
+        right: 50,
+        bottom: 30,
     },
     exampleWrapper: {
         position: "relative",

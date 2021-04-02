@@ -6,7 +6,8 @@ import Styled from "../../styles/account/Payment";
 import { AddCardDialog } from "../../components/forum/AddCardDialog";
 
 const payment = () => {
-    // const ref = useRef(null);
+    const ref = useRef(null);
+
     return (
         <Fragment>
             <LayoutWithSideNav>
@@ -15,7 +16,12 @@ const payment = () => {
                 </div>
                 <div className="add-button-box">
                     <a href="#">
-                        <div className="add-button" onClick={() => {}}>
+                        <div
+                            className="add-button"
+                            onClick={() => {
+                                ref.current.open();
+                            }}
+                        >
                             + Add
                         </div>
                     </a>
@@ -42,7 +48,7 @@ const payment = () => {
                         </div>
                     </div>
                 </div>
-                <AddCardDialog />
+                <AddCardDialog ref={ref} style={{ display: "none" }} />
             </LayoutWithSideNav>
             <style jsx>{Styled}</style>
         </Fragment>

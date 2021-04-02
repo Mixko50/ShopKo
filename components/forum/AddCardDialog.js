@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef, useImperativeHandle } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -7,7 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-export const AddCardDialog = () => {
+export const AddCardDialog = forwardRef((props, ref) => {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -18,8 +18,14 @@ export const AddCardDialog = () => {
         setOpen(false);
     };
 
+    useImperativeHandle(ref, () => ({
+        open() {
+            handleClickOpen();
+        },
+    }));
+
     return (
-        <div>
+        <div style={props.style}>
             <Button
                 variant="outlined"
                 color="primary"
@@ -58,4 +64,4 @@ export const AddCardDialog = () => {
             </Dialog>
         </div>
     );
-};
+});
