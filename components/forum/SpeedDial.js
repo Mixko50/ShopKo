@@ -4,6 +4,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PersonIcon from "@material-ui/icons/Person";
+import HomeIcon from "@material-ui/icons/Home";
 import SpeedDial from "@material-ui/lab/SpeedDial";
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
@@ -88,6 +89,17 @@ export const SpeedDials = () => {
                 />
             ),
             name: "Profile",
+        },
+        {
+            icon: (
+                <HomeIcon
+                    style={{ color: "#ff75a0" }}
+                    onClick={() => {
+                        router.push("/home");
+                    }}
+                />
+            ),
+            name: "Home",
         },
     ];
 
