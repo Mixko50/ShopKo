@@ -43,7 +43,9 @@ const changepass = () => {
                     <h1>Change Password</h1>
                 </div>
                 <div className="passbox">
-                    <div>Old password :</div>
+                    <div>
+                        <h4>Old password :</h4>
+                    </div>
                     <div>
                         <input
                             placeholder="old password"
@@ -52,7 +54,9 @@ const changepass = () => {
                             onChange={(e) => setOldPass(e.target.value)}
                         ></input>
                     </div>
-                    <div>New password :</div>
+                    <div>
+                        <h4>New password :</h4>
+                    </div>
                     <div>
                         <input
                             placeholder="new password"
@@ -60,7 +64,9 @@ const changepass = () => {
                             onChange={(e) => setNewPass(e.target.value)}
                         ></input>
                     </div>
-                    <div>Confirm new password :</div>
+                    <div>
+                        <h4>Confirm new password :</h4>
+                    </div>
                     <div>
                         <input
                             placeholder="confirm new password"

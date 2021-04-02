@@ -28,7 +28,9 @@ const profile = () => {
                 </div>
 
                 <div className="profile-setting">
-                    <div>Firstname - Lastname : </div>
+                    <div>
+                        <h4>Firstname - Lastname : </h4>
+                    </div>
                     <div>
                         <input
                             placeholder={profile.firstname}
@@ -39,9 +41,13 @@ const profile = () => {
                             onChange={(ev) => (lname = ev.target.value)}
                         ></input>
                     </div>
-                    <div>Username : </div>
+                    <div>
+                        <h4>Username : </h4>
+                    </div>
                     <div>{profileC.username}</div>
-                    <div>Email : </div>
+                    <div>
+                        <h4>Email : </h4>
+                    </div>
                     <div className="edit">
                         <p>{profileC.email}</p>
                         <a href="#">
@@ -55,7 +61,9 @@ const profile = () => {
                             </div>
                         </a>
                     </div>
-                    <div>Phone number :</div>
+                    <div>
+                        <h4>Phone number :</h4>
+                    </div>
                     <div className="edit">
                         <p>{profileC.phone}</p>
                         <a href="#">
@@ -69,11 +77,15 @@ const profile = () => {
                             </div>
                         </a>
                     </div>
-                    <div>Gender :</div>
+                    <div>
+                        <h4>Gender :</h4>
+                    </div>
                     <div>
                         <GenderSelect />
                     </div>
-                    <div>Birthday : </div>
+                    <div>
+                        <h4>Birthday : </h4>
+                    </div>
                     <div className="edit">
                         <BirthdaySelect />
                     </div>
