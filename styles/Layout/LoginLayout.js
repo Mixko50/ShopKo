@@ -12,10 +12,13 @@ export default css`
     .left-side {
         flex: 1;
         height: 100%;
-        background-image: url(../img/login/loginb.svg);
+        /* background-image: url(../img/login/loginb.svg);
         background-size: 700px;
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: center; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .right-side {
