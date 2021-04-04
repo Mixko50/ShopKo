@@ -1,49 +1,53 @@
-import React, { Fragment, useState } from 'react'
-import LoginLayout from '../components/Layout/LoginLayout'
-import Link from 'next/link'
-import Styles from '../styles/login'
-import { useRouter } from 'next/router'
+import React, { Fragment, useState, useRef } from "react";
+import LoginLayout from "../components/Layout/LoginLayout";
+import Link from "next/link";
+import Styles from "../styles/login";
+import { useRouter } from "next/router";
+import ForgotPasswordD from "../components/forum/ForgotPasswordD";
 
 const Login = () => {
+    const ref = useRef(null);
     const router = useRouter();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [valid, setValid] = useState(true)
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [valid, setValid] = useState(true);
 
     const onKeyPressed = (e) => {
         console.log(e.key);
         if (e.key == "Enter") {
-            login()
+            login();
         }
-    }
+    };
     const validate = () => {
-        if (username == "Mixko" && password == "000" || username == "Sakura" && password == "mixko") {
+        if (
+            (username == "Mixko" && password == "000") ||
+            (username == "Sakura" && password == "mixko")
+        ) {
             return true;
         } else {
-            getUsername()
-            getPassword()
+            getUsername();
+            getPassword();
             return false;
         }
-    }
+    };
     const login = () => {
         console.log(username + "  " + password);
         if (validate()) {
-            router.push('/home')
+            router.push("/home");
         } else {
-            setUsername('')
-            setPassword('')
-            setValid(false)
+            setUsername("");
+            setPassword("");
+            setValid(false);
         }
-
-    }
+    };
 
     const getUsername = () => {
-        if (!valid) return 'login-check-name'
-    }
+        if (!valid) return "login-check-name";
+    };
 
     const getPassword = () => {
-        if (!valid) return 'login-check-password'
-    }
+        if (!valid) return "login-check-password";
+    };
 
     return (
         <Fragment>
@@ -55,18 +59,39 @@ const Login = () => {
                     <div className="login-form">
                         <div className="login">
                             <p>Username :</p>
-                            <input placeholder="username" id={getUsername()} value={username} onChange={(e) => setUsername(e.target.value)}></input>
+                            <input
+                                placeholder="username"
+                                id={getUsername()}
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            ></input>
                         </div>
                         <div className="login">
                             <p>Password :</p>
-                            <input placeholder="password" id={getPassword()} type="password" value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={onKeyPressed}></input>
+                            <input
+                                placeholder="password"
+                                id={getPassword()}
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                onKeyDown={onKeyPressed}
+                            ></input>
                         </div>
                         <div className="forgot">
-                            <a href="#">Forgot password?</a>
+                            <a
+                                href="#"
+                                onClick={() => {
+                                    ref.current.open();
+                                }}
+                            >
+                                Forgot password?
+                            </a>
                         </div>
-                        {!valid ? <div className="check">
-                            Username or Password Invalid!
-                        </div> : null}
+                        {!valid ? (
+                            <div className="check">
+                                Username or Password Invalid!
+                            </div>
+                        ) : null}
 
                         <div className="login-button-box">
                             <div className="login-button" onClick={login}>
@@ -74,16 +99,19 @@ const Login = () => {
                             </div>
                         </div>
                         <div className="signup-button-box">
-                            <Link href="/signup"><a><div className="signup-button">
-                                SignUp
-                            </div></a></Link>
+                            <Link href="/signup">
+                                <a>
+                                    <div className="signup-button">SignUp</div>
+                                </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
+                <ForgotPasswordD ref={ref} />
                 <style jsx>{Styles}</style>
             </LoginLayout>
         </Fragment>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
