@@ -21,7 +21,7 @@ export default css`
     .sidebar {
         padding: 20px;
         width: 270px;
-        height: 850px;
+        height: 100vh;
         display: flex;
         flex-direction: column;
         background-color: #f8e5e4;
@@ -34,7 +34,6 @@ export default css`
         display: flex;
         flex-direction: column;
         background-color: #fef0ef;
-        /* background-color: aqua; */
         padding: 50px 90px;
     }
 
