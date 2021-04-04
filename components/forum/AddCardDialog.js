@@ -49,7 +49,7 @@ export const AddCardDialog = forwardRef((props, ref) => {
                         autoFocus
                         margin="normal"
                         id="name"
-                        label="Name"
+                        label="Card number"
                         type="text"
                         fullWidth
                     />
@@ -57,7 +57,7 @@ export const AddCardDialog = forwardRef((props, ref) => {
                         autoFocus
                         margin="normal"
                         id="name"
-                        label="Card number"
+                        label="Name"
                         type="text"
                         fullWidth
                     />
@@ -69,12 +69,12 @@ export const AddCardDialog = forwardRef((props, ref) => {
                         type="text"
                         placeholder="00/00"
                     />
-                    <br></br>
+                    <br />
                     <TextField
                         autoFocus
                         margin="normal"
                         id="name"
-                        label="CVC"
+                        label="Type of Card"
                         type="text"
                     />
                 </DialogContent>
