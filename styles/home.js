@@ -264,6 +264,52 @@ export default css`
         font-size: 70px;
     }
 
+    .filter-box {
+        height: 70px;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0px 0px 10px rgb(212, 206, 206);
+        border-radius: 15px;
+        margin-top: 20px;
+        padding: 10px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .sortby-price {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sortby-price > p {
+        margin: 0 8px;
+    }
+    .sortby-price > input {
+        width: 70px;
+        height: 35px;
+        padding-left: 10px;
+        outline: none;
+        border: 2px #cc85b1 solid;
+        border-radius: 10px;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .filter-sort-box {
+        display: flex;
+    }
+
+    .sortby-recommend {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     @media only screen and (max-width: 768px) {
         .ads-box {
             flex-direction: column;
