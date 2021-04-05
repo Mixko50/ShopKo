@@ -10,7 +10,7 @@ counter-build:
         - npm run build
         - npm run export
     only:
-        - master
+        - main
     artifacts:
         expire_in: 1 hour
         paths:
@@ -20,7 +20,7 @@ counter-upload:
     stage: counter-upload
     image: alpine
     only:
-        - master
+        - main
     before_script:
         - apk add lftp openssh-client
     script:
