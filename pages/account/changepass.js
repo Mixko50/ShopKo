@@ -1,6 +1,6 @@
 import React, { Fragment, useContext, useState } from "react";
 import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
-import Styled from "../../styles/account/changepass";
+import Styled from "../../styles/account/ChangePass";
 import { ProfileContext } from "../../context/profileContext";
 
 const changepass = () => {
