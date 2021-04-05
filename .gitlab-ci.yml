@@ -1,0 +1,27 @@
+stages:
+    - counter-build
+    - counter-upload
+
+counter-build:
+    stage: counter-build
+    image: node
+    script:
+        - npm i
+        - npm run build
+        - npm run export
+    only:
+        - master
+    artifacts:
+        expire_in: 1 hour
+        paths:
+            - ./out
+
+counter-upload:
+    stage: counter-upload
+    image: alpine
+    only:
+        - master
+    before_script:
+        - apk add lftp openssh-client
+    script:
+        - lftp -e "set sftp:auto-confirm yes; open $REMOTE_SFTP_ADDRESS; mirror -X .* -X .*/ --reverse --verbose --delete ./out $REMOTE_SFTP_PATH; bye"
