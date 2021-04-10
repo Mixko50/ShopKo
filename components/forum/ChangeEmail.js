@@ -17,6 +17,7 @@ import { ProfileContext } from "../../context/profileContext";
 const ChangeEmail = (props, ref) => {
     const [open, setOpen] = useState(false);
     const [email, setEmail] = useState("");
+    const [boxCheckEmail, setBoxCheckEmail] = useState(true);
 
     const { profile, setProfile } = useContext(ProfileContext);
 
@@ -33,6 +34,18 @@ const ChangeEmail = (props, ref) => {
             handleClickOpen();
         },
     }));
+
+    const emailCheck = () => {
+        const emailPattern = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+        if(emailPattern.test(email) == true){
+            setBoxCheckEmail(true)
+            return true
+        } else {
+            setBoxCheckEmail(false)
+            return false
+        }
+        
+    }
 
     return (
         <div style={props.style}>
@@ -64,9 +77,12 @@ const ChangeEmail = (props, ref) => {
                         id="name"
                         label="New Email Address"
                         type="email"
-                        onChange={(ev) => setEmail(ev.target.value)}
+                        onChange={(ev) => {
+                            setEmail(ev.target.value)
+                        }}
                         fullWidth
                     />
+                    { !boxCheckEmail == true ? <div>Not Correct</div> : null}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
@@ -74,8 +90,10 @@ const ChangeEmail = (props, ref) => {
                     </Button>
                     <Button
                         onClick={() => {
-                            handleClose();
-                            setProfile({ ...profile, email: email });
+                            if(emailCheck()){
+                                handleClose();
+                                setProfile({ ...profile, email: email });
+                            }                           
                         }}
                         color="primary"
                     >

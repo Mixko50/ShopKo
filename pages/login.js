@@ -3,7 +3,10 @@ import LoginLayout from "../components/Layout/LoginLayout";
 import Link from "next/link";
 import Styles from "../styles/login";
 import { useRouter } from "next/router";
+import axios from 'axios';
 import ForgotPasswordD from "../components/forum/ForgotPasswordD";
+
+
 
 const Login = () => {
     const ref = useRef(null);
@@ -18,21 +21,11 @@ const Login = () => {
             login();
         }
     };
-    const validate = () => {
-        if (
-            (username == "Mixko" && password == "000") ||
-            (username == "Sakura" && password == "mixko")
-        ) {
-            return true;
-        } else {
-            getUsername();
-            getPassword();
-            return false;
-        }
-    };
-    const login = () => {
+    const login = async () => {
+        const user = await axios.get(`http://localhost:8080/account/login?username=${username}&password=${password}`)
+        console.log(user.data);
         console.log(username + "  " + password);
-        if (validate()) {
+        if (username === user.data.username && password === user.data.password) {
             router.push("/home");
         } else {
             setUsername("");
