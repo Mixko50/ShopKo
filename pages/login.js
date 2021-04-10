@@ -80,7 +80,7 @@ const Login = () => {
                                 Forgot password?
                             </a>
                         </div>
-                        {!valid ? (
+                        { !valid ? (
                             <div className="check">
                                 Username or Password Invalid!
                             </div>

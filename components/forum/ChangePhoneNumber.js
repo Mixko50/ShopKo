@@ -17,6 +17,7 @@ import { ProfileContext } from "../../context/profileContext";
 const ChangePhoneNumber = (props, ref) => {
     const [open, setOpen] = React.useState(false);
     const [phone, setPhone] = React.useState("");
+    const [confirmPhone, setConfirmPhone] = useState(true)
 
     const { profile, setProfile } = useContext(ProfileContext);
 
@@ -33,6 +34,17 @@ const ChangePhoneNumber = (props, ref) => {
             handleClickOpen();
         },
     }));
+
+    const phoneNumberCheck = () => {
+        const phonePattern = /(\d{3})-(\d{3})-(\d{4})|(\d{10})/
+        if (phonePattern.test(phone) == true) {
+            setConfirmPhone(true)
+            return true
+        } else {
+            setConfirmPhone(false)
+            return false
+        }
+    }
 
     return (
         <div style={props.style}>
@@ -62,10 +74,13 @@ const ChangePhoneNumber = (props, ref) => {
                         margin="normal"
                         id="name"
                         label="New Phone Number"
-                        type="number"
+                        type="text"
                         fullWidth
-                        onChange={(ev) => setPhone(ev.target.value)}
+                        onChange={(ev) => {
+                            setPhone(ev.target.value)
+                        }}
                     />
+                    { confirmPhone ? null : <div style={{color: "red"}} >Not Correct</div> }
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
@@ -73,8 +88,10 @@ const ChangePhoneNumber = (props, ref) => {
                     </Button>
                     <Button
                         onClick={() => {
-                            handleClose();
-                            setProfile({ ...profile, phone: phone });
+                            if (phoneNumberCheck()) {
+                                handleClose();
+                                setProfile({ ...profile, phone: phone });
+                            }
                         }}
                         color="primary"
                     >
