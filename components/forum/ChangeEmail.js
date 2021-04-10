@@ -82,7 +82,7 @@ const ChangeEmail = (props, ref) => {
                         }}
                         fullWidth
                     />
-                    { !boxCheckEmail == true ? <div>Not Correct</div> : null}
+                    { !boxCheckEmail == true ? <div style={{color: "red"}} >Not Correct</div> : null}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
