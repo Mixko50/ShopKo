@@ -58,6 +58,7 @@ export default css`
                 border-radius: 25px;
                 font-size: 20px;
                 transition: .3s;
+                cursor: pointer;
             }
 
             .forgot {
