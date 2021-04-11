@@ -103,7 +103,9 @@ const Products = () => {
                             <div className="product-details-title">
                                 <h1>Details of product</h1>
                             </div>
-                            <ProductDetails />
+                            <div style={{margin: "50px 0 20px 0"}} ><p>Name : {data.data.title}</p> </div>
+                            <div style={{margin: "20px 0"}} ><p>Price : {data.data.price}$</p> </div>
+                            <div style={{margin: "20px 0"}} ><p>Details : {data.data.title}</p> </div>
                         </div>
                     </div>
                     <SpeedDials />
