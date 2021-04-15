@@ -24,7 +24,6 @@ const signup = () => {
     const [checkEmailAx, setCheckEmailAx] = useState(true);
 
     const checkPassword = () => {
-        console.log("TETT");
         if (password.length >= 8) {
             setSignupPassword(true);
             if (password == confirmPassword) {
@@ -95,11 +94,11 @@ const signup = () => {
             `http://shopkoapi.mixko.ml:8080/account/checkusername?username=${username}`
         );
         if (user.data.checkUsername == false) {
-            setCheckUserAx(false);
-            return false;
-        } else {
             setCheckUserAx(true);
             return true;
+        } else {
+            setCheckUserAx(false);
+            return false;
         }
     };
 
@@ -108,11 +107,11 @@ const signup = () => {
             `http://shopkoapi.mixko.ml:8080/account/checkemail?email=${email}`
         );
         if (user.data.checkEmail == false) {
-            setCheckEmailAx(false);
-            return false;
-        } else {
             setCheckEmailAx(true);
             return true;
+        } else {
+            setCheckEmailAx(false);
+            return false;
         }
     };
 
@@ -217,15 +216,16 @@ const signup = () => {
                         <div className="login-button-box">
                             <div
                                 className="login-button"
-                                onClick={() => {
+                                onClick={async () => {
                                     if (
                                         checkPassword() &
                                         emailCheck() &
                                         phoneNumberCheck() &
                                         checkUsernameF() &
-                                        checkUsernameFromAxios() &
-                                        checkEmailFromAxios()
+                                        (await checkUsernameFromAxios()) &
+                                        (await checkEmailFromAxios())
                                     ) {
+                                        console.log("Passed!");
                                         signup();
                                         router.push("/home");
                                     }
