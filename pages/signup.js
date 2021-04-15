@@ -3,7 +3,7 @@ import LoginLayout from "../components/Layout/LoginLayout";
 import Styles from "../styles/login";
 import qs from "qs";
 import { useRouter } from "next/router";
-import axios from "axios";
+import axios from "../utils/axios";
 
 const signup = () => {
     const router = useRouter();
@@ -78,7 +78,7 @@ const signup = () => {
 
     const signup = async () => {
         await axios.post(
-            `http://shopkoapi.mixko.ml:8080/account/signup`,
+            `/account/signup`,
             qs.stringify({
                 firstname: firstname,
                 lastname: lastname,
@@ -91,7 +91,7 @@ const signup = () => {
     };
     const checkUsernameFromAxios = async () => {
         const user = await axios.get(
-            `http://shopkoapi.mixko.ml:8080/account/checkusername?username=${username}`
+            `/account/checkusername?username=${username}`
         );
         if (user.data.checkUsername == false) {
             setCheckUserAx(true);
@@ -103,9 +103,7 @@ const signup = () => {
     };
 
     const checkEmailFromAxios = async () => {
-        const user = await axios.get(
-            `http://shopkoapi.mixko.ml:8080/account/checkemail?email=${email}`
-        );
+        const user = await axios.get(`/account/checkemail?email=${email}`);
         if (user.data.checkEmail == false) {
             setCheckEmailAx(true);
             return true;

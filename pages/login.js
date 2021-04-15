@@ -3,10 +3,8 @@ import LoginLayout from "../components/Layout/LoginLayout";
 import Link from "next/link";
 import Styles from "../styles/login";
 import { useRouter } from "next/router";
-import axios from 'axios';
+import axios from "../utils/axios";
 import ForgotPasswordD from "../components/forum/ForgotPasswordD";
-
-
 
 const Login = () => {
     const ref = useRef(null);
@@ -22,10 +20,15 @@ const Login = () => {
         }
     };
     const login = async () => {
-        const user = await axios.get(`http://shopkoapi.mixko.ml:8080/account/login?username=${username}&password=${password}`)
+        const user = await axios.get(
+            `/account/login?username=${username}&password=${password}`
+        );
         console.log(user.data);
         console.log(username + "  " + password);
-        if (username === user.data.username && password === user.data.password) {
+        if (
+            username === user.data.username &&
+            password === user.data.password
+        ) {
             router.push("/home");
         } else {
             setUsername("");
@@ -80,7 +83,7 @@ const Login = () => {
                                 Forgot password?
                             </a>
                         </div>
-                        { !valid ? (
+                        {!valid ? (
                             <div className="check">
                                 Username or Password Invalid!
                             </div>
