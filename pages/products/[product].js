@@ -3,7 +3,6 @@ import React, { Fragment, useState, useEffect } from "react";
 import Nav from "../../components/Layout/Nav";
 import { ProductQuantity } from "../../components/forum/ProductQuantity";
 import { ProductBuyButton } from "../../components/forum/ProductBuyButton";
-import ProductDetails from "../../components/ProductDetails/ProductDetails";
 import axios from "axios";
 import { CircularProgress } from "@material-ui/core";
 import NameMapping from "../../utils/categories.json";
@@ -38,6 +37,22 @@ const Products = () => {
         }
     };
 
+    // const addToCart = async () => {
+    //     try {
+    //         const fetchedData = await axios.post(
+    //             "http://localhost:8080/cart/addtocart",
+    //             {
+    //                 id : 1,
+    //                 product: product,
+    //                 quantity: 100
+    //             }
+    //         );
+    //         setData(fetchedData.data);
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
+    
     return (
         <Fragment>
             <Nav />

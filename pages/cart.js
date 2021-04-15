@@ -3,8 +3,26 @@ import { Fragment } from "react";
 import Nav from "../components/Layout/Nav";
 import Styled from "../styles/account/MyOrder";
 import { SpeedDials } from "../components/forum/SpeedDial";
+import axios from 'axios'
 
 const cart = () => {
+
+    // const onFetchData = async () => {
+    //     try {
+    //         const fetchedData = await axios.post(
+    //             "http://localhost:8080/cart/addtocart",
+    //             {
+    //                 id : 1,
+    //                 product: 38,
+    //                 quantity: 100
+    //             }
+    //         );
+    //         setData(fetchedData.data);
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
+
     return (
         <Fragment>
             <Nav />

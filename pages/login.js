@@ -22,7 +22,7 @@ const Login = () => {
         }
     };
     const login = async () => {
-        const user = await axios.get(`http://localhost:8080/account/login?username=${username}&password=${password}`)
+        const user = await axios.get(`http://shopkoapi.mixko.ml:8080/account/login?username=${username}&password=${password}`)
         console.log(user.data);
         console.log(username + "  " + password);
         if (username === user.data.username && password === user.data.password) {
