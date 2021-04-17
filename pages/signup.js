@@ -90,8 +90,11 @@ const signup = () => {
         );
     };
     const checkUsernameFromAxios = async () => {
-        const user = await axios.get(
-            `/account/checkusername?username=${username}`
+        const user = await axios.post(
+            `/account/checkusername`,
+            qs.stringify({
+                username: username,
+            })
         );
         if (user.data.checkUsername == false) {
             setCheckUserAx(true);
@@ -103,7 +106,12 @@ const signup = () => {
     };
 
     const checkEmailFromAxios = async () => {
-        const user = await axios.get(`/account/checkemail?email=${email}`);
+        const user = await axios.post(
+            `/account/checkemail`,
+            qs.stringify({
+                email: email,
+            })
+        );
         if (user.data.checkEmail == false) {
             setCheckEmailAx(true);
             return true;
