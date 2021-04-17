@@ -5,6 +5,7 @@ import Styles from "../styles/login";
 import { useRouter } from "next/router";
 import axios from "../utils/axios";
 import ForgotPasswordD from "../components/forum/ForgotPasswordD";
+import qs from "qs";
 
 const Login = () => {
     const ref = useRef(null);
@@ -20,15 +21,14 @@ const Login = () => {
         }
     };
     const login = async () => {
-        const user = await axios.get(
-            `/account/login?username=${username}&password=${password}`
+        const user = await axios.post(
+            `/account/login`,
+            qs.stringify({
+                username: username,
+                password: password,
+            })
         );
-        console.log(user.data);
-        console.log(username + "  " + password);
-        if (
-            username === user.data.username &&
-            password === user.data.password
-        ) {
+        if (user.data.isLoginSuccess) {
             router.push("/home");
         } else {
             setUsername("");

@@ -45,10 +45,6 @@ export default css`
         align-items: center;
     }
 
-    .status > p {
-        display: none;
-    }
-
     .status > a {
         text-decoration: none;
     }

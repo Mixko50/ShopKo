@@ -7,7 +7,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "../forum/Dropdown";
 import Link from "next/link";
-import { makeStyles } from "@material-ui/core/styles";
 import Badge from "@material-ui/core/Badge";
 import { ProfileContext } from "../../context/profileContext";
 import Styled from "../../styles/Layout/Nav";
@@ -35,38 +34,43 @@ const Nav = () => {
                         </a>
                     </div>
                     <div className="status">
-                        <div>
-                            <Badge
-                                style={{ margin: "0px 25px " }}
-                                badgeContent={1}
-                                color="secondary"
-                            >
-                                <Link href="/cart">
-                                    <FontAwesomeIcon
-                                        icon={faShoppingCart}
+                        {!profile.isLoggedIn ? (
+                            <p>
+                                <Link href="/login">Login</Link> /{" "}
+                                <Link href="/signup">SignUp</Link>
+                            </p>
+                        ) : (
+                            <>
+                                <div>
+                                    <Badge
+                                        style={{ margin: "0px 25px " }}
+                                        badgeContent={1}
+                                        color="secondary"
+                                    >
+                                        <Link href="/cart">
+                                            <FontAwesomeIcon
+                                                icon={faShoppingCart}
+                                                style={{
+                                                    cursor: "pointer",
+                                                    width: "25px",
+                                                    height: "25px",
+                                                }}
+                                            />
+                                        </Link>
+                                    </Badge>
+                                </div>
+                                <Link href="/account/profile">
+                                    <div
+                                        className="profile-pic"
                                         style={{
-                                            cursor: "pointer",
-                                            width: "25px",
-                                            height: "25px",
+                                            backgroundImage: `url(${profile.profilepic})`,
                                         }}
-                                    />
+                                    ></div>
                                 </Link>
-                            </Badge>
-                        </div>
-                        <p>
-                            <Link href="/">Login</Link> /{" "}
-                            <Link href="#">SignUp</Link>
-                        </p>
-                        <Link href="/account/profile">
-                            <div
-                                className="profile-pic"
-                                style={{
-                                    backgroundImage: `url(${profile.profilepic})`,
-                                }}
-                            ></div>
-                        </Link>
+                                <Dropdown />
+                            </>
+                        )}
                         {/* <Link href="/"><FontAwesomeIcon icon={faUserCircle} color="black" size="2x" /></Link> */}
-                        <Dropdown />
                     </div>
                 </div>
             </nav>
