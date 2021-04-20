@@ -8,5 +8,6 @@ export default function Home() {
     useEffect(() => {
         router.push("/home"), [];
     });
+
     return <div>Is Loading....</div>;
 }
