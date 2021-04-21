@@ -27,17 +27,21 @@ export const ProfileWrapper = ({ children }) => {
     };
 
     useEffect(async () => {
-        const user = await axios.post(`/account/fetch`);
-        setProfile({
-            ...profile,
-            isLoggedIn: user.data.isLoggedIn,
-            username: user.data.username,
-            firstname: user.data.firstname,
-            lastname: user.data.lastname,
-            username: user.data.username,
-            phone: user.data.phone,
-            email: user.data.email,
-        });
+        try {
+            const user = await axios.post(`/account/fetch`);
+            setProfile({
+                ...profile,
+                isLoggedIn: user.data.isLoggedIn,
+                username: user.data.username,
+                firstname: user.data.firstname,
+                lastname: user.data.lastname,
+                username: user.data.username,
+                phone: user.data.phone,
+                email: user.data.email,
+            });
+        } catch (error) {
+            console.log("error");
+        }
     }, []);
 
     return (

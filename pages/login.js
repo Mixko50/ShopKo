@@ -2,14 +2,12 @@ import React, { Fragment, useState, useRef } from "react";
 import LoginLayout from "../components/Layout/LoginLayout";
 import Link from "next/link";
 import Styles from "../styles/login";
-import { useRouter } from "next/router";
 import axios from "../utils/axios";
 import ForgotPasswordD from "../components/forum/ForgotPasswordD";
 import qs from "qs";
 
 const Login = () => {
     const ref = useRef(null);
-    const router = useRouter();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [valid, setValid] = useState(true);
@@ -21,21 +19,25 @@ const Login = () => {
         }
     };
     const login = async () => {
-        const user = await axios.post(
-            `/account/login`,
-            qs.stringify({
-                username: username,
-                password: password,
-            })
-        );
-        if (user.data.isLoginSuccess) {
-            const fecth = await axios.post(`/account/fetch`);
-            console.log(fecth.data);
-            window.location.href = "/home";
-        } else {
-            setUsername("");
-            setPassword("");
-            setValid(false);
+        try {
+            const user = await axios.post(
+                `/account/login`,
+                qs.stringify({
+                    username: username,
+                    password: password,
+                })
+            );
+            if (user.data.isLoginSuccess) {
+                const fecth = await axios.post(`/account/fetch`);
+                console.log(fecth.data);
+                window.location.href = "/home";
+            } else {
+                setUsername("");
+                setPassword("");
+                setValid(false);
+            }
+        } catch (error) {
+            console.log("Error");
         }
     };
 
