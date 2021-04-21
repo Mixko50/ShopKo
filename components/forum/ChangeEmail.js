@@ -36,16 +36,15 @@ const ChangeEmail = (props, ref) => {
     }));
 
     const emailCheck = () => {
-        const emailPattern = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-        if(emailPattern.test(email) == true){
-            setBoxCheckEmail(true)
-            return true
+        const emailPattern = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (emailPattern.test(email) == true) {
+            setBoxCheckEmail(true);
+            return true;
         } else {
-            setBoxCheckEmail(false)
-            return false
+            setBoxCheckEmail(false);
+            return false;
         }
-        
-    }
+    };
 
     return (
         <div style={props.style}>
@@ -78,25 +77,19 @@ const ChangeEmail = (props, ref) => {
                         label="New Email Address"
                         type="email"
                         onChange={(ev) => {
-                            setEmail(ev.target.value)
+                            setEmail(ev.target.value);
                         }}
                         fullWidth
                     />
-                    { !boxCheckEmail == true ? <div style={{color: "red"}} >Not Correct</div> : null}
+                    {!boxCheckEmail == true ? (
+                        <div style={{ color: "red" }}>Not Correct</div>
+                    ) : null}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button
-                        onClick={() => {
-                            if(emailCheck()){
-                                handleClose();
-                                setProfile({ ...profile, email: email });
-                            }                           
-                        }}
-                        color="primary"
-                    >
+                    <Button onClick={() => {}} color="primary">
                         Save
                     </Button>
                 </DialogActions>

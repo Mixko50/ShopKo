@@ -1,16 +1,20 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import { ProfileContext } from "../../context/profileContext";
 
-const GenderSelect = () => {
-    const ProfileState = useContext(ProfileContext);
-    const Profile = ProfileState.profile;
-    const [gender, setGender] = useState(Profile.gender);
+const GenderSelect = (props) => {
+    const [gender, setGender] = useState(props.gender);
+    useEffect(() => {
+        if (props.gender) {
+            setGender(props.gender);
+        }
+    }, [props.gender]);
 
-    console.log(Profile.gender);
+    const handleChange = (event) => {
+        setGender(event.target.value);
+    };
 
     return (
         <FormControl component="fieldset">
@@ -21,22 +25,25 @@ const GenderSelect = () => {
                 defaultValue="top"
             >
                 <FormControlLabel
-                    value="top"
+                    value="Male"
                     control={<Radio color="primary" />}
                     label="Male"
                     checked={gender == "Male"}
+                    onChange={handleChange}
                 />
                 <FormControlLabel
-                    value="start"
+                    value="Female"
                     control={<Radio color="primary" />}
                     label="Female"
                     checked={gender == "Female"}
+                    onChange={handleChange}
                 />
                 <FormControlLabel
-                    value="bottom"
+                    value="Others"
                     control={<Radio color="primary" />}
                     label="Others"
                     checked={gender == "Others"}
+                    onChange={handleChange}
                 />
             </RadioGroup>
         </FormControl>

@@ -1,24 +1,53 @@
-import React, { Fragment, useContext, useRef, useState } from "react";
+import React, {
+    Fragment,
+    useContext,
+    useEffect,
+    useRef,
+    useState,
+} from "react";
 import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
 import GenderSelect from "../../components/forum/GenderSelect";
 import BirthdaySelect from "../../components/forum/BirthdaySelect";
-import { ProfileContext } from "../../context/profileContext";
 import Styled from "../../styles/account/Profile";
 import ChangeEmail from "../../components/forum/ChangeEmail";
 import ChangePhoneNumber from "../../components/forum/ChangePhoneNumber";
+import axios from "../../utils/axios";
 
 const profile = () => {
-    const profileState = useContext(ProfileContext);
-    const profileC = profileState.profile;
-
-    let fname = "";
-    let lname = "";
-    let pass = "";
-
-    const { profile, setProfile } = useContext(ProfileContext);
-
     const changeEmailRef = useRef(null);
     const changePhoneNumber = useRef(null);
+
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+
+    const user = {
+        firstname: "",
+        lastname: "",
+        username: "",
+        phone: "",
+        email: "",
+        gender: "",
+        birthdate: "",
+    };
+
+    const [profile, setProfile] = useState(user);
+
+    useEffect(async () => {
+        try {
+            const userAx = await axios.post(`/account/profile`);
+            setProfile({
+                firstname: userAx.data.firstname,
+                lastname: userAx.data.lastname,
+                username: userAx.data.username,
+                phone: userAx.data.phone,
+                email: userAx.data.email,
+                gender: userAx.data.gender,
+                birthdate: userAx.data.birthdate,
+            });
+        } catch (error) {
+            console.log("Error");
+        }
+    }, []);
 
     return (
         <Fragment>
@@ -34,22 +63,22 @@ const profile = () => {
                     <div>
                         <input
                             placeholder={profile.firstname}
-                            onChange={(ev) => (fname = ev.target.value)}
+                            onChange={(ev) => (setFirstname = ev.target.value)}
                         ></input>
                         <input
                             placeholder={profile.lastname}
-                            onChange={(ev) => (lname = ev.target.value)}
+                            onChange={(ev) => (setLastname = ev.target.value)}
                         ></input>
                     </div>
                     <div>
                         <h4>Username : </h4>
                     </div>
-                    <div>{profileC.username}</div>
+                    <div>{profile.username}</div>
                     <div>
                         <h4>Email : </h4>
                     </div>
                     <div className="edit">
-                        <p>{profileC.email}</p>
+                        <p>{profile.email}</p>
                         <a href="#">
                             <div
                                 className="edit-button"
@@ -65,7 +94,7 @@ const profile = () => {
                         <h4>Phone number :</h4>
                     </div>
                     <div className="edit">
-                        <p>{profileC.phone}</p>
+                        <p>{profile.phone}</p>
                         <a href="#">
                             <div
                                 className="edit-button"
@@ -81,57 +110,14 @@ const profile = () => {
                         <h4>Gender :</h4>
                     </div>
                     <div>
-                        <GenderSelect />
+                        <GenderSelect gender={profile.gender} />
                     </div>
                     <div>
                         <h4>Birthday : </h4>
                     </div>
                     <div className="edit">
-                        <BirthdaySelect />
+                        <BirthdaySelect birthdate={profile.birthdate} />
                     </div>
-                </div>
-                <div className="confirm-password">
-                    <h3>Confirm Password</h3>
-                    <input
-                        type="password"
-                        onChange={(ev) => (pass = ev.target.value)}
-                    ></input>
-                </div>
-                <div className="confirm-cancel-button">
-                    <a href="#">
-                        <div
-                            className="confirm-button"
-                            onClick={() => {
-                                console.log(pass);
-                                console.log(fname);
-                                if (pass == profile.password) {
-                                    if (fname == "" && lname == "") {
-                                    } else if (fname == "") {
-                                        setProfile({
-                                            ...profile,
-                                            lastname: lname,
-                                        });
-                                    } else if (lname == "") {
-                                        setProfile({
-                                            ...profile,
-                                            firstname: fname,
-                                        });
-                                    } else {
-                                        setProfile({
-                                            ...profile,
-                                            firstname: fname,
-                                            lastname: lname,
-                                        });
-                                    }
-                                }
-                            }}
-                        >
-                            Confirm
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div className="cancel-button">Cancel</div>
-                    </a>
                 </div>
                 <ChangeEmail ref={changeEmailRef} style={{ display: "none" }} />
                 <ChangePhoneNumber

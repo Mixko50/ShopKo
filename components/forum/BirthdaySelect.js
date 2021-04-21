@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import { ProfileContext } from "../../context/profileContext";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -15,11 +14,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function BirthdaySelect() {
+export default function BirthdaySelect(props) {
     const classes = useStyles();
-
-    const ProfileState = useContext(ProfileContext);
-    const Profile = ProfileState.profile;
 
     return (
         <form className={classes.container} noValidate>
@@ -27,7 +23,7 @@ export default function BirthdaySelect() {
                 id="date"
                 label="Birthday"
                 type="date"
-                defaultValue={Profile.birthdate}
+                value={props.birthdate}
                 className={classes.textField}
                 InputLabelProps={{
                     shrink: true,

@@ -18,8 +18,6 @@ const LayoutWithSideNav = (props) => {
     const profileState = useContext(ProfileContext);
     const profile = profileState.profile;
 
-    console.log(profile.profilepic);
-
     return (
         <Fragment>
             <LayoutWithNav>
