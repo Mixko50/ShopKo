@@ -1,8 +1,8 @@
+import { ProfileContext } from "../../context/profileContext";
 import React, { Fragment, useContext, useRef } from "react";
 import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
 import AddressEdit from "../../components/forum/AddressEdit";
 import Styles from "../../styles/account/Address";
-import { ProfileContext } from "../../context/profileContext";
 
 const address = () => {
     const addressEditRef = useRef(null);
