@@ -1,15 +1,32 @@
-import { ProfileContext } from "../../context/profileContext";
-import React, { Fragment, useContext, useRef } from "react";
+import React, {
+    Fragment,
+    useContext,
+    useRef,
+    useState,
+    useEffect,
+} from "react";
 import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
 import AddressEdit from "../../components/forum/AddressEdit";
 import Styles from "../../styles/account/Address";
+import axios from "../../utils/axios";
 
 const address = () => {
     const addressEditRef = useRef(null);
-    const ProfileState = useContext(ProfileContext);
-    const Profile = ProfileState.profile;
+    const [address, setAddress] = useState({});
 
-    console.log(Profile.address[0].house_number);
+    useEffect(() => {
+        const addressUser = async () => {
+            try {
+                console.log("Heelo ");
+                const addressAx = await axios.post(`/account/address`);
+                console.log(addressAx.data);
+                setAddress(addressAx.data);
+            } catch (error) {
+                console.log("Error");
+            }
+        };
+        addressUser();
+    }, []);
 
     return (
         <Fragment>
@@ -32,26 +49,23 @@ const address = () => {
                         <div>
                             <h4>Name :</h4>
                         </div>
-                        <div>
-                            {Profile.firstname} {Profile.lastname}
-                        </div>
+                        <div>{address.name}</div>
                         <div>
                             <h4>Phone number :</h4>
                         </div>
-                        <div>{Profile.phone}</div>
+                        <div>{address.phone}</div>
                         <div>
                             <h4>Address :</h4>
                         </div>
                         <div>
                             <p className="address-detail">
-                                {Profile.address[0].house_number}{" "}
-                                {Profile.address[0].details}
+                                {address.house_number} {address.details}
                                 <br />
-                                {Profile.address[0].district}
+                                {address.district}
                                 <br />
-                                {Profile.address[0].province}
+                                {address.province}
                                 <br />
-                                {Profile.address[0].post}
+                                {address.post}
                             </p>
                         </div>
                     </div>

@@ -9,8 +9,7 @@ const user = {
     username: "",
     firstname: "",
     lastname: "",
-    profilepic:
-        "https://scontent.fbkk7-3.fna.fbcdn.net/v/t1.0-9/78168108_2953186831382681_1766514813279666176_o.jpg?_nc_cat=103&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeHxkbu67Sg5uYj1cbc2r7qImktqjmfOG2qaS2qOZ84bavTZAD79YeT-IJTh8Nc62XfEO81xjI9UNgTWYYS7PSFh&_nc_ohc=EPGDiVy9k3UAX8JAJve&_nc_ht=scontent.fbkk7-3.fna&oh=0b775b1d0896e159085dc0c357282776&oe=6080B4E3",
+    profilepic: "",
 };
 
 export const ProfileWrapper = ({ children }) => {
@@ -32,6 +31,7 @@ export const ProfileWrapper = ({ children }) => {
                 username: user.data.username,
                 firstname: user.data.firstname,
                 lastname: user.data.lastname,
+                profilepic: user.data.profilepic,
             });
         } catch (error) {
             console.log("error");
