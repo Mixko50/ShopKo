@@ -84,7 +84,6 @@ export default css`
         display: flex;
         justify-content: center;
         align-items: center;
-        display: none;
     }
 
     @media screen and (max-width: 1024px) {
