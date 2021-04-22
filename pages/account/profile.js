@@ -32,21 +32,24 @@ const profile = () => {
 
     const [profile, setProfile] = useState(user);
 
-    useEffect(async () => {
-        try {
-            const userAx = await axios.post(`/account/profile`);
-            setProfile({
-                firstname: userAx.data.firstname,
-                lastname: userAx.data.lastname,
-                username: userAx.data.username,
-                phone: userAx.data.phone,
-                email: userAx.data.email,
-                gender: userAx.data.gender,
-                birthdate: userAx.data.birthdate,
-            });
-        } catch (error) {
-            console.log("Error");
-        }
+    useEffect(() => {
+        const User = async () => {
+            try {
+                const userAx = await axios.post(`/account/profile`);
+                setProfile({
+                    firstname: userAx.data.firstname,
+                    lastname: userAx.data.lastname,
+                    username: userAx.data.username,
+                    phone: userAx.data.phone,
+                    email: userAx.data.email,
+                    gender: userAx.data.gender,
+                    birthdate: userAx.data.birthdate,
+                });
+            } catch (error) {
+                console.log("Error");
+            }
+        };
+        User();
     }, []);
 
     return (
