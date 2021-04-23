@@ -45,7 +45,7 @@ const ProductBox = () => {
             const fetchedData = await axios.get(
                 "https://apmix.mixko.ml/cosmetics.json"
             );
-            setData(fetchedData.data);
+            setData(fetchedData.data.product);
         } catch (err) {
             console.log(err);
         }

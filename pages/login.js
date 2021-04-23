@@ -20,13 +20,10 @@ const Login = () => {
     };
     const login = async () => {
         try {
-            const user = await axios.post(
-                `/account/login`,
-                qs.stringify({
-                    username: username,
-                    password: password,
-                })
-            );
+            const user = await axios.post(`/account/login`, {
+                username: username,
+                password: password,
+            });
             if (user.data.isLoginSuccess) {
                 const fecth = await axios.post(`/account/fetch`);
                 console.log(fecth.data);

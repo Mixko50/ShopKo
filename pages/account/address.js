@@ -45,7 +45,7 @@ const address = () => {
                                 <div>
                                     <h4>Name :</h4>
                                 </div>
-                                <div>{address.name}</div>
+                                <div>{address.information[0].name}</div>
                                 <div>
                                     <h4>Phone number :</h4>
                                 </div>
