@@ -21,6 +21,22 @@ const profile = () => {
     const [lastname, setLastname] = useState("");
     const [profile, setProfile] = useState({});
 
+    const changeFirstname = () => {
+        if (!firstname || firstname != "") {
+            axios.post("/setting/profile/firstname", {
+                firstname: firstname,
+            });
+        }
+    };
+
+    const changeLastname = () => {
+        if (!lastname || lastname != "") {
+            axios.post("/setting/profile/lastname", {
+                lastname: lastname,
+            });
+        }
+    };
+
     useEffect(() => {
         const User = async () => {
             try {
@@ -48,11 +64,19 @@ const profile = () => {
                     <div>
                         <input
                             placeholder={profile.firstname}
-                            onChange={(ev) => (setFirstname = ev.target.value)}
+                            onChange={(ev) => setFirstname(ev.target.value)}
+                            onBlur={() => {
+                                changeFirstname();
+                                console.log("Test1");
+                            }}
                         ></input>
                         <input
                             placeholder={profile.lastname}
-                            onChange={(ev) => (setLastname = ev.target.value)}
+                            onChange={(ev) => setLastname(ev.target.value)}
+                            onBlur={() => {
+                                changeLastname();
+                                console.log("Test2");
+                            }}
                         ></input>
                     </div>
                     <div>
