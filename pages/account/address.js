@@ -11,7 +11,6 @@ const address = () => {
     useEffect(() => {
         const addressUser = async () => {
             try {
-                console.log("Heelo ");
                 const addressAx = await axios.post(`/account/address`);
                 console.log(addressAx.data);
                 setAddress(addressAx.data);

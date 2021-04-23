@@ -19,32 +19,14 @@ const profile = () => {
 
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
-
-    const user = {
-        firstname: "",
-        lastname: "",
-        username: "",
-        phone: "",
-        email: "",
-        gender: "",
-        birthdate: "",
-    };
-
-    const [profile, setProfile] = useState(user);
+    const [profile, setProfile] = useState({});
 
     useEffect(() => {
         const User = async () => {
             try {
                 const userAx = await axios.post(`/account/profile`);
-                setProfile({
-                    firstname: userAx.data.firstname,
-                    lastname: userAx.data.lastname,
-                    username: userAx.data.username,
-                    phone: userAx.data.phone,
-                    email: userAx.data.email,
-                    gender: userAx.data.gender,
-                    birthdate: userAx.data.birthdate,
-                });
+                console.log(userAx.data);
+                setProfile(userAx.data);
             } catch (error) {
                 console.log("Error");
             }
