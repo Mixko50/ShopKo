@@ -12,7 +12,7 @@ const changepass = () => {
     const check = async () => {
         try {
             const passwordCheck = await axios.post(
-                "/account/changepassword/check",
+                "/setting/changepassword/check",
                 {
                     oldPassword: oldPass,
                 }
@@ -21,7 +21,7 @@ const changepass = () => {
                 if (newPass.length >= 8) {
                     if (newPass == confirmNewPass) {
                         const changePassword = await axios.post(
-                            "/account/changepassword/change",
+                            "/setting/changepassword/change",
                             {
                                 newPassword: newPass,
                             }
