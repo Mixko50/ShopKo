@@ -1,7 +1,7 @@
-import React, { Fragment, useContext, useState } from "react";
+import React, { Fragment, useContext, useState, useEffect } from "react";
 import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
 import Styled from "../../styles/account/ChangePass";
-import { ProfileContext } from "../../context/profileContext";
+import axios from "../../utils/axios";
 
 const changepass = () => {
     const [oldPass, setOldPass] = useState("");
@@ -9,30 +9,38 @@ const changepass = () => {
     const [confirmNewPass, setConfirmNewPass] = useState("");
     const [valid, setValid] = useState(0);
 
-    const profileState = useContext(ProfileContext);
-    const profileC = profileState.profile;
-
-    const { profile, setProfile } = useContext(ProfileContext);
-
-    const getOldPassword = () => {
-        if (oldPass == profileC.password) {
-            return "null";
-        } else {
-            return "password-check";
-        }
-    };
-    const check = () => {
-        if (oldPass == profileC.password) {
-            if (newPass && newPass == confirmNewPass) {
-                setValid(1);
-                setProfile({
-                    ...profile,
-                    password: newPass,
-                });
-                console.log(setProfile.password);
+    const check = async () => {
+        try {
+            const passwordCheck = await axios.post(
+                "/account/changepassword/check",
+                {
+                    oldPassword: oldPass,
+                }
+            );
+            if (passwordCheck.data.isChecked) {
+                if (newPass.length >= 8) {
+                    if (newPass == confirmNewPass) {
+                        const changePassword = await axios.post(
+                            "/account/changepassword/change",
+                            {
+                                newPassword: newPass,
+                            }
+                        );
+                        if (changePassword.data.isChanged) {
+                            console.log("Change password successfully");
+                            setValid(3);
+                        }
+                    } else {
+                        setValid(2);
+                    }
+                } else {
+                    setValid(1);
+                }
             } else {
-                setValid(2);
+                setValid(0);
             }
+        } catch (error) {
+            console.log("Error");
         }
     };
 
@@ -50,7 +58,6 @@ const changepass = () => {
                         <input
                             placeholder="old password"
                             type="password"
-                            id={getOldPassword()}
                             onChange={(e) => setOldPass(e.target.value)}
                         ></input>
                     </div>
@@ -85,9 +92,24 @@ const changepass = () => {
                         <div className="confirm">Confirm</div>
                     </a>
                 </div>
+                {valid == 0 ? (
+                    <div className="not-match">
+                        Current password is not correct!
+                    </div>
+                ) : null}
                 {valid != 0 ? (
-                    <div className={valid == 1 ? "match" : "not-match"}>
-                        {valid == 1 ? "Success" : "Password does not match!"}
+                    <div
+                        className={
+                            valid > 0 && valid < 3 ? "not-match" : "match"
+                        }
+                    >
+                        {valid == 1
+                            ? "Password must be more than 8 characters."
+                            : `${
+                                  valid == 2
+                                      ? "New password does not match!"
+                                      : "Success"
+                              }`}
                     </div>
                 ) : null}
             </LayoutWithSideNav>
