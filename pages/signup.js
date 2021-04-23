@@ -77,17 +77,14 @@ const signup = () => {
     };
 
     const signup = async () => {
-        await axios.post(
-            `/account/signup`,
-            qs.stringify({
-                firstname: firstname,
-                lastname: lastname,
-                username: username,
-                phone: phone,
-                password: password,
-                email: email,
-            })
-        );
+        await axios.post(`/account/signup`, {
+            firstname: firstname,
+            lastname: lastname,
+            username: username,
+            phone: phone,
+            password: password,
+            email: email,
+        });
     };
     const checkUsernameFromAxios = async () => {
         const user = await axios.post(
