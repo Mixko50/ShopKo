@@ -46,4 +46,12 @@ export default css`
     .delete-payment {
         color: #6930c3;
     }
+
+    .payment-check {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `;

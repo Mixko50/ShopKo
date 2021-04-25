@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle } from "react";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -6,9 +6,14 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import axios from "../../utils/axios";
 
 export const AddCardDialog = forwardRef((props, ref) => {
     const [open, setOpen] = React.useState(false);
+    const [cardNumber, setCardNumber] = useState("");
+    const [name, setName] = useState("");
+    const [expiredDate, setExpiredDate] = useState("");
+    const [type, setType] = useState("");
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -23,6 +28,22 @@ export const AddCardDialog = forwardRef((props, ref) => {
             handleClickOpen();
         },
     }));
+
+    const addCard = () => {
+        try {
+            axios.post("/setting/payment/add", {
+                cardNumber: cardNumber,
+                name: name,
+                month: expiredDate.substring(0, 2),
+                year: expiredDate.substring(3),
+                type: type,
+            });
+            console.log(expiredDate.substring(0, 2));
+            console.log(name);
+        } catch (error) {
+            console.log("Error");
+        }
+    };
 
     return (
         <div style={props.style}>
@@ -52,6 +73,7 @@ export const AddCardDialog = forwardRef((props, ref) => {
                         label="Card number"
                         type="text"
                         fullWidth
+                        onChange={(ev) => setCardNumber(ev.target.value)}
                     />
                     <TextField
                         autoFocus
@@ -60,6 +82,7 @@ export const AddCardDialog = forwardRef((props, ref) => {
                         label="Name"
                         type="text"
                         fullWidth
+                        onChange={(ev) => setName(ev.target.value)}
                     />
                     <TextField
                         autoFocus
@@ -68,6 +91,7 @@ export const AddCardDialog = forwardRef((props, ref) => {
                         label="Expired date"
                         type="text"
                         placeholder="00/00"
+                        onChange={(ev) => setExpiredDate(ev.target.value)}
                     />
                     <br />
                     <TextField
@@ -76,13 +100,20 @@ export const AddCardDialog = forwardRef((props, ref) => {
                         id="name"
                         label="Type of Card"
                         type="text"
+                        onChange={(ev) => setType(ev.target.value)}
                     />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button
+                        onClick={() => {
+                            addCard();
+                            handleClose();
+                        }}
+                        color="primary"
+                    >
                         Save
                     </Button>
                 </DialogActions>
