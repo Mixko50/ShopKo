@@ -12,14 +12,12 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { ProfileContext } from "../../context/profileContext";
+import axios from "../../utils/axios";
 
 const ChangeEmail = (props, ref) => {
     const [open, setOpen] = useState(false);
     const [email, setEmail] = useState("");
     const [boxCheckEmail, setBoxCheckEmail] = useState(true);
-
-    const { profile, setProfile } = useContext(ProfileContext);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -34,6 +32,12 @@ const ChangeEmail = (props, ref) => {
             handleClickOpen();
         },
     }));
+
+    const updateEmail = () => {
+        axios.post("/setting/profile/email", {
+            email: email,
+        });
+    };
 
     const emailCheck = () => {
         const emailPattern = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -89,7 +93,15 @@ const ChangeEmail = (props, ref) => {
                     <Button onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={() => {}} color="primary">
+                    <Button
+                        onClick={() => {
+                            if (emailCheck()) {
+                                updateEmail();
+                                handleClose();
+                            }
+                        }}
+                        color="primary"
+                    >
                         Save
                     </Button>
                 </DialogActions>
