@@ -3,6 +3,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
+import axios from "../../utils/axios";
 
 const GenderSelect = (props) => {
     const [gender, setGender] = useState(props.gender);
@@ -14,6 +15,13 @@ const GenderSelect = (props) => {
 
     const handleChange = (event) => {
         setGender(event.target.value);
+    };
+
+    const updateGender = (ev) => {
+        console.log(gender);
+        axios.post("/setting/profile/gender", {
+            gender: ev,
+        });
     };
 
     return (
@@ -29,21 +37,30 @@ const GenderSelect = (props) => {
                     control={<Radio color="primary" />}
                     label="Male"
                     checked={gender == "Male"}
-                    onChange={handleChange}
+                    onChange={(ev) => {
+                        handleChange(ev);
+                        updateGender(ev.target.value);
+                    }}
                 />
                 <FormControlLabel
                     value="Female"
                     control={<Radio color="primary" />}
                     label="Female"
                     checked={gender == "Female"}
-                    onChange={handleChange}
+                    onChange={(ev) => {
+                        handleChange(ev);
+                        updateGender(ev.target.value);
+                    }}
                 />
                 <FormControlLabel
                     value="Others"
                     control={<Radio color="primary" />}
                     label="Others"
                     checked={gender == "Others"}
-                    onChange={handleChange}
+                    onChange={(ev) => {
+                        handleChange(ev);
+                        updateGender(ev.target.value);
+                    }}
                 />
             </RadioGroup>
         </FormControl>
