@@ -22,7 +22,7 @@ const profile = () => {
     const [profile, setProfile] = useState({});
 
     const changeFirstname = () => {
-        if (!firstname || firstname != "") {
+        if (firstname && firstname != "" && firstname != null) {
             axios.post("/setting/profile/firstname", {
                 firstname: firstname,
             });
@@ -30,7 +30,7 @@ const profile = () => {
     };
 
     const changeLastname = () => {
-        if (!lastname || lastname != "") {
+        if (lastname && lastname != "" && lastname != null) {
             axios.post("/setting/profile/lastname", {
                 lastname: lastname,
             });

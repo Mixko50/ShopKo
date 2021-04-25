@@ -22,8 +22,6 @@ const Products = () => {
     const onFetchData = async () => {
         try {
             console.log(product);
-            // const productToString = product.toString()
-            // console.log(productToString)
             console.log(NameMapping[product.charAt(0)].toLowerCase());
             const fetchedData = await axios.get(
                 `https://apmix.mixko.ml/${NameMapping[
@@ -52,7 +50,7 @@ const Products = () => {
     //         console.log(err);
     //     }
     // };
-    
+
     return (
         <Fragment>
             <Nav />
@@ -118,9 +116,15 @@ const Products = () => {
                             <div className="product-details-title">
                                 <h1>Details of product</h1>
                             </div>
-                            <div style={{margin: "50px 0 20px 0"}} ><p>Name : {data.data.title}</p> </div>
-                            <div style={{margin: "20px 0"}} ><p>Price : {data.data.price}$</p> </div>
-                            <div style={{margin: "20px 0"}} ><p>Details : {data.data.title}</p> </div>
+                            <div style={{ margin: "50px 0 20px 0" }}>
+                                <p>Name : {data.data.title}</p>{" "}
+                            </div>
+                            <div style={{ margin: "20px 0" }}>
+                                <p>Price : {data.data.price}$</p>{" "}
+                            </div>
+                            <div style={{ margin: "20px 0" }}>
+                                <p>Details : {data.data.title}</p>{" "}
+                            </div>
                         </div>
                     </div>
                     <SpeedDials />

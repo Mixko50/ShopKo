@@ -12,7 +12,7 @@ export default css`
     .max-width-box {
         margin-top: 60px;
         width: 100%;
-        height: auto;
+        height: 100%;
         max-width: 1200px;
         display: flex;
         justify-content: space-between;

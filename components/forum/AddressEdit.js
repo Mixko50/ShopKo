@@ -13,10 +13,13 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import data from "../../utils/provinces";
 import AddressSelect from "./AddressSelect";
+import axios from "../../utils/axios";
 
 export default forwardRef((props, ref) => {
+    const [address, setAddress] = useState({});
+    const [newAddress, setnewAddress] = useState(false);
     const [open, setOpen] = React.useState(false);
-    const [province, setProvince] = useState("Bangkok");
+    const [province, setProvince] = useState("");
     const [district, setDistrict] = useState("");
     const [subDistrict, setSubDistrict] = useState("");
     const [postalCode, setPostalCode] = useState("");
@@ -72,10 +75,74 @@ export default forwardRef((props, ref) => {
     };
 
     useImperativeHandle(ref, () => ({
-        open() {
+        open(el) {
+            const work = () => {
+                setAddress(el);
+                if (!el) {
+                    setAddress({
+                        name: "",
+                        phone: "",
+                        province: "",
+                        district: "",
+                        sub_district: "",
+                        post: "",
+                        house_number: "",
+                        details: "",
+                        id: 0,
+                    });
+                    setnewAddress(true);
+                }
+            };
+            work();
             handleClickOpen();
         },
     }));
+
+    const addressUpdate = () => {
+        try {
+            if (
+                province &&
+                district &&
+                subDistrict &&
+                postalCode &&
+                !newAddress
+            ) {
+                axios.post("/setting/address/update", {
+                    name: address.name,
+                    phone: address.phone,
+                    province: province,
+                    district: district,
+                    sub_district: subDistrict,
+                    post: postalCode,
+                    house_number: address.house_number,
+                    details: address.details,
+                    id: address.id,
+                });
+                console.log("Success");
+            } else if (
+                province &&
+                district &&
+                subDistrict &&
+                postalCode &&
+                newAddress
+            ) {
+                axios.post("/setting/address/add", {
+                    name: address.name,
+                    phone: address.phone,
+                    province: province,
+                    district: district,
+                    sub_district: subDistrict,
+                    post: postalCode,
+                    house_number: address.house_number,
+                    details: address.details,
+                    id: address.id,
+                });
+                console.log("new Address added");
+            }
+        } catch (error) {
+            console.log("Error");
+        }
+    };
 
     return (
         <div>
@@ -92,12 +159,21 @@ export default forwardRef((props, ref) => {
                         address here. We will send updates occasionally (maybe).
                     </DialogContentText>
                     <TextField
-                        autoFocus
                         margin="normal"
                         id="name"
                         label="Name"
                         type="text"
                         fullWidth
+                        placeholder={address.name}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        onChange={(ev) =>
+                            setAddress({
+                                ...address,
+                                name: ev.target.value,
+                            })
+                        }
                     />
                     <TextField
                         autoFocus
@@ -106,6 +182,16 @@ export default forwardRef((props, ref) => {
                         label="Phone number"
                         type="text"
                         fullWidth
+                        placeholder={address.phone}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        onChange={(ev) =>
+                            setAddress({
+                                ...address,
+                                phone: ev.target.value,
+                            })
+                        }
                     />
                     <AddressSelect
                         title="Province"
@@ -141,6 +227,16 @@ export default forwardRef((props, ref) => {
                         label="House number"
                         type="text"
                         fullWidth
+                        placeholder={address.house_number}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        onChange={(ev) =>
+                            setAddress({
+                                ...address,
+                                house_number: ev.target.value,
+                            })
+                        }
                     />
                     <TextField
                         autoFocus
@@ -149,13 +245,38 @@ export default forwardRef((props, ref) => {
                         label="Details"
                         type="text"
                         fullWidth
+                        placeholder={address.details}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        onChange={(ev) =>
+                            setAddress({
+                                ...address,
+                                details: ev.target.value,
+                            })
+                        }
                     />
                 </DialogContent>
                 <DialogActions style={{ margin: "20px 0px" }}>
                     <Button onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button
+                        onClick={() => {
+                            if (
+                                address.name &&
+                                address.house_number &&
+                                province &&
+                                district &&
+                                subDistrict &&
+                                postalCode
+                            ) {
+                                addressUpdate();
+                                handleClose();
+                            }
+                        }}
+                        color="primary"
+                    >
                         Save
                     </Button>
                 </DialogActions>
