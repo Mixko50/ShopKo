@@ -12,14 +12,12 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { ProfileContext } from "../../context/profileContext";
+import axios from "../../utils/axios";
 
 const ChangePhoneNumber = (props, ref) => {
     const [open, setOpen] = React.useState(false);
     const [phone, setPhone] = React.useState("");
-    const [confirmPhone, setConfirmPhone] = useState(true)
-
-    const { profile, setProfile } = useContext(ProfileContext);
+    const [confirmPhone, setConfirmPhone] = useState(true);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -35,16 +33,22 @@ const ChangePhoneNumber = (props, ref) => {
         },
     }));
 
+    const updatePhone = () => {
+        axios.post("/setting/profile/phone", {
+            phone: phone,
+        });
+    };
+
     const phoneNumberCheck = () => {
-        const phonePattern = /(\d{3})-(\d{3})-(\d{4})|(\d{10})/
+        const phonePattern = /(\d{3})-(\d{3})-(\d{4})|(\d{10})/;
         if (phonePattern.test(phone) == true) {
-            setConfirmPhone(true)
-            return true
+            setConfirmPhone(true);
+            return true;
         } else {
-            setConfirmPhone(false)
-            return false
+            setConfirmPhone(false);
+            return false;
         }
-    }
+    };
 
     return (
         <div style={props.style}>
@@ -77,10 +81,12 @@ const ChangePhoneNumber = (props, ref) => {
                         type="text"
                         fullWidth
                         onChange={(ev) => {
-                            setPhone(ev.target.value)
+                            setPhone(ev.target.value);
                         }}
                     />
-                    { confirmPhone ? null : <div style={{color: "red"}} >Not Correct</div> }
+                    {confirmPhone ? null : (
+                        <div style={{ color: "red" }}>Not Correct</div>
+                    )}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
@@ -89,8 +95,8 @@ const ChangePhoneNumber = (props, ref) => {
                     <Button
                         onClick={() => {
                             if (phoneNumberCheck()) {
+                                updatePhone();
                                 handleClose();
-                                setProfile({ ...profile, phone: phone });
                             }
                         }}
                         color="primary"
