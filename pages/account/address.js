@@ -50,9 +50,7 @@ const address = () => {
                                     <div>
                                         <h4>Name :</h4>
                                     </div>
-                                    <div>
-                                        {el.name} {el.id}
-                                    </div>
+                                    <div>{el.name}</div>
                                     <div>
                                         <h4>Phone number :</h4>
                                     </div>

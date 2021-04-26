@@ -33,10 +33,12 @@ export default css`
     .payment-setting-box {
         width: 100%;
         height: auto;
+        display: flex;
         border-bottom: 1px black solid;
     }
 
     .payment-setting {
+        width: 100%;
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -53,5 +55,16 @@ export default css`
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .payment-card-type {
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .payment-card-number {
+        width: 220px;
     }
 `;

@@ -38,8 +38,6 @@ export const AddCardDialog = forwardRef((props, ref) => {
                 year: expiredDate.substring(3),
                 type: type,
             });
-            console.log(expiredDate.substring(0, 2));
-            console.log(name);
         } catch (error) {
             console.log("Error");
         }

@@ -5,7 +5,7 @@ import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
 import Styled from "../../styles/account/Payment";
 import { AddCardDialog } from "../../components/forum/AddCardDialog";
 import axios from "../../utils/axios";
-import address from "./address";
+import { faCcMastercard, faCcVisa } from "@fortawesome/free-brands-svg-icons";
 
 const payment = () => {
     const ref = useRef(null);
@@ -55,7 +55,7 @@ const payment = () => {
                                     <div className="payment-img">
                                         <FontAwesomeIcon
                                             icon={faCreditCard}
-                                            color="red"
+                                            color="#0061a8"
                                             size="3x"
                                         />
                                     </div>
@@ -63,7 +63,10 @@ const payment = () => {
                                         <h3>{el.type}</h3>
                                     </div>
                                     <div className="payment-card-number">
-                                        <h4>{el.card_number}</h4>
+                                        <h4>
+                                            {el.card_number.substring(0, 4) +
+                                                " **** ***** ****"}
+                                        </h4>
                                     </div>
                                     <div className="delete-payment">
                                         <a
