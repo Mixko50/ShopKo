@@ -5,28 +5,31 @@ import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
 import Styled from "../../styles/account/Payment";
 import { AddCardDialog } from "../../components/forum/AddCardDialog";
 import axios from "../../utils/axios";
-import { faCcMastercard, faCcVisa } from "@fortawesome/free-brands-svg-icons";
 
 const payment = () => {
     const ref = useRef(null);
     const [payment, setPayment] = useState({});
 
     useEffect(() => {
-        const paymentAx = async () => {
-            try {
-                const paymentInformation = await axios.post(`/setting/payment`);
-                setPayment(paymentInformation.data);
-            } catch (error) {
-                console.log("Error");
-            }
-        };
         paymentAx();
     }, []);
 
-    const deleteCard = (id) => {
-        axios.post("/setting/payment/delete", {
+    const paymentAx = async () => {
+        console.log("Hello");
+        try {
+            const paymentInformation = await axios.post(`/setting/payment`);
+            setPayment(paymentInformation.data);
+            console.log(paymentInformation.data);
+        } catch (error) {
+            console.log("Error");
+        }
+    };
+
+    const deleteCard = async (id) => {
+        await axios.post("/setting/payment/delete", {
             id: id,
         });
+        paymentAx();
     };
 
     return (

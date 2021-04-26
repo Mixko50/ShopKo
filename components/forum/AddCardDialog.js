@@ -38,6 +38,7 @@ export const AddCardDialog = forwardRef((props, ref) => {
                 year: expiredDate.substring(3),
                 type: type,
             });
+            window.location.href = "/account/payment";
         } catch (error) {
             console.log("Error");
         }
