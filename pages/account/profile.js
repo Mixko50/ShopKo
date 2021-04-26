@@ -1,10 +1,4 @@
-import React, {
-    Fragment,
-    useContext,
-    useEffect,
-    useRef,
-    useState,
-} from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
 import GenderSelect from "../../components/forum/GenderSelect";
 import BirthdaySelect from "../../components/forum/BirthdaySelect";
@@ -26,6 +20,7 @@ const profile = () => {
             axios.post("/setting/profile/firstname", {
                 firstname: firstname,
             });
+            User();
         }
     };
 
@@ -34,21 +29,23 @@ const profile = () => {
             axios.post("/setting/profile/lastname", {
                 lastname: lastname,
             });
+            User();
         }
     };
 
     useEffect(() => {
-        const User = async () => {
-            try {
-                const userAx = await axios.post(`/account/profile`);
-                console.log(userAx.data);
-                setProfile(userAx.data);
-            } catch (error) {
-                console.log("Error");
-            }
-        };
         User();
     }, []);
+
+    const User = async () => {
+        try {
+            const userAx = await axios.post(`/account/profile`);
+            console.log(userAx.data);
+            setProfile(userAx.data);
+        } catch (error) {
+            console.log("Error");
+        }
+    };
 
     return (
         <Fragment>

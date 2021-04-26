@@ -37,6 +37,7 @@ const ChangePhoneNumber = (props, ref) => {
         axios.post("/setting/profile/phone", {
             phone: phone,
         });
+        window.location.href = "/account/profile";
     };
 
     const phoneNumberCheck = () => {

@@ -43,6 +43,7 @@ const ChangeEmail = (props, ref) => {
         const emailPattern = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if (emailPattern.test(email) == true) {
             setBoxCheckEmail(true);
+            window.location.href = "/account/profile";
             return true;
         } else {
             setBoxCheckEmail(false);

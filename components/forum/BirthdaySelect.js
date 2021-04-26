@@ -23,6 +23,7 @@ export default function BirthdaySelect(props) {
         axios.post("/setting/profile/birthdate", {
             birthdate: ev,
         });
+        window.location.href = "/account/profile";
     };
 
     return (
