@@ -9,21 +9,23 @@ const address = () => {
     const [address, setAddress] = useState({});
 
     useEffect(() => {
-        const addressUser = async () => {
-            try {
-                const addressAx = await axios.post(`/setting/address`);
-                setAddress(addressAx.data);
-            } catch (error) {
-                console.log("Error");
-            }
-        };
         addressUser();
     }, []);
 
-    const deleteAddress = (id) => {
-        axios.post("/setting/address/delete", {
+    const addressUser = async () => {
+        try {
+            const addressAx = await axios.post(`/setting/address`);
+            setAddress(addressAx.data);
+        } catch (error) {
+            console.log("Error");
+        }
+    };
+
+    const deleteAddress = async (id) => {
+        await axios.post("/setting/address/delete", {
             id: id,
         });
+        addressUser();
     };
 
     return (

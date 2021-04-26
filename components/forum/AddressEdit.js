@@ -272,6 +272,7 @@ export default forwardRef((props, ref) => {
                                 postalCode
                             ) {
                                 addressUpdate();
+                                window.location.href = "/account/address";
                                 handleClose();
                             }
                         }}
