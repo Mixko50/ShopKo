@@ -1,10 +1,11 @@
-import React from 'react';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { IconButton } from '@material-ui/core';
-import Link from 'next/link'
+import React from "react";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { IconButton } from "@material-ui/core";
+import Link from "next/link";
+import axios from "../../utils/axios";
 
 export default function Dropdown() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -17,6 +18,14 @@ export default function Dropdown() {
         setAnchorEl(null);
     };
 
+    const logout = () => {
+        try {
+            axios.post("/account/logout");
+        } catch (error) {
+            console.log("Error");
+        }
+    };
+
     return (
         <div>
             <IconButton
@@ -24,8 +33,13 @@ export default function Dropdown() {
                 aria-haspopup="true"
                 onClick={(event) => {
                     setAnchorEl(event.currentTarget);
-                }} >
-                <FontAwesomeIcon icon={faCaretDown} style={{ width: 24, height: 24 }} color="black" />
+                }}
+            >
+                <FontAwesomeIcon
+                    icon={faCaretDown}
+                    style={{ width: 24, height: 24 }}
+                    color="black"
+                />
             </IconButton>
             <Menu
                 id="simple-menu"
@@ -34,9 +48,22 @@ export default function Dropdown() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <Link href="../account/profile"><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
-                <Link href="../account/myorder"><MenuItem onClick={handleClose}>My order</MenuItem></Link>
-                <Link href="/login"><MenuItem onClick={handleClose}>Logout</MenuItem></Link>
+                <Link href="../account/profile">
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                </Link>
+                <Link href="../account/myorder">
+                    <MenuItem onClick={handleClose}>My order</MenuItem>
+                </Link>
+                <Link href="/login">
+                    <MenuItem
+                        onClick={() => {
+                            handleClose();
+                            logout();
+                        }}
+                    >
+                        Logout
+                    </MenuItem>
+                </Link>
             </Menu>
         </div>
     );

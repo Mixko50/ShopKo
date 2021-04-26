@@ -11,7 +11,7 @@ const address = () => {
     useEffect(() => {
         const addressUser = async () => {
             try {
-                const addressAx = await axios.post(`/account/address`);
+                const addressAx = await axios.post(`/setting/address`);
                 setAddress(addressAx.data);
             } catch (error) {
                 console.log("Error");
