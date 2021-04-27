@@ -4,7 +4,7 @@ import Styles from "../styles/home";
 import { CategoryItem } from "../components/category/CategoryItem";
 import { AdvertiseBox } from "../components/advertise/AdvertiseBox";
 import { ProductItems } from "../components/ProductItems/ProductItems";
-import axios from "axios";
+import axios from "../utils/axios";
 import { CircularProgress, createStyles, makeStyles } from "@material-ui/core";
 import { SpeedDials } from "../components/forum/SpeedDial";
 
@@ -42,9 +42,7 @@ const ProductBox = () => {
 
     const onFetchData = async () => {
         try {
-            const fetchedData = await axios.get(
-                "https://apmix.mixko.ml/cosmetics.json"
-            );
+            const fetchedData = await axios.post("/home/product");
             setData(fetchedData.data.product);
         } catch (err) {
             console.log(err);
@@ -61,10 +59,10 @@ const ProductBox = () => {
                 {data.map((item) => (
                     <ProductItems
                         key={item.id}
-                        title={item.data.title}
-                        price={item.data.price}
-                        sold={item.data.sold}
-                        image={item.img[0]}
+                        title={item.title}
+                        price={item.price}
+                        sold={item.sold}
+                        image={item.img}
                         id={item.id}
                     />
                 ))}
