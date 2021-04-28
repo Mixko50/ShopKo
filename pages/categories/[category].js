@@ -52,7 +52,10 @@ const Index = () => {
             <section>
                 <div className="page-box">
                     <div className="category-title">
-                        <h1>{NameMapping[category]}</h1>
+                        <h1>
+                            {category.substring(0, 1).toUpperCase() +
+                                category.substring(1)}
+                        </h1>
                     </div>
                     <div className="filter-box">
                         <div className="filter-title">

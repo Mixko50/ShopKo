@@ -73,6 +73,22 @@ const ProductBox = () => {
 };
 
 const Home = () => {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        categoriesData();
+    }, []);
+
+    const categoriesData = async () => {
+        try {
+            const categoriesAx = await axios.get("/home/categories");
+            setCategories(categoriesAx.data.information);
+            console.log(categoriesAx.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     //fahsion fashion
     return (
         <Fragment>
@@ -85,10 +101,11 @@ const Home = () => {
                             <h1>Categories</h1>
                         </div>
                         <div className="categories-box">
-                            {categoryItems.map((item) => (
+                            {categories.map((item) => (
                                 <CategoryItem
                                     key={item.id}
-                                    title={item.title}
+                                    title={item.name}
+                                    id={item.id}
                                 />
                             ))}
                         </div>
