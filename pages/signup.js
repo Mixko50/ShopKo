@@ -230,7 +230,7 @@ const signup = () => {
                                     ) {
                                         console.log("Passed!");
                                         signup();
-                                        router.push("/login");
+                                        router.push("/home");
                                     }
                                 }}
                             >
