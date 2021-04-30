@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Styles from "../../styles/home";
 import { Link } from "@material-ui/core";
-import axios from "../../utils/axios";
 
 export const CategoryItem = ({ title, id }) => {
     return (

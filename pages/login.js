@@ -13,7 +13,6 @@ const Login = () => {
     const [valid, setValid] = useState(true);
 
     const onKeyPressed = (e) => {
-        console.log(e.key);
         if (e.key == "Enter") {
             login();
         }

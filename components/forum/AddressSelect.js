@@ -1,9 +1,9 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -30,7 +30,9 @@ export default function AddressSelect({ data, title, current, setCurrent }) {
                     value={current}
                     onChange={handleChange}
                 >
-                    {data.map((el) => <MenuItem value={el}>{el}</MenuItem>)}
+                    {data.map((el) => (
+                        <MenuItem value={el}>{el}</MenuItem>
+                    ))}
                 </Select>
             </FormControl>
         </div>

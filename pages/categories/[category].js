@@ -2,13 +2,10 @@ import Styles from "../../styles/home";
 import { useRouter } from "next/router";
 import React, { Fragment, useState, useEffect } from "react";
 import Nav from "../../components/Layout/Nav";
-import NameMapping from "../../utils/categories.json";
-import axios from "axios";
+import axios from "../../utils/axios";
 import { ProductItems } from "../../components/ProductItems/ProductItems";
 import { SpeedDials } from "../../components/forum/SpeedDial";
 import Checkbox from "@material-ui/core/Checkbox";
-
-//axios
 
 const Index = () => {
     const router = useRouter();
@@ -18,7 +15,7 @@ const Index = () => {
 
     useEffect(() => {
         onFetchData();
-    }, [NameMapping[category]]);
+    }, []);
 
     const [checked, setChecked] = React.useState(false);
 
@@ -28,20 +25,22 @@ const Index = () => {
 
     const onFetchData = async () => {
         try {
-            console.log(NameMapping[category].toLowerCase());
-            console.log(
-                `https://apmix.mixko.ml/${NameMapping[
-                    category
-                ].toLowerCase()}.json`
-            );
+            console.log("test");
             const fetchedData = await axios.get(
-                `https://apmix.mixko.ml/${NameMapping[
-                    category
-                ].toLowerCase()}.json`
+                `/categories/categoryproduct?category=${
+                    category ? category : "bags"
+                }`
             );
-            setData(fetchedData.data);
-            // console.log(fetchedData.data[0].id);
+            setData(fetchedData.data.information);
+            // console.log(NameMapping[category].toLowerCase());
+            // const fetchedData = await axios.get(
+            //     `https://apmix.mixko.ml/${NameMapping[
+            //         category
+            //     ].toLowerCase()}.json`
+            // );
+            // setData(fetchedData.data);
         } catch (err) {
+            console.log("Error");
             console.log(err);
         }
     };
@@ -53,8 +52,10 @@ const Index = () => {
                 <div className="page-box">
                     <div className="category-title">
                         <h1>
-                            {category.substring(0, 1).toUpperCase() +
-                                category.substring(1)}
+                            {category == null
+                                ? category
+                                : category.substring(0, 1).toUpperCase() +
+                                  category.substring(1)}
                         </h1>
                     </div>
                     <div className="filter-box">
@@ -85,10 +86,10 @@ const Index = () => {
                         {data.map((item) => (
                             <ProductItems
                                 key={item.id}
-                                title={item.data.title}
-                                price={item.data.price}
-                                sold={item.data.sold}
-                                image={item.img[0]}
+                                title={item.title}
+                                price={item.price}
+                                sold={item.sold}
+                                image={item.image}
                                 id={item.id}
                             />
                         ))}

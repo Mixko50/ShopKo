@@ -3,7 +3,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import Nav from "../../components/Layout/Nav";
 import { ProductQuantity } from "../../components/forum/ProductQuantity";
 import { ProductBuyButton } from "../../components/forum/ProductBuyButton";
-import axios from "axios";
+import axios from "../../utils/axios";
 import { CircularProgress } from "@material-ui/core";
 import NameMapping from "../../utils/categories.json";
 import Styles from "../../styles/products/Product";
@@ -17,39 +17,28 @@ const Products = () => {
 
     useEffect(() => {
         onFetchData();
-    }, [product]);
+    }, []);
 
     const onFetchData = async () => {
+        console.log("Test");
         try {
-            console.log(product);
-            console.log(NameMapping[product.charAt(0)].toLowerCase());
+            // console.log(product);
+            // console.log(NameMapping[product.charAt(0)].toLowerCase());
+            // const fetchedData = await axios.get(
+            //     `https://apmix.mixko.ml/${NameMapping[
+            //         product.charAt(0)
+            //     ].toLowerCase()}.json`
+            // );
+            // setData(fetchedData.data.filter((el) => el.id == product)[0]);
+            // console.log(fetchedData.data);
             const fetchedData = await axios.get(
-                `https://apmix.mixko.ml/${NameMapping[
-                    product.charAt(0)
-                ].toLowerCase()}.json`
+                `/products/details?id=${product ? product : 1}`
             );
-            setData(fetchedData.data.filter((el) => el.id == product)[0]);
-            console.log(fetchedData.data);
+            setData(fetchedData.data);
         } catch (err) {
             console.log(err);
         }
     };
-
-    // const addToCart = async () => {
-    //     try {
-    //         const fetchedData = await axios.post(
-    //             "http://localhost:8080/cart/addtocart",
-    //             {
-    //                 id : 1,
-    //                 product: product,
-    //                 quantity: 100
-    //             }
-    //         );
-    //         setData(fetchedData.data);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
 
     return (
         <Fragment>
@@ -64,42 +53,42 @@ const Products = () => {
                                 <div
                                     className="big-pic"
                                     style={{
-                                        backgroundImage: `url(${data.img[0]})`,
+                                        backgroundImage: `url(${data.img})`,
                                     }}
                                 ></div>
                                 <div className="product-sub-pic">
                                     <div
                                         className="small-pic"
                                         style={{
-                                            backgroundImage: `url(${data.img[0]})`,
+                                            backgroundImage: `url(${data.img})`,
                                         }}
                                     ></div>
                                     <div
                                         className="small-pic"
                                         style={{
-                                            backgroundImage: `url(${data.img[1]})`,
+                                            backgroundImage: `url(${data.img})`,
                                         }}
                                     ></div>
                                     <div
                                         className="small-pic"
                                         style={{
-                                            backgroundImage: `url(${data.img[2]})`,
+                                            backgroundImage: `url(${data.img})`,
                                         }}
                                     ></div>
                                     <div
                                         className="small-pic"
                                         style={{
-                                            backgroundImage: `url(${data.img[3]})`,
+                                            backgroundImage: `url(${data.img})`,
                                         }}
                                     ></div>
                                 </div>
                             </div>
                             <div className="product-buy">
                                 <div className="product-title">
-                                    <h1>{data.data.title}</h1>
+                                    <h1>{data.title}</h1>
                                 </div>
                                 <div className="product-price">
-                                    <h2>${data.data.price}</h2>
+                                    <h2>${data.price}</h2>
                                 </div>
                                 <div className="quantity-box">
                                     <p>Quantity</p>
@@ -117,13 +106,13 @@ const Products = () => {
                                 <h1>Details of product</h1>
                             </div>
                             <div style={{ margin: "50px 0 20px 0" }}>
-                                <p>Name : {data.data.title}</p>{" "}
+                                <p>Name : {data.title}</p>{" "}
                             </div>
                             <div style={{ margin: "20px 0" }}>
-                                <p>Price : {data.data.price}$</p>{" "}
+                                <p>Price : {data.price}$</p>{" "}
                             </div>
                             <div style={{ margin: "20px 0" }}>
-                                <p>Details : {data.data.title}</p>{" "}
+                                <p>Details : {data.details}</p>{" "}
                             </div>
                         </div>
                     </div>
