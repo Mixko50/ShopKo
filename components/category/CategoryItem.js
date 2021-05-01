@@ -8,7 +8,10 @@ export const CategoryItem = ({ title, id }) => {
         <div className="categories">
             <Link href={`/categories/${title.toLowerCase()}`}>
                 <a>
-                    <img src={`/img/categories/${title}.svg`} width={50}></img>
+                    <img
+                        src={`https://storage.googleapis.com/shopko/categories-pic/${title.toLowerCase()}.svg`}
+                        width={50}
+                    ></img>
                 </a>
             </Link>
             <p>

@@ -10,6 +10,7 @@ const user = {
     firstname: "",
     lastname: "",
     profilepic: "",
+    type: "",
 };
 
 export const ProfileWrapper = ({ children }) => {
@@ -32,6 +33,7 @@ export const ProfileWrapper = ({ children }) => {
                 firstname: user.data.firstname,
                 lastname: user.data.lastname,
                 profilepic: user.data.profilepic,
+                type: user.data.type,
             });
         } catch (error) {
             console.log("error");

@@ -1,28 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Fragment } from "react";
 import Nav from "../components/Layout/Nav";
 import Styled from "../styles/account/MyOrder";
 import { SpeedDials } from "../components/forum/SpeedDial";
-import axios from 'axios'
+import axios from "../utils/axios";
 
 const cart = () => {
-
-    // const onFetchData = async () => {
-    //     try {
-    //         const fetchedData = await axios.post(
-    //             "http://localhost:8080/cart/addtocart",
-    //             {
-    //                 id : 1,
-    //                 product: 38,
-    //                 quantity: 100
-    //             }
-    //         );
-    //         setData(fetchedData.data);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
-
     return (
         <Fragment>
             <Nav />
@@ -42,18 +25,13 @@ const cart = () => {
                     >
                         <div className="order-bigbox">
                             <div className="order-box">
-                                <div className="order-number">
-                                    <p>
-                                        Order:{" "}
-                                        <span>
-                                            <a href="#">325235666</a>
-                                        </span>
-                                    </p>
-                                    <p>
-                                        <span style={{ color: "green" }}>
-                                            Complete
-                                        </span>
-                                    </p>
+                                <div
+                                    className="order-number"
+                                    style={{ justifyContent: "flex-end" }}
+                                >
+                                    <div className="delete-button">
+                                        <p style={{ color: "white" }}>Delete</p>
+                                    </div>
                                 </div>
                                 <div className="order">
                                     <div className="suborder-box">
@@ -61,16 +39,17 @@ const cart = () => {
                                             <div className="order-pic"></div>
                                         </div>
                                         <div className="order-details">
-                                            <h1>Coming soon!</h1>
+                                            <div className="product-title">
+                                                <h2>Coming soon!</h2>
+                                            </div>
+                                            <div className="product-quantity">
+                                                <h3>quantity : 3</h3>
+                                            </div>
                                         </div>
                                         <div className="order-price">
                                             <h1>$100</h1>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="total">
-                                    <h2>Total</h2>
-                                    <h2>$100</h2>
                                 </div>
                             </div>
                         </div>

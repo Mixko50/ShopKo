@@ -13,11 +13,12 @@ const Products = () => {
     const router = useRouter();
     const { product } = router.query;
 
-    const [data, setData] = useState(null);
+    const [data, setData] = useState({});
 
     useEffect(() => {
-        onFetchData();
-    }, []);
+        if (onFetchData()) {
+        }
+    }, [product]);
 
     const onFetchData = async () => {
         console.log("Test");
@@ -32,7 +33,7 @@ const Products = () => {
             // setData(fetchedData.data.filter((el) => el.id == product)[0]);
             // console.log(fetchedData.data);
             const fetchedData = await axios.get(
-                `/products/details?id=${product ? product : 1}`
+                `/products/details?id=${product}`
             );
             setData(fetchedData.data);
         } catch (err) {
@@ -53,32 +54,32 @@ const Products = () => {
                                 <div
                                     className="big-pic"
                                     style={{
-                                        backgroundImage: `url(${data.img})`,
+                                        backgroundImage: `url(${data.image})`,
                                     }}
                                 ></div>
                                 <div className="product-sub-pic">
                                     <div
                                         className="small-pic"
                                         style={{
-                                            backgroundImage: `url(${data.img})`,
+                                            backgroundImage: `url(${data.image})`,
                                         }}
                                     ></div>
                                     <div
                                         className="small-pic"
                                         style={{
-                                            backgroundImage: `url(${data.img})`,
+                                            backgroundImage: `url()`,
                                         }}
                                     ></div>
                                     <div
                                         className="small-pic"
                                         style={{
-                                            backgroundImage: `url(${data.img})`,
+                                            backgroundImage: `url()`,
                                         }}
                                     ></div>
                                     <div
                                         className="small-pic"
                                         style={{
-                                            backgroundImage: `url(${data.img})`,
+                                            backgroundImage: `url()`,
                                         }}
                                     ></div>
                                 </div>

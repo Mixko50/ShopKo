@@ -15,7 +15,7 @@ const Index = () => {
 
     useEffect(() => {
         onFetchData();
-    }, []);
+    }, [category]);
 
     const [checked, setChecked] = React.useState(false);
 

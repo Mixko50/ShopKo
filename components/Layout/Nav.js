@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faSearch,
@@ -10,10 +10,26 @@ import Link from "next/link";
 import Badge from "@material-ui/core/Badge";
 import { ProfileContext } from "../../context/profileContext";
 import Styled from "../../styles/Layout/Nav";
+import axios from "../../utils/axios";
 
 const Nav = () => {
     const profileContext = useContext(ProfileContext);
     const profile = profileContext.profile;
+
+    const [data, setData] = useState({});
+
+    useEffect(() => {
+        fetchedData();
+    }, []);
+
+    const fetchedData = async () => {
+        try {
+            const fetchData = await axios.get(`/cart/details`);
+            setData(fetchData.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <Fragment>
@@ -44,7 +60,7 @@ const Nav = () => {
                                 <div>
                                     <Badge
                                         style={{ margin: "0px 25px " }}
-                                        badgeContent={1}
+                                        badgeContent={data.productInCart}
                                         color="secondary"
                                     >
                                         <Link href="/cart">

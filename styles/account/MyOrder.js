@@ -38,6 +38,17 @@ export default css`
         justify-content: space-between;
     }
 
+    .delete-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 30px;
+        background-color: red;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
     .order {
         padding: 10px;
         display: flex;
@@ -53,6 +64,10 @@ export default css`
         height: 50px;
         padding: 10px 20px;
         align-items: center;
+    }
+
+    .product-title {
+        height: 100px;
     }
 
     .suborder-box {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,9 +6,13 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { IconButton } from "@material-ui/core";
 import Link from "next/link";
 import axios from "../../utils/axios";
+import { ProfileContext } from "../../context/profileContext";
 
 export default function Dropdown() {
     const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const profileContext = useContext(ProfileContext);
+    const profile = profileContext.profile;
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -48,6 +52,11 @@ export default function Dropdown() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
+                {profile.type == "admin" ? (
+                    <Link href="/admin">
+                        <MenuItem onClick={handleClose}>Admin</MenuItem>
+                    </Link>
+                ) : null}
                 <Link href="../account/profile">
                     <MenuItem onClick={handleClose}>Profile</MenuItem>
                 </Link>

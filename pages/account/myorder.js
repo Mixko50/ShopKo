@@ -28,16 +28,17 @@ const myorder = () => {
                                     <div className="order-pic"></div>
                                 </div>
                                 <div className="order-details">
-                                    <h1>Coming soon!</h1>
+                                    <div className="product-title">
+                                        <h2>Coming soon!</h2>
+                                    </div>
+                                    <div className="product-quantity">
+                                        <h3>quantity : 3</h3>
+                                    </div>
                                 </div>
                                 <div className="order-price">
                                     <h1>$100</h1>
                                 </div>
                             </div>
-                        </div>
-                        <div className="total">
-                            <h2>Total</h2>
-                            <h2>$100</h2>
                         </div>
                     </div>
                 </div>
