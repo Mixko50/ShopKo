@@ -17,7 +17,7 @@ export default css`
     }
 
     .order-box {
-        margin: 30px 0;
+        margin: 20px 0;
         display: flex;
         flex-direction: column;
         width: 90%;
@@ -38,6 +38,10 @@ export default css`
         justify-content: space-between;
     }
 
+    .order-number {
+        padding: 10px 10px;
+    }
+
     .delete-button {
         display: flex;
         justify-content: center;
@@ -54,7 +58,6 @@ export default css`
         display: flex;
         width: 100%;
         height: auto;
-        border-bottom: 1px rgb(177, 174, 174) solid;
     }
 
     .total {
@@ -68,6 +71,11 @@ export default css`
 
     .product-title {
         height: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
     }
 
     .suborder-box {
@@ -88,6 +96,8 @@ export default css`
 
     .order-pic {
         background-color: black;
+        background-size: cover;
+        background-position: center;
         width: 150px;
         height: 150px;
         border-radius: 10px;
@@ -111,6 +121,7 @@ export default css`
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 0 15px;
     }
 
     .order-price > h1 {
