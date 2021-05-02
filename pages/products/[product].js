@@ -112,7 +112,12 @@ const Products = () => {
                             <div style={{ margin: "20px 0" }}>
                                 <p>Price : {data.price}$</p>{" "}
                             </div>
-                            <div style={{ margin: "20px 0" }}>
+                            <div
+                                style={{
+                                    margin: "20px 0",
+                                    whiteSpace: "pre-wrap",
+                                }}
+                            >
                                 <p>Details : {data.details}</p>{" "}
                             </div>
                         </div>
