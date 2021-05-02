@@ -7,7 +7,7 @@ const changepass = () => {
     const [oldPass, setOldPass] = useState("");
     const [newPass, setNewPass] = useState("");
     const [confirmNewPass, setConfirmNewPass] = useState("");
-    const [valid, setValid] = useState(0);
+    const [valid, setValid] = useState(3);
 
     const check = async () => {
         try {
@@ -28,7 +28,7 @@ const changepass = () => {
                         );
                         if (changePassword.data.isChanged) {
                             console.log("Change password successfully");
-                            setValid(3);
+                            setValid(4);
                         }
                     } else {
                         setValid(2);
@@ -108,7 +108,7 @@ const changepass = () => {
                             : `${
                                   valid == 2
                                       ? "New password does not match!"
-                                      : "Success"
+                                      : `${valid == 3 ? "" : "Success"}`
                               }`}
                     </div>
                 ) : null}
