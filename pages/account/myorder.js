@@ -29,10 +29,13 @@ const myorder = () => {
                                 </div>
                                 <div className="order-details">
                                     <div className="product-title">
-                                        <h2>Coming soon!</h2>
+                                        <h3>Coming soon!</h3>
                                     </div>
                                     <div className="product-quantity">
-                                        <h3>quantity : 3</h3>
+                                        <h4>quantity : 3</h4>
+                                    </div>
+                                    <div className="product-quantity">
+                                        <h4>Price/Each : 1</h4>
                                     </div>
                                 </div>
                                 <div className="order-price">

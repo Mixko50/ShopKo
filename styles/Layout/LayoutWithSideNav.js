@@ -93,6 +93,10 @@ export default css`
         border-radius: 100px;
     }
 
+    .select {
+        color: red;
+    }
+
     @media screen and (max-width: 1024px) {
         .sidebar {
             display: none;

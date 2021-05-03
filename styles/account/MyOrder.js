@@ -70,12 +70,16 @@ export default css`
     }
 
     .product-title {
-        height: 100px;
+        height: 70px;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+    }
+
+    .product-quantity {
+        margin: 10px 0;
     }
 
     .suborder-box {

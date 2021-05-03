@@ -4,6 +4,7 @@ import Nav from "../components/Layout/Nav";
 import Styled from "../styles/account/MyOrder";
 import { SpeedDials } from "../components/forum/SpeedDial";
 import axios from "../utils/axios";
+import { Link } from "@material-ui/core";
 
 const cart = () => {
     const [data, setData] = useState({});
@@ -94,6 +95,12 @@ const cart = () => {
                                                               }
                                                           </h4>
                                                       </div>
+                                                      <div className="product-quantity">
+                                                          <h4>
+                                                              Price/Each :{" "}
+                                                              {item.price}
+                                                          </h4>
+                                                      </div>
                                                   </div>
                                                   <div className="order-price">
                                                       <h1>
@@ -117,7 +124,19 @@ const cart = () => {
                                 <div className="buy-price">
                                     <h1>${data.total}</h1>
                                 </div>
-                                <div className="buy-button">Confirm</div>
+                                <Link
+                                    href="/checkout"
+                                    style={{
+                                        color: "black",
+                                        textDecorationLine: "none",
+                                    }}
+                                >
+                                    <a>
+                                        <div className="buy-button">
+                                            Checkout
+                                        </div>
+                                    </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

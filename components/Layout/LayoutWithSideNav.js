@@ -13,10 +13,15 @@ import Link from "next/link";
 import { ProfileContext } from "../../context/profileContext";
 import Styled from "../../styles/Layout/LayoutWithSideNav";
 import { SpeedDials } from "../forum/SpeedDial";
+import { useRouter } from "next/router";
 
 const LayoutWithSideNav = (props) => {
     const profileState = useContext(ProfileContext);
     const profile = profileState.profile;
+
+    const router = useRouter();
+    console.log(router.asPath);
+    const path = router.asPath.split("/")[2];
 
     return (
         <Fragment>
@@ -88,19 +93,59 @@ const LayoutWithSideNav = (props) => {
                                 </div>
                                 <div className="menu-bar">
                                     <Link href="/account/profile">
-                                        <p>Profile</p>
+                                        <p
+                                            className={
+                                                path == "profile"
+                                                    ? "select"
+                                                    : null
+                                            }
+                                        >
+                                            Profile
+                                        </p>
                                     </Link>
                                     <Link href="/account/address">
-                                        <p>Address</p>
+                                        <p
+                                            className={
+                                                path == "address"
+                                                    ? "select"
+                                                    : null
+                                            }
+                                        >
+                                            Address
+                                        </p>
                                     </Link>
                                     <Link href="/account/payment">
-                                        <p>Payment</p>
+                                        <p
+                                            className={
+                                                path == "payment"
+                                                    ? "select"
+                                                    : null
+                                            }
+                                        >
+                                            Payment
+                                        </p>
                                     </Link>
                                     <Link href="/account/changepass">
-                                        <p>Change Password</p>
+                                        <p
+                                            className={
+                                                path == "changepass"
+                                                    ? "select"
+                                                    : null
+                                            }
+                                        >
+                                            Change Password
+                                        </p>
                                     </Link>
                                     <Link href="/account/myorder">
-                                        <p>My Order</p>
+                                        <p
+                                            className={
+                                                path == "myorder"
+                                                    ? "select"
+                                                    : null
+                                            }
+                                        >
+                                            My Order
+                                        </p>
                                     </Link>
                                 </div>
                             </div>
