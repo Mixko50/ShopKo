@@ -1,17 +1,19 @@
 import { useRouter } from "next/router";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 import Nav from "../../components/Layout/Nav";
 import { ProductQuantity } from "../../components/forum/ProductQuantity";
 import { ProductBuyButton } from "../../components/forum/ProductBuyButton";
 import axios from "../../utils/axios";
 import { CircularProgress } from "@material-ui/core";
-import NameMapping from "../../utils/categories.json";
 import Styles from "../../styles/products/Product";
 import { SpeedDials } from "../../components/forum/SpeedDial";
+import qs from "qs";
 
 const Products = () => {
     const router = useRouter();
     const { product } = router.query;
+
+    const productQuantity = useRef(null);
 
     const [data, setData] = useState({});
 
@@ -38,6 +40,22 @@ const Products = () => {
             setData(fetchedData.data);
         } catch (err) {
             console.log(err);
+        }
+    };
+
+    const addToCart = () => {
+        try {
+            console.log(productQuantity.current.getQuantity());
+            console.log(data.id);
+            axios.post(
+                `/products/addtocart`,
+                qs.stringify({
+                    productId: data.id,
+                    quantity: productQuantity.current.getQuantity(),
+                })
+            );
+        } catch (err) {
+            console.log("error");
         }
     };
 
@@ -94,10 +112,14 @@ const Products = () => {
                                 <div className="quantity-box">
                                     <p>Quantity</p>
                                     <div className="product-quantity">
-                                        <ProductQuantity />
+                                        <ProductQuantity
+                                            ref={productQuantity}
+                                        />
                                     </div>
                                     <div className="product-buy-button">
-                                        <ProductBuyButton />
+                                        <ProductBuyButton
+                                            addToCart={addToCart}
+                                        />
                                     </div>
                                 </div>
                             </div>

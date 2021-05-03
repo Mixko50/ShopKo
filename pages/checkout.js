@@ -62,9 +62,17 @@ const checkout = () => {
                                                               }
                                                           </h4>
                                                       </div>
+                                                      <div className="product-quantity">
+                                                          <h4>
+                                                              Price/Each :{" "}
+                                                              {item.price}
+                                                          </h4>
+                                                      </div>
                                                   </div>
                                                   <div className="order-price">
-                                                      <h1>${item.price}</h1>
+                                                      <h1>
+                                                          ${item.total_price}
+                                                      </h1>
                                                   </div>
                                               </div>
                                           </div>
