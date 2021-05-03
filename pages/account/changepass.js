@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import LayoutWithSideNav from "../../components/Layout/LayoutWithSideNav";
 import Styled from "../../styles/account/ChangePass";
 import axios from "../../utils/axios";

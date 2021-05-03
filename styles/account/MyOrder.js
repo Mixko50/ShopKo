@@ -141,6 +141,7 @@ export default css`
         justify-content: center;
     }
 
+    .checkout-page-max,
     .cart-page-max {
         width: 100%;
         height: 100%;

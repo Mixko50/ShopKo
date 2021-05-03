@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Fragment } from "react";
 import Nav from "../components/Layout/Nav";
 import Styled from "../styles/account/MyOrder";
-import { SpeedDials } from "../components/forum/SpeedDial";
 import axios from "../utils/axios";
 
-const cart = () => {
+const checkout = () => {
     const [data, setData] = useState({});
 
     useEffect(() => {
@@ -21,23 +20,13 @@ const cart = () => {
         }
     };
 
-    const deleteItem = async (id) => {
-        try {
-            await axios.delete(`/cart/delete?id=${id}`);
-            fetchedData();
-        } catch (error) {
-            console.log("error");
-        }
-    };
-
     return (
         <Fragment>
             <Nav />
-
             <section>
-                <div className="cart-page-max">
+                <div className="checkout-page-max">
                     <div className="title-cart">
-                        <h1>Cart</h1>
+                        <h1>Checkout</h1>
                     </div>
                     {data.isFound
                         ? data.information.map((item) => (
@@ -51,27 +40,6 @@ const cart = () => {
                               >
                                   <div className="order-bigbox">
                                       <div className="order-box">
-                                          <div
-                                              className="order-number"
-                                              style={{
-                                                  justifyContent: "flex-end",
-                                              }}
-                                          >
-                                              <div
-                                                  className="delete-button"
-                                                  onClick={() => {
-                                                      deleteItem(item.id);
-                                                  }}
-                                              >
-                                                  <p
-                                                      style={{
-                                                          color: "white",
-                                                      }}
-                                                  >
-                                                      Delete
-                                                  </p>
-                                              </div>
-                                          </div>
                                           <div className="order">
                                               <div className="suborder-box">
                                                   <div className="order-pic-box">
@@ -96,9 +64,7 @@ const cart = () => {
                                                       </div>
                                                   </div>
                                                   <div className="order-price">
-                                                      <h1>
-                                                          ${item.total_price}
-                                                      </h1>
+                                                      <h1>${item.price}</h1>
                                                   </div>
                                               </div>
                                           </div>
@@ -107,7 +73,6 @@ const cart = () => {
                               </div>
                           ))
                         : null}
-
                     <div className="buy-box-controller">
                         <div className="buy-box">
                             <div className="buy-title">
@@ -122,12 +87,10 @@ const cart = () => {
                         </div>
                     </div>
                 </div>
-                <SpeedDials />
             </section>
-
             <style jsx>{Styled}</style>
         </Fragment>
     );
 };
 
-export default cart;
+export default checkout;
