@@ -16,6 +16,7 @@ const Products = () => {
     const productQuantity = useRef(null);
 
     const [data, setData] = useState({});
+    const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         if (onFetchData()) {
@@ -25,15 +26,6 @@ const Products = () => {
     const onFetchData = async () => {
         console.log("Test");
         try {
-            // console.log(product);
-            // console.log(NameMapping[product.charAt(0)].toLowerCase());
-            // const fetchedData = await axios.get(
-            //     `https://apmix.mixko.ml/${NameMapping[
-            //         product.charAt(0)
-            //     ].toLowerCase()}.json`
-            // );
-            // setData(fetchedData.data.filter((el) => el.id == product)[0]);
-            // console.log(fetchedData.data);
             const fetchedData = await axios.get(
                 `/products/details?id=${product}`
             );
@@ -41,6 +33,12 @@ const Products = () => {
         } catch (err) {
             console.log(err);
         }
+    };
+
+    const quantityCaller = async () => {
+        let a = await productQuantity.current.getQuantity();
+        setQuantity(a);
+        return a;
     };
 
     const addToCart = () => {
@@ -119,6 +117,8 @@ const Products = () => {
                                     <div className="product-buy-button">
                                         <ProductBuyButton
                                             addToCart={addToCart}
+                                            id={data.id}
+                                            quantity={quantityCaller}
                                         />
                                     </div>
                                 </div>

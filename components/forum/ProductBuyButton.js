@@ -8,8 +8,12 @@ import {
     faCartPlus,
     faShoppingBag,
 } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-export const ProductBuyButton = ({ addToCart }) => {
+export const ProductBuyButton = ({ addToCart, id, quantity }) => {
+    const router = useRouter();
+
     return (
         <div>
             <Button
@@ -38,6 +42,13 @@ export const ProductBuyButton = ({ addToCart }) => {
                     height: "60px",
                     margin: "20px",
                     borderRadius: "15px",
+                }}
+                onClick={async () => {
+                    console.log(quantity());
+                    router.push({
+                        pathname: "/checkoutone",
+                        query: { id: id, quantity: await quantity() },
+                    });
                 }}
             >
                 <FontAwesomeIcon

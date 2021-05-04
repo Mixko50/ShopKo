@@ -70,7 +70,7 @@ export default css`
     }
 
     .product-title {
-        height: 70px;
+        height: 55px;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
