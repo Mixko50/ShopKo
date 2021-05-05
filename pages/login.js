@@ -24,7 +24,6 @@ const Login = () => {
                 password: password,
             });
             if (user.data.isLoginSuccess) {
-                Cookies.set("jwt", user.data.token);
                 const fecth = await axios.post(`/account/fetch`);
                 console.log(fecth.data);
                 window.location.href = "/home";
