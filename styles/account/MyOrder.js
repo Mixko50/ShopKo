@@ -167,6 +167,7 @@ export default css`
         font-size: 50px;
     }
 
+    .address-box-controller,
     .buy-box-controller {
         display: flex;
         justify-content: center;
@@ -187,10 +188,46 @@ export default css`
         align-items: center;
     }
 
+    .payment-box,
+    .address-box {
+        width: 800px;
+        height: 200px;
+        border: 2px solid brown;
+        background-color: whitesmoke;
+        border-radius: 10px;
+        box-shadow: 0px 2px 5px rgb(187, 182, 182);
+        padding: 20px 50px;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        align-items: center;
+    }
+
+    .payment-box {
+        border: 2px solid orange;
+    }
+
+    .address-select-box {
+        width: 700px;
+        height: auto;
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+    }
+
     .button-box {
         display: flex;
         justify-content: space-around;
         align-items: center;
+    }
+
+    .address-radio-box {
+        margin: 0 10px;
+    }
+    .address-title {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 8px;
     }
 
     .buy-button {

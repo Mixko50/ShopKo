@@ -3,6 +3,8 @@ import { Fragment } from "react";
 import Nav from "../components/Layout/Nav";
 import Styled from "../styles/account/MyOrder";
 import axios from "../utils/axios";
+import { CheckoutAddressSelect } from "../components/forum/CheckoutAddressSelect";
+import { CheckoutPaymentSelect } from "../components/forum/CheckoutPaymentSelect";
 
 const checkout = () => {
     const [data, setData] = useState({});
@@ -81,6 +83,8 @@ const checkout = () => {
                               </div>
                           ))
                         : null}
+                    <CheckoutAddressSelect />
+                    <CheckoutPaymentSelect />
                     <div className="buy-box-controller">
                         <div className="buy-box">
                             <div className="buy-title">

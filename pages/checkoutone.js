@@ -6,6 +6,8 @@ import { SpeedDials } from "../components/forum/SpeedDial";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "../utils/axios";
+import { CheckoutAddressSelect } from "../components/forum/CheckoutAddressSelect";
+import { CheckoutPaymentSelect } from "../components/forum/CheckoutPaymentSelect";
 
 const checkoutone = () => {
     const router = useRouter();
@@ -80,6 +82,8 @@ const checkoutone = () => {
                             </div>
                         </div>
                     </div>
+                    <CheckoutAddressSelect />
+                    <CheckoutPaymentSelect />
                     <div className="buy-box-controller">
                         <div className="buy-box">
                             <div className="buy-title">
