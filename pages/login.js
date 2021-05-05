@@ -4,7 +4,7 @@ import Link from "next/link";
 import Styles from "../styles/login";
 import axios from "../utils/axios";
 import ForgotPasswordD from "../components/forum/ForgotPasswordD";
-import qs from "qs";
+import Cookies from "js-cookie";
 
 const Login = () => {
     const ref = useRef(null);
@@ -24,6 +24,7 @@ const Login = () => {
                 password: password,
             });
             if (user.data.isLoginSuccess) {
+                Cookies.set("jwt", user.data.token);
                 const fecth = await axios.post(`/account/fetch`);
                 console.log(fecth.data);
                 window.location.href = "/home";

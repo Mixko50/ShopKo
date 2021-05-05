@@ -26,6 +26,7 @@
     "cookie-helper": "^1.0.1",
     "date-fns": "^2.19.0",
     "dayjs": "^1.10.4",
+    "js-cookie": "^2.2.1",
     "lottie-react": "^2.1.0",
     "luxon": "^1.26.0",
     "moment": "^2.29.1",
