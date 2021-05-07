@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import Style from "../../components/ProductItems/ProductItems";
 import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({

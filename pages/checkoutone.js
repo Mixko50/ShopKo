@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Fragment } from "react";
 import Nav from "../components/Layout/Nav";
 import Styled from "../styles/account/MyOrder";
@@ -8,12 +8,16 @@ import { useRouter } from "next/router";
 import axios from "../utils/axios";
 import { CheckoutAddressSelect } from "../components/forum/CheckoutAddressSelect";
 import { CheckoutPaymentSelect } from "../components/forum/CheckoutPaymentSelect";
+import qs from "qs";
 
 const checkoutone = () => {
     const router = useRouter();
     console.log(router.query.id);
 
     const [product, setProduct] = useState({});
+
+    const checkoutAddressSelect = useRef(null);
+    const checkoutPaymentSelect = useRef(null);
 
     useEffect(() => {
         fetchedData();
@@ -24,6 +28,25 @@ const checkoutone = () => {
             `checkout/one/product?id=${router.query.id}`
         );
         setProduct(product.data);
+    };
+
+    const confirmOrder = async () => {
+        try {
+            await axios.post(
+                `/checkout/one/confirm`,
+                qs.stringify({
+                    addressId: checkoutAddressSelect.current.getAddressId(),
+                    paymentId: checkoutPaymentSelect.current.getPaymentId(),
+                    discount: 0,
+                    productId: router.query.id,
+                    quantity: router.query.quantity,
+                    price: product.price * router.query.quantity,
+                })
+            );
+            console.log("Successfully");
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -82,8 +105,8 @@ const checkoutone = () => {
                             </div>
                         </div>
                     </div>
-                    <CheckoutAddressSelect />
-                    <CheckoutPaymentSelect />
+                    <CheckoutAddressSelect ref={checkoutAddressSelect} />
+                    <CheckoutPaymentSelect ref={checkoutPaymentSelect} />
                     <div className="buy-box-controller">
                         <div className="buy-box">
                             <div className="buy-title">
@@ -103,7 +126,10 @@ const checkoutone = () => {
                                     }}
                                 >
                                     <a>
-                                        <div className="buy-button">
+                                        <div
+                                            className="buy-button"
+                                            onClick={confirmOrder}
+                                        >
                                             Checkout
                                         </div>
                                     </a>

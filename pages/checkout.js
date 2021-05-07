@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Fragment } from "react";
 import Nav from "../components/Layout/Nav";
 import Styled from "../styles/account/MyOrder";
@@ -8,6 +8,9 @@ import { CheckoutPaymentSelect } from "../components/forum/CheckoutPaymentSelect
 
 const checkout = () => {
     const [data, setData] = useState({});
+
+    const checkoutAddressSelect = useRef(null);
+    const checkoutPaymentSelect = useRef(null);
 
     useEffect(() => {
         fetchedData();
@@ -20,6 +23,15 @@ const checkout = () => {
         } catch (error) {
             console.log(error);
         }
+    };
+
+    const summa = () => {
+        console.log(
+            `address id = ${checkoutAddressSelect.current.getAddressId()}`
+        );
+        console.log(
+            `payment id = ${checkoutPaymentSelect.current.getPaymentId()}`
+        );
     };
 
     return (
@@ -83,8 +95,8 @@ const checkout = () => {
                               </div>
                           ))
                         : null}
-                    <CheckoutAddressSelect />
-                    <CheckoutPaymentSelect />
+                    <CheckoutAddressSelect ref={checkoutAddressSelect} />
+                    <CheckoutPaymentSelect ref={checkoutPaymentSelect} />
                     <div className="buy-box-controller">
                         <div className="buy-box">
                             <div className="buy-title">
@@ -94,7 +106,9 @@ const checkout = () => {
                                 <div className="buy-price">
                                     <h1>${data.total}</h1>
                                 </div>
-                                <div className="buy-button">Confirm</div>
+                                <div className="buy-button" onClick={summa}>
+                                    Confirm
+                                </div>
                             </div>
                         </div>
                     </div>

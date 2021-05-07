@@ -3,7 +3,7 @@ import axios from "../../utils/axios";
 import Radio from "@material-ui/core/Radio";
 import { forwardRef } from "react";
 import { Fragment } from "react";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useImperativeHandle } from "react";
 
 export const CheckoutAddressSelect = forwardRef((props, ref) => {
     const [address, setAddress] = useState({});
@@ -26,6 +26,12 @@ export const CheckoutAddressSelect = forwardRef((props, ref) => {
     const handleChangeAddress = (event) => {
         setSelectedAddress(event.target.value);
     };
+
+    useImperativeHandle(ref, () => ({
+        getAddressId: () => {
+            return selectedAddress;
+        },
+    }));
 
     return (
         <Fragment>

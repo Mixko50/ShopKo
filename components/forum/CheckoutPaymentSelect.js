@@ -1,7 +1,7 @@
 import Styled from "../../styles/account/MyOrder";
 import axios from "../../utils/axios";
 import Radio from "@material-ui/core/Radio";
-import { forwardRef } from "react";
+import { forwardRef, useImperativeHandle } from "react";
 import { Fragment } from "react";
 import React, { useState, useEffect } from "react";
 
@@ -25,6 +25,12 @@ export const CheckoutPaymentSelect = forwardRef((props, ref) => {
     const handleChangePayment = (event) => {
         setSelectedPayment(event.target.value);
     };
+
+    useImperativeHandle(ref, () => ({
+        getPaymentId: () => {
+            return selectedPayment;
+        },
+    }));
 
     return (
         <Fragment>
