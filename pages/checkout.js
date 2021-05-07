@@ -5,6 +5,7 @@ import Styled from "../styles/account/MyOrder";
 import axios from "../utils/axios";
 import { CheckoutAddressSelect } from "../components/forum/CheckoutAddressSelect";
 import { CheckoutPaymentSelect } from "../components/forum/CheckoutPaymentSelect";
+import qs from "qs";
 
 const checkout = () => {
     const [data, setData] = useState({});
@@ -25,13 +26,20 @@ const checkout = () => {
         }
     };
 
-    const summa = () => {
-        console.log(
-            `address id = ${checkoutAddressSelect.current.getAddressId()}`
-        );
-        console.log(
-            `payment id = ${checkoutPaymentSelect.current.getPaymentId()}`
-        );
+    const confirmOrder = async () => {
+        console.log(checkoutAddressSelect.current.getAddressId());
+        try {
+            await axios.post(
+                `checkout/all/confirm`,
+                qs.stringify({
+                    addressId: checkoutAddressSelect.current.getAddressId(),
+                    paymentId: checkoutPaymentSelect.current.getPaymentId(),
+                    discount: 0,
+                })
+            );
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -106,7 +114,10 @@ const checkout = () => {
                                 <div className="buy-price">
                                     <h1>${data.total}</h1>
                                 </div>
-                                <div className="buy-button" onClick={summa}>
+                                <div
+                                    className="buy-button"
+                                    onClick={confirmOrder}
+                                >
                                     Confirm
                                 </div>
                             </div>
