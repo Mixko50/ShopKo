@@ -12,37 +12,36 @@ const Index = () => {
     const { category } = router.query;
 
     const [data, setData] = useState([]);
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(0);
 
     useEffect(() => {
         onFetchData();
-    }, [category]);
+    }, [category, data]);
 
     const [checked, setChecked] = React.useState(false);
 
     const handleChange = (event) => {
+        console.log(event.target.checked);
         setChecked(event.target.checked);
     };
 
     const onFetchData = async () => {
         try {
-            console.log("test");
             const fetchedData = await axios.get(
                 `/categories/categoryproduct?category=${
                     category ? category : "bags"
-                }`
+                }&min=${minPrice}&max=${maxPrice}&recommend=${checked}`
             );
             setData(fetchedData.data.information);
-            // console.log(NameMapping[category].toLowerCase());
-            // const fetchedData = await axios.get(
-            //     `https://apmix.mixko.ml/${NameMapping[
-            //         category
-            //     ].toLowerCase()}.json`
-            // );
-            // setData(fetchedData.data);
         } catch (err) {
             console.log("Error");
             console.log(err);
         }
+    };
+
+    const search = () => {
+        onFetchData();
     };
 
     return (
@@ -65,20 +64,32 @@ const Index = () => {
                         <div className="filter-sort-box">
                             <div className="sortby-price">
                                 <p>Price : </p>
-                                <input placeholder="min" type="number" />
+                                <input
+                                    placeholder="min"
+                                    type="number"
+                                    onChange={(ev) =>
+                                        setMinPrice(ev.target.value)
+                                    }
+                                />
                                 <p>-</p>
-                                <input placeholder="max" type="number" />
+                                <input
+                                    placeholder="max"
+                                    type="number"
+                                    onChange={(ev) =>
+                                        setMaxPrice(ev.target.value)
+                                    }
+                                />
                                 <p>|</p>
                             </div>
                             <div className="sortby-recommend">
                                 <Checkbox
                                     checked={checked}
                                     onChange={handleChange}
-                                    inputProps={{
-                                        "aria-label": "primary checkbox",
-                                    }}
                                 />
                                 <p>Recommend</p>
+                            </div>
+                            <div className="search-button" onClick={search}>
+                                Search
                             </div>
                         </div>
                     </div>

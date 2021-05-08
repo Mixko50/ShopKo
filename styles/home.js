@@ -271,7 +271,7 @@ export default css`
         box-shadow: 0px 0px 10px rgb(212, 206, 206);
         border-radius: 15px;
         margin-top: 20px;
-        padding: 10px 30px;
+        padding: 10px 0px 10px 30px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -310,6 +310,28 @@ export default css`
         justify-content: center;
         align-items: center;
     }
+
+    .search-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #9a9ae1;
+        margin: 0 20px;
+        border-radius: 10px;
+        width: 100px;
+        cursor: pointer;
+        box-shadow: 0px 0px 10px rgb(212, 206, 206);
+        transition: 0.3s;
+    }
+
+    .search-button:hover {
+        background-color: #8aa7ec;
+    }
+
+    .search-button:active {
+        transform: translateY(3px);
+    }
+
     @media only screen and (max-width: 768px) {
         .ads-box {
             flex-direction: column;

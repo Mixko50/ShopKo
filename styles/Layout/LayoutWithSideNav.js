@@ -3,7 +3,7 @@ import css from "styled-jsx/css";
 export default css`
     section {
         width: 100%;
-        height: auto;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -12,7 +12,7 @@ export default css`
     .max-width-box {
         margin-top: 60px;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         max-width: 1200px;
         display: flex;
         justify-content: space-between;
@@ -21,8 +21,7 @@ export default css`
     .sidebar {
         padding: 20px;
         width: 270px;
-        height: 100vh;
-        display: flex;
+        display: 100vh;
         flex-direction: column;
         background-color: #f8e5e4;
         box-shadow: 0px 0px 8px #b1b1b1;
