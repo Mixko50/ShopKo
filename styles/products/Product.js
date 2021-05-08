@@ -22,7 +22,7 @@ export default css`
     .product-box,
     .product-details-box {
         width: 100%;
-        height: 650px;
+        height: 500px;
         padding: 10px;
         border-radius: 15px;
         box-shadow: 0px 0px 10px rgb(212, 206, 206);
@@ -41,31 +41,14 @@ export default css`
 
     .product-pic {
         flex: 40%;
-        height: 100%;
+        height: auto;
         display: flex;
         flex-direction: column;
     }
 
-    .product-pic > img {
-        width: 100%;
-        border-radius: 10px;
-        cursor: pointer;
-    }
-
     .big-pic {
         width: 100%;
-        height: 85%;
-        background-color: black;
-        border-radius: 10px;
-        cursor: pointer;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-    }
-
-    .small-pic {
-        width: 24%;
-        height: 100px;
+        height: 100%;
         background-color: black;
         border-radius: 10px;
         cursor: pointer;

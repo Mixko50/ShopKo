@@ -73,32 +73,6 @@ const Products = () => {
                                         backgroundImage: `url(${data.image})`,
                                     }}
                                 ></div>
-                                <div className="product-sub-pic">
-                                    <div
-                                        className="small-pic"
-                                        style={{
-                                            backgroundImage: `url(${data.image})`,
-                                        }}
-                                    ></div>
-                                    <div
-                                        className="small-pic"
-                                        style={{
-                                            backgroundImage: `url()`,
-                                        }}
-                                    ></div>
-                                    <div
-                                        className="small-pic"
-                                        style={{
-                                            backgroundImage: `url()`,
-                                        }}
-                                    ></div>
-                                    <div
-                                        className="small-pic"
-                                        style={{
-                                            backgroundImage: `url()`,
-                                        }}
-                                    ></div>
-                                </div>
                             </div>
                             <div className="product-buy">
                                 <div className="product-title">

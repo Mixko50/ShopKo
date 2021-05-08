@@ -24,7 +24,6 @@ export default forwardRef((props, ref) => {
         setConfirm(0);
         setOpen(false);
     };
-    const [check, setCheck] = useState({});
     const [email, setEmail] = useState("");
     const [confirm, setConfirm] = useState(0);
 
@@ -42,7 +41,6 @@ export default forwardRef((props, ref) => {
             if (emailAx.data.email) {
                 setConfirm(1);
             }
-            setCheck(emailAx.data);
         } catch (err) {
             setConfirm(2);
             console.log(err);
