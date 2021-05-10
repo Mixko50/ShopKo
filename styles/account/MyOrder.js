@@ -145,6 +145,7 @@ export default css`
         justify-content: center;
     }
 
+    .success-page-max,
     .checkout-page-max,
     .cart-page-max {
         width: 100%;
@@ -249,5 +250,15 @@ export default css`
 
     .buy-price {
         padding: 0 20px;
+    }
+
+    .buy-price > input {
+        height: 40px;
+        border-radius: 50px;
+        outline: none;
+        padding: 0px 15px;
+        border: none;
+        box-shadow: 0px 4px 10px #deded9;
+        transition: 0.3s;
     }
 `;

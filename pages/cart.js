@@ -114,32 +114,42 @@ const cart = () => {
                               </div>
                           ))
                         : null}
-
-                    <div className="buy-box-controller">
-                        <div className="buy-box">
-                            <div className="buy-title">
-                                <h1>Total</h1>
-                            </div>
-                            <div className="button-box">
-                                <div className="buy-price">
-                                    <h1>${data.total}</h1>
+                    {data.isFound ? (
+                        <div className="buy-box-controller">
+                            <div className="buy-box">
+                                <div className="buy-title">
+                                    <h1>Total</h1>
                                 </div>
-                                <Link
-                                    href="/checkout"
-                                    style={{
-                                        color: "black",
-                                        textDecorationLine: "none",
-                                    }}
-                                >
-                                    <a>
-                                        <div className="buy-button">
-                                            Checkout
-                                        </div>
-                                    </a>
-                                </Link>
+                                <div className="button-box">
+                                    <div className="buy-price">
+                                        <h1>${data.total}</h1>
+                                    </div>
+                                    <Link
+                                        href="/checkout"
+                                        style={{
+                                            color: "black",
+                                            textDecorationLine: "none",
+                                        }}
+                                    >
+                                        <a>
+                                            <div className="buy-button">
+                                                Checkout
+                                            </div>
+                                        </a>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    ) : (
+                        <div className="buy-box-controller">
+                            <div
+                                className="buy-box"
+                                style={{ justifyContent: "center" }}
+                            >
+                                <h1>No item found</h1>
+                            </div>
+                        </div>
+                    )}
                 </div>
                 <SpeedDials />
             </section>

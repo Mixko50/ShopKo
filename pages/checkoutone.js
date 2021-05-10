@@ -18,6 +18,10 @@ const checkoutone = () => {
 
     const checkoutAddressSelect = useRef(null);
     const checkoutPaymentSelect = useRef(null);
+    const [shippingData, setShippingData] = useState({});
+    const [discount, setDiscount] = useState(0);
+    const [shippingFee, setShippingFee] = useState(50);
+    const [shippingCodeInput, setShippingCodeInput] = useState("");
 
     useEffect(() => {
         fetchedData();
@@ -43,9 +47,33 @@ const checkoutone = () => {
                     price: product.price * router.query.quantity,
                 })
             );
-            console.log("Successfully");
+            await axios.post(
+                `/shippingcode/update`,
+                qs.stringify({
+                    shippingCode: shippingCodeInput,
+                })
+            );
+            router.push("/success");
         } catch (error) {
             console.log(error);
+        }
+    };
+
+    const shippingCodeCheck = async () => {
+        try {
+            const shippingCodeCheckAx = await axios.get(
+                `/shippingcode/check?shippingCode=${shippingCodeInput}`
+            );
+            setShippingData(shippingCodeCheckAx.data);
+            if (shippingCodeCheckAx.data.isFound) {
+                setShippingFee(0);
+                setDiscount(1);
+            } else {
+                setShippingFee(50);
+                setDiscount(0);
+            }
+        } catch (err) {
+            console.log(err);
         }
     };
 
@@ -110,30 +138,58 @@ const checkoutone = () => {
                     <div className="buy-box-controller">
                         <div className="buy-box">
                             <div className="buy-title">
+                                <h1>Shipping fee</h1>
+                            </div>
+                            <div className="button-box">
+                                <div className="buy-price">
+                                    <h1>${shippingFee}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="buy-box-controller">
+                        <div className="buy-box">
+                            <div className="buy-title">
+                                <h1>Shipping code</h1>
+                            </div>
+                            <div className="button-box">
+                                <div className="buy-price">
+                                    <input
+                                        placeholder="type your code"
+                                        onChange={(ev) =>
+                                            setShippingCodeInput(
+                                                ev.target.value
+                                            )
+                                        }
+                                    />
+                                </div>
+                                <div
+                                    className="buy-button"
+                                    onClick={shippingCodeCheck}
+                                >
+                                    Check
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="buy-box-controller">
+                        <div className="buy-box">
+                            <div className="buy-title">
                                 <h1>Total</h1>
                             </div>
                             <div className="button-box">
                                 <div className="buy-price">
                                     <h1>
-                                        ${product.price * router.query.quantity}
+                                        ${product.price} + {shippingFee} = $
+                                        {product.price + shippingFee}
                                     </h1>
                                 </div>
-                                <Link
-                                    href="/checkout"
-                                    style={{
-                                        color: "black",
-                                        textDecorationLine: "none",
-                                    }}
+                                <div
+                                    className="buy-button"
+                                    onClick={confirmOrder}
                                 >
-                                    <a>
-                                        <div
-                                            className="buy-button"
-                                            onClick={confirmOrder}
-                                        >
-                                            Checkout
-                                        </div>
-                                    </a>
-                                </Link>
+                                    Confirm
+                                </div>
                             </div>
                         </div>
                     </div>

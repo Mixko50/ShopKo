@@ -52,11 +52,6 @@ export default function Dropdown() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                {profile.type == "admin" ? (
-                    <Link href="/admin">
-                        <MenuItem onClick={handleClose}>Admin</MenuItem>
-                    </Link>
-                ) : null}
                 <Link href="../account/profile">
                     <MenuItem onClick={handleClose}>Profile</MenuItem>
                 </Link>

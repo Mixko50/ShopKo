@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,9 +10,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { ProfileContext } from "../../context/profileContext";
 
 export const ProductBuyButton = ({ addToCart, id, quantity }) => {
     const router = useRouter();
+    const profileContext = useContext(ProfileContext);
+    const profile = profileContext.profile;
 
     return (
         <div>
@@ -25,7 +28,13 @@ export const ProductBuyButton = ({ addToCart, id, quantity }) => {
                     margin: "20px",
                     borderRadius: "15px",
                 }}
-                onClick={addToCart}
+                onClick={() => {
+                    if (profile.isLoggedIn) {
+                        addToCart();
+                    } else {
+                        router.push("/login");
+                    }
+                }}
             >
                 <FontAwesomeIcon
                     icon={faCartPlus}
@@ -44,11 +53,14 @@ export const ProductBuyButton = ({ addToCart, id, quantity }) => {
                     borderRadius: "15px",
                 }}
                 onClick={async () => {
-                    console.log(quantity());
-                    router.push({
-                        pathname: "/checkoutone",
-                        query: { id: id, quantity: await quantity() },
-                    });
+                    if (profile.isLoggedIn) {
+                        router.push({
+                            pathname: "/checkoutone",
+                            query: { id: id, quantity: await quantity() },
+                        });
+                    } else {
+                        router.push("/login");
+                    }
                 }}
             >
                 <FontAwesomeIcon

@@ -21,6 +21,7 @@ const profile = () => {
                 firstname: firstname,
             });
             User();
+            window.location.reload(false);
         }
     };
 
@@ -30,6 +31,7 @@ const profile = () => {
                 lastname: lastname,
             });
             User();
+            window.location.reload(false);
         }
     };
 

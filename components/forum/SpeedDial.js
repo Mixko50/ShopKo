@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
@@ -9,6 +9,7 @@ import SpeedDial from "@material-ui/lab/SpeedDial";
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
 import { Router, useRouter } from "next/router";
+import { ProfileContext } from "../../context/profileContext";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,6 +46,9 @@ export const SpeedDials = () => {
     const [open, setOpen] = React.useState(false);
     const [hidden, setHidden] = React.useState(false);
 
+    const profileContext = useContext(ProfileContext);
+    const profile = profileContext.profile;
+
     const actions = [
         {
             icon: (
@@ -62,7 +66,11 @@ export const SpeedDials = () => {
                 <ShoppingBasketIcon
                     style={{ color: "#ff75a0" }}
                     onClick={() => {
-                        router.push("/account/myorder");
+                        if (profile.isLoggedIn) {
+                            router.push("/account/myorder");
+                        } else {
+                            router.push("/login");
+                        }
                     }}
                 />
             ),
@@ -73,7 +81,11 @@ export const SpeedDials = () => {
                 <ShoppingCartIcon
                     style={{ color: "#ff75a0" }}
                     onClick={() => {
-                        router.push("/cart");
+                        if (profile.isLoggedIn) {
+                            router.push("/cart");
+                        } else {
+                            router.push("/login");
+                        }
                     }}
                 />
             ),
@@ -84,7 +96,11 @@ export const SpeedDials = () => {
                 <PersonIcon
                     style={{ color: "#ff75a0" }}
                     onClick={() => {
-                        router.push("/account/profile");
+                        if (profile.isLoggedIn) {
+                            router.push("/account/profile");
+                        } else {
+                            router.push("/login");
+                        }
                     }}
                 />
             ),

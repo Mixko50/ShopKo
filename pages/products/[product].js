@@ -1,5 +1,11 @@
 import { useRouter } from "next/router";
-import React, { Fragment, useState, useEffect, useRef } from "react";
+import React, {
+    Fragment,
+    useState,
+    useEffect,
+    useRef,
+    useContext,
+} from "react";
 import Nav from "../../components/Layout/Nav";
 import { ProductQuantity } from "../../components/forum/ProductQuantity";
 import { ProductBuyButton } from "../../components/forum/ProductBuyButton";
@@ -52,6 +58,7 @@ const Products = () => {
                     quantity: productQuantity.current.getQuantity(),
                 })
             );
+            window.location.reload(false);
         } catch (err) {
             console.log("error");
         }

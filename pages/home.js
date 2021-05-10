@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState, useEffect, useRef } from "react";
 import Nav from "../components/Layout/Nav";
 import Styles from "../styles/home";
 import { CategoryItem } from "../components/category/CategoryItem";
@@ -7,6 +7,7 @@ import { ProductItems } from "../components/ProductItems/ProductItems";
 import axios from "../utils/axios";
 import { CircularProgress, createStyles, makeStyles } from "@material-ui/core";
 import { SpeedDials } from "../components/forum/SpeedDial";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -17,28 +18,25 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const categoryItems = [
-    {
-        id: "fashion1",
-        title: "Fashion",
-    },
-    { id: "computer2", title: "Computers" },
-    { id: "furniture3", title: "Furnitures" },
-    { id: "sports4", title: "Sports" },
-    { id: "bags5", title: "Bags" },
-    { id: "stationaries6", title: "Stationaries" },
-    { id: "pet7", title: "Pets" },
-    { id: "foods8", title: "Foods" },
-    { id: "cosmetics9", title: "Cosmetics" },
-    { id: "others10", title: "Others" },
-];
-
 const ProductBox = () => {
     const [data, setData] = useState([]);
+    const router = useRouter();
 
     useEffect(() => {
-        onFetchData();
-    }, []);
+        if (router.query.search) {
+            try {
+                console.log(router.query.search);
+                axios
+                    .get(`/home/product/search?search=${router.query.search}`)
+                    .then((fetchedData) => setData(fetchedData.data.product));
+                console.log(data);
+            } catch (err) {
+                console.log(err);
+            }
+        } else {
+            onFetchData();
+        }
+    }, [router.query.search]);
 
     const onFetchData = async () => {
         try {
@@ -75,6 +73,8 @@ const ProductBox = () => {
 const Home = () => {
     const [categories, setCategories] = useState([]);
 
+    const nav = useRef(null);
+
     useEffect(() => {
         categoriesData();
     }, []);
@@ -83,16 +83,14 @@ const Home = () => {
         try {
             const categoriesAx = await axios.get("/home/categories");
             setCategories(categoriesAx.data.information);
-            console.log(categoriesAx.data);
         } catch (error) {
             console.log(error);
         }
     };
-
     //fahsion fashion
     return (
         <Fragment>
-            <Nav />
+            <Nav ref={nav} />
             <section>
                 <div className="home-bigbox">
                     <AdvertiseBox />

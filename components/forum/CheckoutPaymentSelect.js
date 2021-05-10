@@ -4,6 +4,7 @@ import Radio from "@material-ui/core/Radio";
 import { forwardRef, useImperativeHandle } from "react";
 import { Fragment } from "react";
 import React, { useState, useEffect } from "react";
+import { Link } from "@material-ui/core";
 
 export const CheckoutPaymentSelect = forwardRef((props, ref) => {
     const [payment, setPayment] = useState({});
@@ -61,14 +62,18 @@ export const CheckoutPaymentSelect = forwardRef((props, ref) => {
                             </div>
                         ))
                     ) : (
-                        <div>ADD PLEASE</div>
+                        <div style={{ marginTop: "20px" }}>
+                            <Link href="/account/payment">
+                                Add credit/debit
+                            </Link>
+                        </div>
                     )}
                     <div className="address-select-box">
                         <div className="address-radio-box">
                             <Radio
-                                checked={selectedPayment == -1}
+                                checked={selectedPayment == 99}
                                 onChange={handleChangePayment}
-                                value={-1}
+                                value={99}
                             />
                         </div>
                         <div className="address">
