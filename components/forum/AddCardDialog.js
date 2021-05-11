@@ -29,9 +29,9 @@ export const AddCardDialog = forwardRef((props, ref) => {
         },
     }));
 
-    const addCard = () => {
+    const addCard = async () => {
         try {
-            axios.post("/setting/payment/add", {
+            await axios.post("/setting/payment/add", {
                 cardNumber: cardNumber,
                 name: name,
                 month: expiredDate.substring(0, 2),
@@ -41,6 +41,24 @@ export const AddCardDialog = forwardRef((props, ref) => {
             window.location.href = "/account/payment";
         } catch (error) {
             console.log("Error");
+        }
+    };
+
+    const cardNumberCheck = () => {
+        const cardPattern = /(\d{16})/;
+        if (cardPattern.test(cardNumber) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    const expiredCheck = () => {
+        const expiredPattern = /(\d{2})+(\/)+(\d{4})/;
+        if (expiredPattern.test(expiredDate) == true) {
+            return true;
+        } else {
+            return false;
         }
     };
 
@@ -108,8 +126,15 @@ export const AddCardDialog = forwardRef((props, ref) => {
                     </Button>
                     <Button
                         onClick={() => {
-                            addCard();
-                            handleClose();
+                            if (
+                                cardNumberCheck() &&
+                                name &&
+                                expiredCheck() &&
+                                type
+                            ) {
+                                addCard();
+                                handleClose();
+                            }
                         }}
                         color="primary"
                     >

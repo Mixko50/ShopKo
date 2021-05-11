@@ -35,21 +35,29 @@ const checkout = () => {
     const confirmOrder = async () => {
         console.log(checkoutAddressSelect.current.getAddressId());
         try {
-            await axios.post(
-                `checkout/all/confirm`,
-                qs.stringify({
-                    addressId: checkoutAddressSelect.current.getAddressId(),
-                    paymentId: checkoutPaymentSelect.current.getPaymentId(),
-                    discount: discount,
-                })
-            );
-            await axios.post(
-                `/shippingcode/update`,
-                qs.stringify({
-                    shippingCode: shippingCodeInput,
-                })
-            );
-            router.push("/success");
+            if (
+                checkoutAddressSelect.current.getAddressId() != 0 &&
+                checkoutPaymentSelect.current.getPaymentId() != 0
+            ) {
+                await axios.post(
+                    `checkout/all/confirm`,
+                    qs.stringify({
+                        addressId: checkoutAddressSelect.current.getAddressId(),
+                        paymentId: checkoutPaymentSelect.current.getPaymentId(),
+                        discount: discount,
+                    })
+                );
+                if (discount == 1) {
+                    await axios.post(
+                        `/shippingcode/update`,
+                        qs.stringify({
+                            shippingCode: shippingCodeInput,
+                        })
+                    );
+                }
+                router.push("/success");
+            }
+            console.log("need more information");
         } catch (error) {
             console.log(error);
         }

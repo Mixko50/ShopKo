@@ -36,24 +36,33 @@ const checkoutone = () => {
 
     const confirmOrder = async () => {
         try {
-            await axios.post(
-                `/checkout/one/confirm`,
-                qs.stringify({
-                    addressId: checkoutAddressSelect.current.getAddressId(),
-                    paymentId: checkoutPaymentSelect.current.getPaymentId(),
-                    discount: 0,
-                    productId: router.query.id,
-                    quantity: router.query.quantity,
-                    price: product.price * router.query.quantity,
-                })
-            );
-            await axios.post(
-                `/shippingcode/update`,
-                qs.stringify({
-                    shippingCode: shippingCodeInput,
-                })
-            );
-            router.push("/success");
+            if (
+                checkoutAddressSelect.current.getAddressId() != 0 &&
+                checkoutPaymentSelect.current.getPaymentId() != 0
+            ) {
+                await axios.post(
+                    `/checkout/one/confirm`,
+                    qs.stringify({
+                        addressId: checkoutAddressSelect.current.getAddressId(),
+                        paymentId: checkoutPaymentSelect.current.getPaymentId(),
+                        discount: discount,
+                        productId: router.query.id,
+                        quantity: router.query.quantity,
+                        price: product.price * router.query.quantity,
+                    })
+                );
+                if (discount == 1) {
+                    await axios.post(
+                        `/shippingcode/update`,
+                        qs.stringify({
+                            shippingCode: shippingCodeInput,
+                        })
+                    );
+                }
+                router.push("/success");
+            } else {
+                console.log("need more information");
+            }
         } catch (error) {
             console.log(error);
         }
