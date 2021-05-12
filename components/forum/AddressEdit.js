@@ -14,6 +14,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import data from "../../utils/provinces";
 import AddressSelect from "./AddressSelect";
 import axios from "../../utils/axios";
+import { useRouter } from "next/router";
 
 export default forwardRef((props, ref) => {
     const [address, setAddress] = useState({});
@@ -27,6 +28,7 @@ export default forwardRef((props, ref) => {
     const [districts, setDistricts] = useState("");
     const [subDistricts, setSubDistricts] = useState("");
     const [postalCodes, setPostalCodes] = useState("");
+    const router = useRouter();
 
     const provinces = [...new Set(data.map((el) => el.province))];
 
@@ -126,6 +128,7 @@ export default forwardRef((props, ref) => {
                 postalCode &&
                 newAddress
             ) {
+                console.log("Passes");
                 axios.post("/setting/address/add", {
                     name: address.name,
                     phone: address.phone,
@@ -272,8 +275,8 @@ export default forwardRef((props, ref) => {
                                 postalCode
                             ) {
                                 addressUpdate();
-                                window.location.href = "/account/address";
                                 handleClose();
+                                window.location.reload(false);
                             }
                         }}
                         color="primary"
