@@ -261,4 +261,16 @@ export default css`
         box-shadow: 0px 4px 10px #deded9;
         transition: 0.3s;
     }
+
+    .lottie {
+        width: 500px !important;
+        height: 500px !important;
+    }
+
+    .lottie-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
 `;

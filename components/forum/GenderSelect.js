@@ -53,10 +53,10 @@ const GenderSelect = (props) => {
                     }}
                 />
                 <FormControlLabel
-                    value="Others"
+                    value="Other"
                     control={<Radio color="primary" />}
-                    label="Others"
-                    checked={gender == "Others"}
+                    label="Other"
+                    checked={gender == "Other"}
                     onChange={(ev) => {
                         handleChange(ev);
                         updateGender(ev.target.value);
