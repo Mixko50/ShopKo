@@ -5,12 +5,12 @@ export const AdvertiseBox = () => {
     return (
         <div className="ads-box">
             <div className="free-shipping-promotion-box">
-                <div className="free-shipping-1">Promotion!</div>
-                <div className="free-shipping-2">Coming soon!</div>
+                <div className="free-shipping-1">Welcome!</div>
+                <div className="free-shipping-2">To ShopKo</div>
             </div>
             <div className="free-shipping-promotion-box">
                 <div className="promotion">
-                    Free shipping code! -- Coming soon! --
+                    Free shipping code type "free50" only 20 codes!
                 </div>
             </div>
             <style jsx>{Styles}</style>

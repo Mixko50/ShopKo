@@ -1,21 +1,16 @@
-import React, { useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useContext, useRef } from "react";
 import Button from "@material-ui/core/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faAddressBook,
-    faAppleAlt,
-    faCartPlus,
-    faShoppingBag,
-} from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+import { faCartPlus, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import { ProfileContext } from "../../context/profileContext";
+import Nav from "../Layout/Nav";
 
 export const ProductBuyButton = ({ addToCart, id, quantity }) => {
     const router = useRouter();
     const profileContext = useContext(ProfileContext);
     const profile = profileContext.profile;
+    const nav = useRef(null);
 
     return (
         <div>
@@ -28,9 +23,11 @@ export const ProductBuyButton = ({ addToCart, id, quantity }) => {
                     margin: "20px",
                     borderRadius: "15px",
                 }}
-                onClick={() => {
+                onClick={async () => {
                     if (profile.isLoggedIn) {
-                        addToCart();
+                        await addToCart();
+                        nav.current.reload();
+                        window.location.reload(false);
                     } else {
                         router.push("/login");
                     }
@@ -70,6 +67,7 @@ export const ProductBuyButton = ({ addToCart, id, quantity }) => {
                 />
                 <p>Buy now</p>
             </Button>
+            <Nav ref={nav} style={{ display: "none" }} />
         </div>
     );
 };

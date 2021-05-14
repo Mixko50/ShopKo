@@ -7,11 +7,7 @@ import {
     useImperativeHandle,
 } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faSearch,
-    faShoppingCart,
-    faUserCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "../forum/Dropdown";
 import Link from "next/link";
 import Badge from "@material-ui/core/Badge";
@@ -20,7 +16,7 @@ import Styled from "../../styles/Layout/Nav";
 import axios from "../../utils/axios";
 import { useRouter } from "next/router";
 
-const Nav = forwardRef((props, ref) => {
+const Nav = forwardRef((props, ref, style) => {
     const profileContext = useContext(ProfileContext);
     const profile = profileContext.profile;
     const router = useRouter();
@@ -30,7 +26,7 @@ const Nav = forwardRef((props, ref) => {
 
     useEffect(() => {
         fetchedData();
-    }, []);
+    }, [ref]);
 
     const fetchedData = async () => {
         try {
@@ -45,11 +41,14 @@ const Nav = forwardRef((props, ref) => {
         getSearch: () => {
             return search;
         },
+        reload: () => {
+            fetchedData();
+        },
     }));
 
     return (
         <Fragment>
-            <nav>
+            <nav style={props.style}>
                 <div className="nav-box">
                     <div className="logo">
                         <Link href="/home">

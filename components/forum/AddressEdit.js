@@ -100,7 +100,7 @@ export default forwardRef((props, ref) => {
         },
     }));
 
-    const addressUpdate = () => {
+    const addressUpdate = async () => {
         try {
             if (
                 province &&
@@ -109,7 +109,7 @@ export default forwardRef((props, ref) => {
                 postalCode &&
                 !newAddress
             ) {
-                axios.post("/setting/address/update", {
+                await axios.post("/setting/address/update", {
                     name: address.name,
                     phone: address.phone,
                     province: province,
@@ -129,7 +129,7 @@ export default forwardRef((props, ref) => {
                 newAddress
             ) {
                 console.log("Passes");
-                axios.post("/setting/address/add", {
+                await axios.post("/setting/address/add", {
                     name: address.name,
                     phone: address.phone,
                     province: province,
@@ -141,6 +141,7 @@ export default forwardRef((props, ref) => {
                     id: address.id,
                 });
                 console.log("new Address added");
+                window.location.reload(false);
             }
         } catch (error) {
             console.log("Error");
@@ -276,7 +277,6 @@ export default forwardRef((props, ref) => {
                             ) {
                                 addressUpdate();
                                 handleClose();
-                                window.location.reload(false);
                             }
                         }}
                         color="primary"

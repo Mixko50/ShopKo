@@ -1,11 +1,5 @@
 import { useRouter } from "next/router";
-import React, {
-    Fragment,
-    useState,
-    useEffect,
-    useRef,
-    useContext,
-} from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 import Nav from "../../components/Layout/Nav";
 import { ProductQuantity } from "../../components/forum/ProductQuantity";
 import { ProductBuyButton } from "../../components/forum/ProductBuyButton";
@@ -22,7 +16,6 @@ const Products = () => {
     const productQuantity = useRef(null);
 
     const [data, setData] = useState({});
-    const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         if (onFetchData()) {
@@ -43,7 +36,6 @@ const Products = () => {
 
     const quantityCaller = async () => {
         let a = await productQuantity.current.getQuantity();
-        setQuantity(a);
         return a;
     };
 

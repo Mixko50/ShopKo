@@ -45,7 +45,8 @@ const signup = () => {
     };
 
     const emailCheck = () => {
-        const emailPattern = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        const emailPattern =
+            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if (emailPattern.test(email) == true) {
             setBoxCheckEmail(true);
             return true;
@@ -230,7 +231,7 @@ const signup = () => {
                                     ) {
                                         console.log("Passed!");
                                         signup();
-                                        router.push("/home");
+                                        router.push("/login");
                                     }
                                 }}
                             >

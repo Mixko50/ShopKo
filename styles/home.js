@@ -46,7 +46,7 @@ export default css`
 
     .free-shipping-1,
     .free-shipping-2 {
-        background-image: linear-gradient(
+        /* background-image: linear-gradient(
             to right top,
             #d16ba5,
             #c777b9,
@@ -60,9 +60,10 @@ export default css`
             #41dfff,
             #46eefa,
             #5ffbf1
-        );
+        ); */
+        background-color: #eca3f5
         padding: 20px;
-        color: white;
+        color: black;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -90,19 +91,21 @@ export default css`
         background-size: 700px;
         background-position: center;
         background-repeat: no-repeat;
-        background-image: linear-gradient(
+        /* background-image: linear-gradient(
             to right top,
             #051937,
             #004d7a,
             #008793,
             #00bf72,
             #a8eb12
-        );
+        ); */
+        background-color: #e2bcb7;
         font-size: 60px;
         color: white;
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center
     }
 
     .category {
