@@ -33,11 +33,11 @@ const ChangePhoneNumber = (props, ref) => {
         },
     }));
 
-    const updatePhone = () => {
-        axios.post("/setting/profile/phone", {
+    const updatePhone = async () => {
+        await axios.post("/setting/profile/phone", {
             phone: phone,
         });
-        window.location.href = "/account/profile";
+        window.location.reload(false);
     };
 
     const phoneNumberCheck = () => {

@@ -107,7 +107,7 @@ export const AddCardDialog = forwardRef((props, ref) => {
                         id="name"
                         label="Expired date"
                         type="text"
-                        placeholder="00/00"
+                        placeholder="00/0000"
                         onChange={(ev) => setExpiredDate(ev.target.value)}
                     />
                     <br />

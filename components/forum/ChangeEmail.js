@@ -33,17 +33,19 @@ const ChangeEmail = (props, ref) => {
         },
     }));
 
-    const updateEmail = () => {
-        axios.post("/setting/profile/email", {
+    const updateEmail = async () => {
+        await axios.post("/setting/profile/email", {
             email: email,
         });
     };
 
-    const emailCheck = () => {
-        const emailPattern = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const emailCheck = async () => {
+        const emailPattern =
+            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if (emailPattern.test(email) == true) {
             setBoxCheckEmail(true);
-            window.location.href = "/account/profile";
+            await updateEmail();
+            window.location.reload(false);
             return true;
         } else {
             setBoxCheckEmail(false);
