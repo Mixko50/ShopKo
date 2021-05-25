@@ -132,7 +132,7 @@ const checkoutone = () => {
                                         </div>
                                         <div className="order-price">
                                             <h1>
-                                                $
+                                                ฿
                                                 {product.price *
                                                     router.query.quantity}
                                             </h1>
@@ -189,7 +189,7 @@ const checkoutone = () => {
                             <div className="button-box">
                                 <div className="buy-price">
                                     <h1>
-                                        ${product.price} + {shippingFee} = $
+                                        ฿{product.price} + {shippingFee} = ฿
                                         {product.price + shippingFee}
                                     </h1>
                                 </div>

@@ -104,7 +104,7 @@ const cart = () => {
                                                   </div>
                                                   <div className="order-price">
                                                       <h1>
-                                                          ${item.total_price}
+                                                          ฿{item.total_price}
                                                       </h1>
                                                   </div>
                                               </div>
@@ -122,7 +122,7 @@ const cart = () => {
                                 </div>
                                 <div className="button-box">
                                     <div className="buy-price">
-                                        <h1>${data.total}</h1>
+                                        <h1>฿{data.total}</h1>
                                     </div>
                                     <Link
                                         href="/checkout"

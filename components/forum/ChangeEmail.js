@@ -39,12 +39,12 @@ const ChangeEmail = (props, ref) => {
         });
     };
 
-    const emailCheck = async () => {
+    const emailCheck = () => {
         const emailPattern =
             /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        if (emailPattern.test(email) == true) {
+        if (emailPattern.test(email)) {
             setBoxCheckEmail(true);
-            await updateEmail();
+            updateEmail();
             window.location.reload(false);
             return true;
         } else {

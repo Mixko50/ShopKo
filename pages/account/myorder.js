@@ -73,7 +73,7 @@ const myorder = () => {
                                               </div>
                                           </div>
                                           <div className="order-price">
-                                              <h1>${item.total_price}</h1>
+                                              <h1>฿{item.total_price}</h1>
                                           </div>
                                       </div>
                                   </div>

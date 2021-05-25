@@ -36,7 +36,7 @@ export const AddCardDialog = forwardRef((props, ref) => {
                 name: name,
                 month: expiredDate.substring(0, 2),
                 year: expiredDate.substring(3),
-                type: type,
+                type: type.toUpperCase(),
             });
             window.location.reload(false);
         } catch (error) {

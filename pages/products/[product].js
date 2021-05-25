@@ -78,7 +78,7 @@ const Products = () => {
                                     <h1>{data.title}</h1>
                                 </div>
                                 <div className="product-price">
-                                    <h2>${data.price}</h2>
+                                    <h2>฿{data.price}</h2>
                                 </div>
                                 <div className="quantity-box">
                                     <p>Quantity</p>

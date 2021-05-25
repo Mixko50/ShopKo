@@ -132,7 +132,7 @@ const checkout = () => {
                                                   </div>
                                                   <div className="order-price">
                                                       <h1>
-                                                          ${item.total_price}
+                                                          ฿{item.total_price}
                                                       </h1>
                                                   </div>
                                               </div>
@@ -151,7 +151,7 @@ const checkout = () => {
                             </div>
                             <div className="button-box">
                                 <div className="buy-price">
-                                    <h1>${shippingFee}</h1>
+                                    <h1>฿{shippingFee}</h1>
                                 </div>
                             </div>
                         </div>
@@ -189,7 +189,7 @@ const checkout = () => {
                             <div className="button-box">
                                 <div className="buy-price">
                                     <h1>
-                                        ${data.total} + {shippingFee} = $
+                                        ฿{data.total} + {shippingFee} = ฿
                                         {data.total + shippingFee}
                                     </h1>
                                 </div>

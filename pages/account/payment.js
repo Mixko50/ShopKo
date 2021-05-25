@@ -67,8 +67,9 @@ const payment = () => {
                                     </div>
                                     <div className="payment-card-number">
                                         <h4>
-                                            {el.card_number.substring(0, 4) +
-                                                " **** ***** ****"}
+                                            {`**** ***** **** ${el.card_number.substring(
+                                                12
+                                            )}`}
                                         </h4>
                                     </div>
                                     <div className="delete-payment">
